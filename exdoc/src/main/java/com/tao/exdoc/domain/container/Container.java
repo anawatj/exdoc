@@ -20,10 +20,10 @@ public class Container extends AbstractDomain<Integer> {
 	private String containerCode;
 	private String containerDesc;
 	private ContainerType containerType;
-	private String documentStart;
+	/*private String documentStart;
 	private String documentEnd;
 	private Integer documentNum;
-	private Integer documentCancel;
+	private Integer documentCancel;*/
 	private User containerBy;
 	private Date containerDate;
 	private Status status;
@@ -47,30 +47,8 @@ public class Container extends AbstractDomain<Integer> {
 	public void setContainerType(ContainerType containerType) {
 		this.containerType = containerType;
 	}
-	public String getDocumentStart() {
-		return documentStart;
-	}
-	public void setDocumentStart(String documentStart) {
-		this.documentStart = documentStart;
-	}
-	public String getDocumentEnd() {
-		return documentEnd;
-	}
-	public void setDocumentEnd(String documentEnd) {
-		this.documentEnd = documentEnd;
-	}
-	public Integer getDocumentNum() {
-		return documentNum;
-	}
-	public void setDocumentNum(Integer documentNum) {
-		this.documentNum = documentNum;
-	}
-	public Integer getDocumentCancel() {
-		return documentCancel;
-	}
-	public void setDocumentCancel(Integer documentCancel) {
-		this.documentCancel = documentCancel;
-	}
+	
+
 	public User getContainerBy() {
 		return containerBy;
 	}
