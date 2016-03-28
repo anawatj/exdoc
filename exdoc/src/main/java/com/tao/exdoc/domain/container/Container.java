@@ -20,10 +20,6 @@ public class Container extends AbstractDomain<Integer> {
 	private String containerCode;
 	private String containerDesc;
 	private ContainerType containerType;
-	/*private String documentStart;
-	private String documentEnd;
-	private Integer documentNum;
-	private Integer documentCancel;*/
 	private User containerBy;
 	private Date containerDate;
 	private Status status;
