@@ -25,7 +25,6 @@ public class Borrow extends AbstractDomain<Integer>{
 	private User reviewBy;
 	private Date approveDate;
 	private User approveBy;
-
 	private Status status;
 	private String remark;
 	private Set<BorrowItem> items;
