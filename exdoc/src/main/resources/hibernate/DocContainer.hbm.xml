@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.tao.exdoc.domain.container.Container" table="DOC_M_CONTAINER">
+		<id name="id" column="ID" type="integer">
+			<generator class="sequence">
+				<param name="sequence">DOC_M_CONTAINER_SEQ</param>
+			</generator>
+
+		</id>
+		<version name="version" column="VERSION"></version>
+		<property name="containerCode" column="CONTAINER_CODE"
+			length="20"></property>
+		<property name="containerDesc" column="CONTAINER_DESC"
+			length="200"></property>
+		<many-to-one name="containerType"
+			class="com.tao.exdoc.domain.master.ContainerType" lazy="proxy"
+			column="CONTAINER_TYPE_ID" foreign-key="FK_CONTAINER_CONTAINER_TYPE"
+			not-found="ignore"></many-to-one>
+		<many-to-one name="containerBy" class="com.tao.exdoc.domain.security.User"
+			lazy="proxy" column="CONTAINER_BY" foreign-key="FK_CONTAINER_BY_USER"
+			not-found="ignore"></many-to-one>
+		<property name="containerDate" column="CONTAINER_DATE"></property>
+		<property name="remark" column="REMARK" length="1000"></property>
+		<property name="status" column="STATUS">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">com.tao.exdoc.domain.enumurate.Status</param>
+				<param name="type">12</param>
+			</type>
+		</property>
+		<set name="items" cascade="all-delete-orphan" lazy="true">
+				<key column="CONTAINER_PARENT_ID" foreign-key="FK_CONTAINER_PARENT"></key>
+				<one-to-many class="com.tao.exdoc.domain.container.Container" not-found="ignore"/>
+				
+		</set>
+		<property name="createdBy" column="CREATED_BY" length="20"></property>
+		<property name="createdDate" column="CREATED_DATE"></property>
+		<property name="updatedBy" column="UPDATED_BY" length="20"></property>
+		<property name="updatedDate" column="UPDATED_DATE"></property>
+	</class>
+</hibernate-mapping>

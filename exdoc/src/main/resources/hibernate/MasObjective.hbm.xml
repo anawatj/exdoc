@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+				<class name="com.tao.exdoc.domain.master.Objective" table="MAS_M_OBJECTIVE" abstract="true">
+					<id name="id" column="ID" type="integer">
+						<generator class="sequence">
+							<param name="sequence">MAS_M_OBJECTIVE_SEQ</param>
+						</generator>
+					</id>
+				<discriminator column="OBJECTIVE_TYPE" type="string" length="2" force="true"></discriminator>
+				<property name="code" column="OBJECTIVE_CODE" length="20"></property>
+				<property name="description" column="OBJECTIVE_DESC" length="200"></property>
+				<property name="createdBy" column="CREATED_BY" length="20"></property>
+				<property name="createdDate" column="CREATED_DATE" ></property>
+				<property name="updatedBy" column="UPDATED_BY" length="20"></property>
+				<property name="updatedDate" column="UPDATED_DATE"></property>
+		</class>
+		<subclass name="com.tao.exdoc.domain.master.DepositObjective" extends="com.tao.exdoc.domain.master.Objective" discriminator-value="DP">
+		</subclass>
+		<subclass name="com.tao.exdoc.domain.master.BorrowObjective" extends="com.tao.exdoc.domain.master.Objective" discriminator-value="BR">
+		</subclass>
+		<subclass name="com.tao.exdoc.domain.master.TransferObjective" extends="com.tao.exdoc.domain.master.Objective" discriminator-value="TR">
+		</subclass>
+		<subclass name="com.tao.exdoc.domain.master.WitdownObjective" extends="com.tao.exdoc.domain.master.Objective" discriminator-value="WD">
+		</subclass>
+</hibernate-mapping>

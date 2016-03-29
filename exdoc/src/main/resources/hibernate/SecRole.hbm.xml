@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.tao.exdoc.domain.security.Role" table="SEC_M_ROLE">
+		<id name="id" column="ID" type="integer">
+			<generator class="sequence">
+				<param name="sequence">SEC_M_ROLE_SEQ</param>
+			</generator>
+		</id>
+		<property name="roleCode" column="ROLE_CODE" length="20"></property>
+		<property name="roleDesc" column="ROLE_DESC" length="200"></property>
+		<set name="authorizes" table="SEC_M_ROLE_AUTHORIZE" cascade="all" inverse="true" lazy="true">
+				<key column="ROLE_ID" foreign-key="FK_ROLE_AUTHORIZE">
+				</key>
+				<many-to-many class="com.tao.exdoc.domain.security.Authorize" column="AUTHORIZE_ID" not-found="ignore" foreign-key="FK_AUTHORIZE_ROLE"></many-to-many>
+		</set>
+		<property name="createdBy" column="CREATED_BY" length="20"></property>
+		<property name="createdDate" column="CREATED_DATE"></property>
+		<property name="updatedBy" column="UPDATED_BY" length="20"></property>
+		<property name="updatedDate" column="UPDATED_DATE"></property>
+	</class>
+</hibernate-mapping>
