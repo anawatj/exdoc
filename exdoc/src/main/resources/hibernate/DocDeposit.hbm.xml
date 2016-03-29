@@ -1,16 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 <hibernate-mapping>
-		<class name="com.tao.exdoc.domain.deposit.Deposit" table="DOC_T_DEPOSIT" >
-				<id name="id" column="ID" type="integer">
-						<generator class="sequence">
-								<param name="sequence">DOC_T_DEPOSIT_SEQ</param>
-						</generator>
-				</id>
-				<version name="version" column="VERSION"></version>
-				<property name="depositCode" column="DEPOSIT_CODE" length="20"></property>
-				<property name="depositDesc" column="DEPOSIT_DESC" length="200"></property>
+	<class name="com.tao.exdoc.domain.deposit.Deposit" table="DOC_T_DEPOSIT">
+		<id name="id" column="ID" type="integer">
+			<generator class="sequence">
+				<param name="sequence">DOC_T_DEPOSIT_SEQ</param>
+			</generator>
+		</id>
+		<version name="version" column="VERSION"></version>
+		<property name="depositCode" column="DEPOSIT_CODE" length="20"></property>
+		<property name="depositDesc" column="DEPOSIT_DESC" length="200"></property>
+		<property name="depositDate" column="DEPOSIT_DATE"></property>
+		<many-to-one name="depositBy" column="DEPOSIT_BY"
+			class="com.tao.exdoc.domain.security.User" lazy="proxy" not-found="ignore"></many-to-one>
+		<property name="reviewDate" column="REVIEW_DATE"></property>
+		<many-to-one name="reviewBy" column="REVIEW_BY"
+			class="com.tao.exdoc.domain.security.User" lazy="proxy" not-found="ignore"></many-to-one>
+		<property name="approveDate" column="APPROVE_DATE"></property>
+		<many-to-one name="approveBy" column="APPROVE_BY"
+			class="com.tao.exdoc.domain.security.User" lazy="proxy" not-found="ignore"></many-to-one>
 
-		</class>
+		<many-to-one name="documentGroup" column="DOCUMENT_GROUP_ID"
+			lazy="proxy" class="com.tao.exdoc.domain.master.DocumentGroup"
+			not-found="ignore"></many-to-one>
+		<many-to-one name="documentMode" column="DOCUMENT_MODE_ID"
+			lazy="proxy" class="com.tao.exdoc.domain.master.DocumentMode"
+			not-found="ignore"></many-to-one>
+		<many-to-one name="objective" column="OBJECTIVE_ID"
+			class="com.tao.exdoc.domain.master.DepositObjective" lazy="proxy"
+			not-found="ignore"></many-to-one>
+		<property name="status" column="STATUS">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">com.tao.exdoc.domain.enumurate.Status</param>
+				<param name="type">12</param>
+			</type>
+		</property>
+		<property name="remark" column="REMARK" length="1000"></property>
 		
+		<set name="items" cascade="all-delete-orphan" lazy="true">
+				<key column="DEPOSIT_ID"></key>
+				<one-to-many class="com.tao.exdoc.domain.deposit.DepositItem" not-found="ignore"/>
+		</set>
+		<property name="createdBy" column="CREATED_BY" length="20"></property>
+		<property name="createdDate" column="CREATED_DATE"></property>
+		<property name="updatedBy" column="UPDATED_BY" length="20"></property>
+		<property name="updatedDate" column="UPDATED_DATE"></property>
+	</class>
+
 </hibernate-mapping>

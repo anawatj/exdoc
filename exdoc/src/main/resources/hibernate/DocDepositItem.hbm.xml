@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 <hibernate-mapping>
+			<class name="com.tao.exdoc.domain.deposit.DepositItem" table="DOC_T_DEPOSIT_ITEM">
+					<id name="id" column="ID" type="integer">
+							<generator class="sequence">
+									<param name="sequence">DOC_T_DEPOSIT_ITEM_SEQ</param>
+							</generator>
+					</id>
+					<version name="version" column="VERSION"></version>
+					<property name="depositId" column="DEPOSIT_ID"></property>
+			
+			</class>
 </hibernate-mapping>
