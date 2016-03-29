@@ -18,8 +18,14 @@ public class DepositItem extends AbstractDomain<Integer>{
 	private String description;
 	private Document document;
 	private String remark;
-	private CheckStatus checkStatus;
+	private CheckStatus status;
 
+	public CheckStatus getStatus() {
+		return status;
+	}
+	public void setStatus(CheckStatus status) {
+		this.status = status;
+	}
 	private Container container;
 	public Container getContainer() {
 		return container;
@@ -57,12 +63,7 @@ public class DepositItem extends AbstractDomain<Integer>{
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	public CheckStatus getCheckStatus() {
-		return checkStatus;
-	}
-	public void setCheckStatus(CheckStatus checkStatus) {
-		this.checkStatus = checkStatus;
-	}
+
 	
 	
 	
