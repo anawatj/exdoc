@@ -1,4 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 <hibernate-mapping>
+	<class name="com.tao.exdoc.domain.borrow.BorrowItem" table="DOC_T_BORROW_ITEM">
+		<id name="id" column="ID" type="integer">
+			<generator class="sequence">
+				<param name="sequence">DOC_T_BORROW_ITEM_SEQ</param>
+			</generator>
+		</id>
+		<version name="version" column="VERSION"></version>
+		<property name="borrowId" column="BORROW_ID"></property>
+		<many-to-one name="document" column="DOCUMENT_ID"
+			class="com.tao.exdoc.domain.document.Document" lazy="proxy"
+			not-found="ignore" foreign-key="FK_BORROW_ITEM_DOCUMENT"></many-to-one>
+		<property name="status" column="STATUS">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">com.tao.exdoc.domain.enumurate.CheckStatus</param>
+				<param name="type">12</param>
+			</type>
+		</property>
+		<property name="remark" column="REMARK" length="1000"></property>
+		<property name="createdBy" column="CREATED_BY" length="20"></property>
+		<property name="createdDate" column="CREATED_DATE"></property>
+		<property name="updatedBy" column="UPDATED_BY" length="20"></property>
+		<property name="updatedDate" column="UPDATED_DATE"></property>
+	</class>
 </hibernate-mapping>
