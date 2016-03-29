@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.tao.exdoc.domain.document.Document" table="DOC_T_DOCUMENT">
+		<id name="id" column="ID" type="integer">
+			<generator class="sequence">
+				<param name="sequence">DOC_T_DOCUMENT_SEQ</param>
+			</generator>
+		</id>
+		<version name="version" column="VERSION"></version>
+		<property name="documentCode" column="DOCUMENT_CODE" length="20"></property>
+		<property name="documentDesc" column="DOCUMENT_DESC" length="200"></property>
+		<many-to-one name="documentBy" class="com.tao.exdoc.domain.security.User"
+			column="DOCUMENT_BY" lazy="proxy" foreign-key="FK_DOCUMENT_BY_USER"
+			not-found="ignore"></many-to-one>
+		<property name="documentDate" column="DOCUMENT_DATE"></property>
+		<many-to-one name="documentGroup" column="DOCUMENT_GROUP_ID"
+			class="com.tao.exdoc.domain.master.DocumentGroup" lazy="proxy"
+			foreign-key="FK_DOCUMENT_DOCUMENT_GROUP" not-found="ignore"></many-to-one>
+		<many-to-one name="documentMode" column="DOCUMENT_MODE_ID"
+			class="com.tao.exdoc.domain.master.DocumentMode" lazy="proxy"
+			foreign-key="FK_DOCUMENT_DOCUMENT_MODE" not-found="ignore"></many-to-one>
+		<many-to-one name="documentType" column="DOCUMENT_TYPE_ID"
+			class="com.tao.exdoc.domain.master.DocumentType" lazy="proxy"
+			foreign-key="FK_DOCUMENT_DOCUMENT_TYPE" not-found="ignore"></many-to-one>
+		<property name="documentStatus" column="DOCUMENT_STATUS">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">com.tao.exdoc.domain.enumurate.DocumentStatus</param>
+				<param name="type">12</param>
+			</type>
+		</property>
+		<property name="status" column="STATUS">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">com.tao.exdoc.domain.enumurate.Status</param>
+				<param name="type">12</param>
+			</type>
+		</property>
+		<many-to-one name="container" column="CONTAINER_ID" class="com.tao.exdoc.domain.container.Container" lazy="proxy" foreign-key="FK_DOCUMENT_CONTAINER"></many-to-one>
+		<property name="maxNumDoc" column="MAX_NUM_DOC"></property>
+		<property name="numDoc" column="NUM_DOC"></property>
+		<property name="remark" column="REMARK" length="1000"></property>
+		<property name="createdBy" column="CREATED_BY" length="20"></property>
+		<property name="createdDate" column="CREATED_DATE"></property>
+		<property name="updatedBy" column="UPDATED_BY" length="20"></property>
+		<property name="updatedDate" column="UPDATED_DATE"></property>
+	</class>
+</hibernate-mapping>

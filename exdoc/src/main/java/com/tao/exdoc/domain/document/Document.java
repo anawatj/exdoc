@@ -30,6 +30,20 @@ public class Document extends AbstractDomain<Integer> {
 	private User documentBy;
 	private String remark;
 	private Status status;
+	private Integer numDoc;
+	private Integer maxNumDoc;
+	public Integer getNumDoc() {
+		return numDoc;
+	}
+	public void setNumDoc(Integer numDoc) {
+		this.numDoc = numDoc;
+	}
+	public Integer getMaxNumDoc() {
+		return maxNumDoc;
+	}
+	public void setMaxNumDoc(Integer maxNumDoc) {
+		this.maxNumDoc = maxNumDoc;
+	}
 	public String getDocumentCode() {
 		return documentCode;
 	}
