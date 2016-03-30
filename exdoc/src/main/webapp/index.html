@@ -3,9 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>XXX</title>
-<link rel="stylesheet" href="./resources/theme/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="./resources/theme/bootstrap/css/bootstrap.min.css"/>
+<script type="text/javascript" src="./resources/lib/angular/angular.min.js"></script>
+<script type="text/javascript" src="./resources/lib/angular/angular-route.min.js"></script>
+<script type="text/javascript" src="./resources/lib/ngStorage.min.js"></script>
+<script type="text/javascript" src="./resources/theme/ui-bootstrap-tpls-1.2.5.min.js"></script>
+<script type="text/javascript" src="./app.js"></script>
+<script type="text/javascript" src="./app/borrow/controllers/entryCtrl.js"></script>
+<script type="text/javascript" src="./app/borrow/controllers/listCtrl.js"></script>
+
 </head>
 <body ng-app="exdoc">
-
+		<div ng-view=""></div>
 </body>
 </html>
