@@ -1,4 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 <hibernate-mapping>
+	<class name="com.tao.exdoc.domain.witdown.Witdown" table="DOC_T_WITDOWN">
+		<id name="id" column="ID" type="integer">
+			<generator class="sequence">
+				<param name="sequence">DOC_T_WITDOWN_SEQ</param>
+			</generator>
+		</id>
+		<version name="version" column="VERSION"></version>
+		<property name="witdownCode" column="WITDOWN_CODE" length="20"></property>
+		<property name="witdownDesc" column="WITDOWN_DESC" length="200"></property>
+		<property name="witdownDate" column="WITDOWN_DATE"></property>
+		<many-to-one name="witdownBy" column="WITDOWN_BY"
+			class="com.tao.exdoc.domain.security.User" lazy="proxy" not-found="ignore"
+			foreign-key="FK_WITDOWN_BY_USER"></many-to-one>
+		<property name="reviewDate" column="REVIEW_DATE"></property>
+		<many-to-one name="reviewBy" column="REVIEW_BY"
+			class="com.tao.exdoc.domain.security.User" lazy="proxy" not-found="ignore"
+			foreign-key="FK_WITDOWN_REVIEW_BY_USER"></many-to-one>
+		<property name="approveDate" column="APPROVE_DATE"></property>
+		<many-to-one name="approveBy" column="APPROVE_BY"
+			class="com.tao.exdoc.domain.security.User" lazy="proxy" not-found="ignore"
+			foreign-key="FK_WITDOWN_APPROVE_BY_USER"></many-to-one>
+		<many-to-one name="objective" column="OBJECTIVE_ID"
+			class="com.tao.exdoc.domain.master.WitdownObjective" lazy="proxy"
+			not-found="ignore" foreign-key="FK_WITDOWN_OBJECTIVE"></many-to-one>
+
+		<property name="status" column="STATUS">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">com.tao.exdoc.domain.enumurate.Status</param>
+				<param name="type">12</param>
+			</type>
+		</property>
+		<property name="remark" column="REMARK" length="1000"></property>
+
+		<set name="items" cascade="all-delete-orphan" lazy="true">
+			<key column="WITDOWN_ID" foreign-key="FK_WITDOWN_WITDOWN_ITEM"></key>
+			<one-to-many class="com.tao.exdoc.domain.witdown.WitdownItem"
+				not-found="ignore" />
+		</set>
+		<property name="createdBy" column="CREATED_BY" length="20"></property>
+		<property name="createdDate" column="CREATED_DATE"></property>
+		<property name="updatedBy" column="UPDATED_BY" length="20"></property>
+		<property name="updatedDate" column="UPDATED_DATE"></property>
+	</class>
 </hibernate-mapping>

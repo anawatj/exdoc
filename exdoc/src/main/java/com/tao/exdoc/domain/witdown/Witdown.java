@@ -1,6 +1,8 @@
 package com.tao.exdoc.domain.witdown;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -12,7 +14,7 @@ public class Witdown extends AbstractDomain<Integer>{
 		
 	public Witdown()
 	{
-		
+		this.items = new HashSet<WitdownItem>();
 	}
 	private String witdownCode;
 	private String witdownDesc;
@@ -24,6 +26,13 @@ public class Witdown extends AbstractDomain<Integer>{
 	private User approveBy;
 	private WitdownObjective objective;
 	private String remark;
+	private Set<WitdownItem> items;
+	public Set<WitdownItem> getItems() {
+		return items;
+	}
+	public void setItems(Set<WitdownItem> items) {
+		this.items = items;
+	}
 	public String getWitdownCode() {
 		return witdownCode;
 	}

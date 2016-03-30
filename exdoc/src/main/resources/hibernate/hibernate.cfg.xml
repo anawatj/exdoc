@@ -4,5 +4,30 @@
 		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
+    
+    		<mapping resource="hibernate/DocBorrow.hbm.xml"/>
+    		<mapping resource="hibernate/DocBorrowItem.hbm.xml"/>
+    		<mapping resource="hibernate/DocContainer.hbm.xml"/>
+    		<mapping resource="hibernate/DocDeposit.hbm.xml"/>
+    		<mapping resource="hibernate/DocDepositItem.hbm.xml"/>
+    		<mapping resource="hibernate/DocDestroy.hbm.xml"/>
+    		<mapping resource="hibernate/DocDestroyItem.hbm.xml"/>
+    		<mapping resource="hibernate/DocDocument.hbm.xml"/>
+    		<mapping resource="hibernate/DocReturn.hbm.xml"/>
+    		<mapping resource="hibernate/DocReturnItem.hbm.xml"/>
+    		<mapping resource="hibernate/DocTransfer.hbm.xml"/>
+    		<mapping resource="hibernate/DocTransferItem.hbm.xml"/>
+    		<mapping resource="hibernate/DocWitdown.hbm.xml"/>
+    		<mapping resource="hibernate/DocWitdownItem.hbm.xml"/>
+    		<mapping resource="hibernate/MasContainerType.hbm.xml"/>
+    		<mapping resource="hibernate/MasDocumentGroup.hbm.xml"/>
+    		<mapping resource="hibernate/MasDocumentMode.hbm.xml"/>
+    		<mapping resource="hibernate/MasDocumentType.hbm.xml"/>
+    		<mapping resource="hibernate/MasObjective.hbm.xml"/>
+    		<mapping resource="hibernate/SecAuthorize.hbm.xml"/>
+    		<mapping resource="hibernate/SecRole.hbm.xml"/>
+    		<mapping resource="hibernate/SecUser.hbm.xml"/>
+    		
+    	
     </session-factory>
 </hibernate-configuration>

@@ -1,22 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 <hibernate-mapping>
-		<class name="com.tao.exdoc.domain.returndoc.Return" table="DOC_T_RETURN">
-				<id name="id" column="ID" type="integer">
-						<generator class="sequence">
-								<param name="sequence">DOC_T_RETURN_SEQ</param>
-						</generator>
-						
-				</id>
-				<version name="version" column="VERSION"></version>
-				<property name="returnCode" column="RETURN_CODE" length="20"></property>
-				<property name="returnDesc" column="RETURN_DESC" length="200"></property>
-				<property name="returnDate" column="RETURN_DATE"></property>
-				<many-to-one name="returnBy" column="RETURN_BY" class="com.tao.exdoc.domain.security.User" lazy="proxy" not-found="ignore" foreign-key="FK_RETURN_BY_USER"></many-to-one>
-				<property name="reviewDate" column="REVIEW_DATE"></property>
-				<many-to-one name="reviewBy" column="REVIEW_BY" class="com.tao.exdoc.domain.security.User" lazy="proxy" not-found="ignore" foreign-key="FK_RETURN_REVIEW_BY_USER"></many-to-one>
-				<property name="approveDate" column="APPROVE_DATE"></property>
-				<many-to-one name="approveBy" column="APPROVE_BY" class="com.tao.exdoc.domain.security.User" lazy="proxy" not-found="ignore" foreign-key="FK_RETURN_APPROVE_BY_USER"></many-to-one>
-				
-		</class>
+	<class name="com.tao.exdoc.domain.returndoc.Return" table="DOC_T_RETURN">
+		<id name="id" column="ID" type="integer">
+			<generator class="sequence">
+				<param name="sequence">DOC_T_RETURN_SEQ</param>
+			</generator>
+
+		</id>
+		<version name="version" column="VERSION"></version>
+		<property name="returnCode" column="RETURN_CODE" length="20"></property>
+		<property name="returnDesc" column="RETURN_DESC" length="200"></property>
+		<property name="returnDate" column="RETURN_DATE"></property>
+		<many-to-one name="returnBy" column="RETURN_BY"
+			class="com.tao.exdoc.domain.security.User" lazy="proxy" not-found="ignore"
+			foreign-key="FK_RETURN_BY_USER"></many-to-one>
+		<property name="reviewDate" column="REVIEW_DATE"></property>
+		<many-to-one name="reviewBy" column="REVIEW_BY"
+			class="com.tao.exdoc.domain.security.User" lazy="proxy" not-found="ignore"
+			foreign-key="FK_RETURN_REVIEW_BY_USER"></many-to-one>
+		<property name="approveDate" column="APPROVE_DATE"></property>
+		<many-to-one name="approveBy" column="APPROVE_BY"
+			class="com.tao.exdoc.domain.security.User" lazy="proxy" not-found="ignore"
+			foreign-key="FK_RETURN_APPROVE_BY_USER"></many-to-one>
+		<property name="status" column="STATUS">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">com.tao.exdoc.domain.enumurate.Status</param>
+				<param name="type">12</param>
+			</type>
+		</property>
+		<property name="remark" column="REMARK" length="1000"></property>
+		<set name="items" cascade="all-delete-orphan" lazy="true">
+			<key column="RETURN_ID" foreign-key="FK_RETURN_RETURN_ITEM"></key>
+			<one-to-many class="com.tao.exdoc.domain.returndoc.ReturnItem"
+				not-found="ignore" />
+		</set>
+		<property name="createdBy" column="CREATED_BY" length="20"></property>
+		<property name="createdDate" column="CREATED_DATE"></property>
+		<property name="updatedBy" column="UPDATED_BY" length="20"></property>
+		<property name="updatedDate" column="UPDATED_DATE"></property>
+	</class>
 </hibernate-mapping>
