@@ -7,6 +7,8 @@ import java.util.Locale;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 
 @Component
@@ -18,8 +20,10 @@ public class HibernateAwareMapper extends ObjectMapper {
 
 	public HibernateAwareMapper() {
 		registerModule(new Hibernate4Module());
-		setLocale(Locale.ENGLISH);
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:sss");
-		setDateFormat(df);
+		SimpleFilterProvider filters = new SimpleFilterProvider();
+		filters.setFailOnUnknownId(false);
+		setFilters(filters);
+		configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+		setDateFormat(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"));
 	}
 }
