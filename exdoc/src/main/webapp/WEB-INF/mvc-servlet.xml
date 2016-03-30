@@ -24,9 +24,9 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
-	
+	<mvc:default-servlet-handler />
 	<mvc:resources location="/**" mapping="/"></mvc:resources>
 
 	<!-- ... -->
-
+	<mvc:view-controller path="/example" view-name="example"/>
 </beans>
