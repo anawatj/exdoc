@@ -1,7 +1,7 @@
 /**
  * 
  */
-var app = angular.module('exdoc',['ngRoute']);
+var app = angular.module('exdoc',['ngRoute','ngStorage','ui.bootstrap']);
 app.config(['$routeProvider', function($routeProvider){
     $routeProvider
         .when('/',{	
