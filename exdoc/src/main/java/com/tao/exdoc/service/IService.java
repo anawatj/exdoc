@@ -1,4 +1,4 @@
-package com.tao.exdoc.domain.service;
+package com.tao.exdoc.service;
 
 public interface IService<E> {
 
