@@ -11,13 +11,13 @@
 		<property name="depositId" column="DEPOSIT_ID"></property>
 		<many-to-one name="documentType" column="DOCUMENT_TYPE_ID"
 			class="com.tao.exdoc.domain.master.DocumentType" lazy="proxy"
-			not-found="ignore"></many-to-one>
+			not-found="ignore" foreign-key="FK_DEPOSIT_ITEM_DOCUMENT_TYPE"></many-to-one>
 		<many-to-one name="document" column="DOCUMENT_ID"
 			class="com.tao.exdoc.domain.document.Document" lazy="proxy"
-			not-found="ignore"></many-to-one>
+			not-found="ignore" foreign-key="FK_DEPOSIT_ITEM_DOCUMENT"></many-to-one>
 		<many-to-one name="container" column="CONTAINER_ID"
 			class="com.tao.exdoc.domain.container.Container" lazy="proxy"
-			not-found="ignore"></many-to-one>
+			not-found="ignore" foreign-key="FK_DEPOSIT_ITEM_CONTAINER"></many-to-one>
 		<property name="status" column="STATUS">
 			<type name="org.hibernate.type.EnumType">
 				<param name="enumClass">com.tao.exdoc.domain.enumurate.CheckStatus</param>

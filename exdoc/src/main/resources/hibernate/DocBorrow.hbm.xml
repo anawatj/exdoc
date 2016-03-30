@@ -15,11 +15,11 @@
 			not-found="ignore"></many-to-one>
 		<property name="borrowDate" column="BORROW_DATE"></property>
 		<many-to-one name="reviewBy" column="REVIEW_BY"
-			class="com.tao.exdoc.domain.security.User" lazy="proxy" foreign-key="FK_REVIEW_BY_USER"
+			class="com.tao.exdoc.domain.security.User" lazy="proxy" foreign-key="FK_BORROW_REVIEW_BY_USER"
 			not-found="ignore"></many-to-one>
 		<property name="reviewDate" column="REVIEW_DATE"></property>
 		<many-to-one name="approveBy" column="APPROVE_BY"
-			class="com.tao.exdoc.domain.security.User" lazy="proxy" foreign-key="FK_APPROVE_BY_USER"
+			class="com.tao.exdoc.domain.security.User" lazy="proxy" foreign-key="FK_BORROW_APPROVE_BY_USER"
 			not-found="ignore"></many-to-one>
 		<property name="approveDate" column="APPROVE_DATE"></property>
 		<property name="dueDate" column="DUE_DATE"></property>
