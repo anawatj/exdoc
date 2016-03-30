@@ -6,4 +6,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class TransferObjective extends Objective {
 
+	public TransferObjective()
+	{
+		
+	}
 }

@@ -7,6 +7,7 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.tao.exdoc.domain.AbstractDomain;
+import com.tao.exdoc.domain.enumurate.Status;
 import com.tao.exdoc.domain.master.WitdownObjective;
 import com.tao.exdoc.domain.security.User;
 @JsonInclude(Include.NON_NULL)
@@ -26,6 +27,13 @@ public class Witdown extends AbstractDomain<Integer>{
 	private User approveBy;
 	private WitdownObjective objective;
 	private String remark;
+	private Status status;
+	public Status getStatus() {
+		return status;
+	}
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 	private Set<WitdownItem> items;
 	public Set<WitdownItem> getItems() {
 		return items;

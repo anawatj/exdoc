@@ -16,7 +16,7 @@ public class ReturnItem extends AbstractDomain<Integer>{
 	private Integer returnId;
 	private Borrow borrow;
 	private String remark;
-	private CheckStatus checkStatus;
+	private CheckStatus status;
 	public Integer getReturnId() {
 		return returnId;
 	}
@@ -35,10 +35,11 @@ public class ReturnItem extends AbstractDomain<Integer>{
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	public CheckStatus getCheckStatus() {
-		return checkStatus;
+	public CheckStatus getStatus() {
+		return status;
 	}
-	public void setCheckStatus(CheckStatus checkStatus) {
-		this.checkStatus = checkStatus;
+	public void setStatus(CheckStatus status) {
+		this.status = status;
 	}
+
 }
