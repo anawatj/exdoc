@@ -9,6 +9,9 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.tao.exdoc.domain.AbstractDomain;
 import com.tao.exdoc.domain.enumurate.Status;
 import com.tao.exdoc.domain.master.BorrowObjective;
+import com.tao.exdoc.domain.master.Branch;
+import com.tao.exdoc.domain.master.Department;
+import com.tao.exdoc.domain.master.Position;
 import com.tao.exdoc.domain.security.User;
 @JsonInclude(Include.NON_NULL)
 public class Borrow extends AbstractDomain<Integer>{
@@ -30,9 +33,30 @@ public class Borrow extends AbstractDomain<Integer>{
 	private Set<BorrowItem> items;
 	private BorrowObjective objective;
 	private Date dueDate;
+	private Branch branch;
+	private Department department;
+	private Position position;
 	
 	
 	
+	public Branch getBranch() {
+		return branch;
+	}
+	public void setBranch(Branch branch) {
+		this.branch = branch;
+	}
+	public Department getDepartment() {
+		return department;
+	}
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+	public Position getPosition() {
+		return position;
+	}
+	public void setPosition(Position position) {
+		this.position = position;
+	}
 	public Date getDueDate() {
 		return dueDate;
 	}

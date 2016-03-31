@@ -21,6 +21,14 @@
 			lazy="proxy" column="CONTAINER_BY" foreign-key="FK_CONTAINER_BY_USER"
 			not-found="ignore"></many-to-one>
 		<property name="containerDate" column="CONTAINER_DATE"></property>
+		
+			<many-to-one name="branch" column="BRANCH_ID" lazy="proxy"
+			class="com.tao.exdoc.domain.master.Branch" foreign-key="FK_CONTAINER_BRANCH" not-found="ignore"
+		></many-to-one>
+			<many-to-one name="department" column="DEPARTMENT_ID" lazy="proxy"
+			class="com.tao.exdoc.domain.master.Department" foreign-key="FK_CONTAINER_DEPARTMENT" not-found="ignore"
+		></many-to-one>
+		
 		<property name="remark" column="REMARK" length="1000"></property>
 		<property name="status" column="STATUS">
 			<type name="org.hibernate.type.EnumType">

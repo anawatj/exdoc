@@ -25,7 +25,15 @@
 		<many-to-one name="objective" column="OBJECTIVE_ID"
 			class="com.tao.exdoc.domain.master.WitdownObjective" lazy="proxy"
 			not-found="ignore" foreign-key="FK_WITDOWN_OBJECTIVE"></many-to-one>
-
+			<many-to-one name="branch" column="BRANCH_ID" lazy="proxy"
+			class="com.tao.exdoc.domain.master.Branch" foreign-key="FK_WITDOWN_BRANCH" not-found="ignore"
+		></many-to-one>
+			<many-to-one name="department" column="DEPARTMENT_ID" lazy="proxy"
+			class="com.tao.exdoc.domain.master.Department" foreign-key="FK_WITDOWN_DEPARTMENT" not-found="ignore"
+		></many-to-one>
+		<many-to-one name="position" column="POSITION" lazy="proxy"
+			class="com.tao.exdoc.domain.master.Position" foreign-key="FK_WITDOWN_POSITION" not-found="ignore"
+		></many-to-one>
 		<property name="status" column="STATUS">
 			<type name="org.hibernate.type.EnumType">
 				<param name="enumClass">com.tao.exdoc.domain.enumurate.Status</param>

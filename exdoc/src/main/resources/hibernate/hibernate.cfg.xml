@@ -27,6 +27,9 @@
     		<mapping resource="hibernate/SecAuthorize.hbm.xml"/>
     		<mapping resource="hibernate/SecRole.hbm.xml"/>
     		<mapping resource="hibernate/SecUser.hbm.xml"/>
+    		<mapping resource="hibernate/MasBranch.hbm.xml"/>
+    		<mapping resource="hibernate/MasDepartment.hbm.xml"/>
+    		<mapping resource="hibernate/MasPosition.hbm.xml"/>
     		
     	
     </session-factory>

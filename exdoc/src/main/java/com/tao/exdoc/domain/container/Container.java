@@ -8,7 +8,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.tao.exdoc.domain.AbstractDomain;
 import com.tao.exdoc.domain.enumurate.Status;
+import com.tao.exdoc.domain.master.Branch;
 import com.tao.exdoc.domain.master.ContainerType;
+import com.tao.exdoc.domain.master.Department;
+import com.tao.exdoc.domain.master.Position;
 import com.tao.exdoc.domain.security.User;
 @JsonInclude(Include.NON_NULL)
 public class Container extends AbstractDomain<Integer> {
@@ -25,6 +28,23 @@ public class Container extends AbstractDomain<Integer> {
 	private Status status;
 	private String remark;
 	private Set<Container> items;
+	private Branch branch;
+	private Department department;
+
+	
+	public Branch getBranch() {
+		return branch;
+	}
+	public void setBranch(Branch branch) {
+		this.branch = branch;
+	}
+	public Department getDepartment() {
+		return department;
+	}
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+	
 	public String getContainerCode() {
 		return containerCode;
 	}

@@ -8,9 +8,12 @@ import com.tao.exdoc.domain.AbstractDomain;
 import com.tao.exdoc.domain.container.Container;
 import com.tao.exdoc.domain.enumurate.DocumentStatus;
 import com.tao.exdoc.domain.enumurate.Status;
+import com.tao.exdoc.domain.master.Branch;
+import com.tao.exdoc.domain.master.Department;
 import com.tao.exdoc.domain.master.DocumentGroup;
 import com.tao.exdoc.domain.master.DocumentMode;
 import com.tao.exdoc.domain.master.DocumentType;
+import com.tao.exdoc.domain.master.Position;
 import com.tao.exdoc.domain.security.User;
 @JsonInclude(Include.NON_NULL)
 public class Document extends AbstractDomain<Integer> {
@@ -32,6 +35,22 @@ public class Document extends AbstractDomain<Integer> {
 	private Status status;
 	private Integer numDoc;
 	private Integer maxNumDoc;
+	private Branch branch;
+	private Department department;
+	
+	public Branch getBranch() {
+		return branch;
+	}
+	public void setBranch(Branch branch) {
+		this.branch = branch;
+	}
+	public Department getDepartment() {
+		return department;
+	}
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+	
 	public Integer getNumDoc() {
 		return numDoc;
 	}
