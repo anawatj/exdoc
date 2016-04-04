@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -45,10 +46,12 @@ public final class Result<E> {
 	{
 		if(this.projections!=null || this.projections.length>0)
 		{
+			ProjectionList projectionList = Projections.projectionList();
 			for(Projection projection : projections)
 			{
-				this.criteria.setProjection(Projections.projectionList().add(projection));
+				projectionList.add(projection);
 			}
+			criteria.setProjection(projectionList);
 		}
 		this.list= this.criteria.list();
 		return this;

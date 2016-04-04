@@ -25,7 +25,9 @@ public class BorrowRepository implements IBorrowRepository{
 	
 	public Result<Borrow> findAll() throws Exception {
 			Criteria criteria = factory.getCurrentSession().createCriteria(Borrow.class);
-			return new Result<Borrow>(factory,criteria);
+			return new Result<Borrow>(factory,criteria,Projections.property("borrowCode")
+					,Projections.property("borrowDesc")
+					);
 	}
 
 	public Borrow findByKey(Integer key) throws Exception {

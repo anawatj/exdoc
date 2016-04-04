@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
 
 import com.tao.exdoc.Config;
@@ -57,12 +58,14 @@ public final class Page<E> {
 		}
 		Integer start = (page-1)*Config.PAGE_SIZE;
 		this.criteria.setProjection(null);
-		if(projections!=null && projections.length>0)
+		if(this.projections!=null || this.projections.length>0)
 		{
+			ProjectionList projectionList = Projections.projectionList();
 			for(Projection projection : projections)
 			{
-				this.criteria.setProjection(Projections.projectionList().add(projection));
+				projectionList.add(projection);
 			}
+			this.criteria.setProjection(projectionList);
 		}
 		this.list = this.criteria
 				.setFirstResult(start)

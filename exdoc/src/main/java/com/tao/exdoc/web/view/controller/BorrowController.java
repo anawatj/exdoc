@@ -28,6 +28,15 @@ public class BorrowController {
 	private IBorrowRepository borrowRepository;
 	
 	
+	@RequestMapping(value="/getAll",method=RequestMethod.GET)
+	@Transactional
+	public Result<Borrow> getAll() throws Exception
+	{
+		Result<Borrow> borrow =borrowRepository.findAll();
+		return borrow.getFullResult();
+	}
+	
+	
 	@RequestMapping(value="/getByKey",method=RequestMethod.GET)
 	@Transactional
 	public @ResponseBody Borrow getByKey(@RequestParam Integer key) throws Exception

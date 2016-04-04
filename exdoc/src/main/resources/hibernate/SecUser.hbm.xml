@@ -13,7 +13,7 @@
 		<property name="firstName" column="FIRSTNAME" length="200"></property>
 		<property name="lastName" column="LASTNAME" length="200"></property>
 		<set name="roles" table="SEC_M_USER_ROLE" cascade="all" lazy="true">
-			<key column="USER_ID" foreign-key="FK_USER_FOLE"></key>
+			<key column="USER_ID" foreign-key="FK_USER_ROLE"></key>
 			<many-to-many class="com.tao.exdoc.domain.security.Role"
 				column="ROLE_ID" not-found="ignore" foreign-key="FK_ROLE_USER"></many-to-many>
 		</set>
