@@ -32,8 +32,8 @@ public class BorrowController {
 	@Transactional
 	public Result<Borrow> getAll() throws Exception
 	{
-		Result<Borrow> borrow =borrowRepository.findAll();
-		return borrow.getFullResult();
+		Result<Borrow> result =borrowRepository.findAll();
+		return result.getFullResult();
 	}
 	
 	
