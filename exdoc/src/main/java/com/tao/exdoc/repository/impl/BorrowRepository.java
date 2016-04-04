@@ -7,6 +7,7 @@ import org.hibernate.FetchMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -87,7 +88,17 @@ public class BorrowRepository implements IBorrowRepository{
 		{
 			criteria.addOrder(Order.desc("borrowCode"));
 		}
-		return new Result<Borrow>(factory,criteria);
+		
+
+	
+		return new Result<Borrow>(factory,criteria,
+				Projections.property("borrowCode"),
+				Projections.property("borrowDesc"),
+				Projections.property("borrowBy.firstName"),
+				Projections.property("borrowBy.lastName"),
+				Projections.property("borrowDate"),
+				Projections.property("objective.description")
+				);
 	}
 
 }
