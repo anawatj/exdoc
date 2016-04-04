@@ -30,7 +30,7 @@ public class BorrowController {
 	
 	@RequestMapping(value="/getAll",method=RequestMethod.GET)
 	@Transactional
-	public Result<Borrow> getAll() throws Exception
+	public @ResponseBody Result<Borrow> getAll() throws Exception
 	{
 		Result<Borrow> result =borrowRepository.findAll();
 		return result.getFullResult();
