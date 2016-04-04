@@ -20,13 +20,21 @@ public class BorrowService implements IBorrowService{
 	public Borrow approve(Borrow entity) throws Exception {
 	
 		
-		Borrow result= save(entity);
+		
 		borrowCommand.execute(entity);
-		return result;
+		return entity;
 	}
 
 	public Borrow save(Borrow entity) throws Exception {
-		return borrowRepository.save(entity);
+		Borrow result =  borrowRepository.save(entity);
+		if(entity.getStatus()== Status.SP)
+		{
+			result = submit(result);
+		}else if(entity.getStatus()==Status.AP)
+		{
+			result = approve(result);
+		}
+		return result;
 	}
 
 	public Borrow submit(Borrow entity) throws Exception {
