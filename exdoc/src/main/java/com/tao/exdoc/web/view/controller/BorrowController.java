@@ -28,7 +28,7 @@ public class BorrowController {
 	private IBorrowRepository borrowRepository;
 	
 	
-	@RequestMapping(name="/getByKey",method=RequestMethod.GET)
+	@RequestMapping(value="/getByKey",method=RequestMethod.GET)
 	@Transactional
 	public @ResponseBody Borrow getByKey(@RequestParam Integer key) throws Exception
 	{
@@ -37,19 +37,19 @@ public class BorrowController {
 		
 	}
 	
-	@RequestMapping(name="/search",method=RequestMethod.POST)
+	@RequestMapping(value="/search",method=RequestMethod.POST)
 	@Transactional
 	public @ResponseBody Page<Borrow> search(@RequestBody BorrowQuery query) throws Exception
 	{
 		Result<Borrow> result = borrowRepository.findByQuery(query);
 		return result.getPage(query.getPage());
 	}
-	@RequestMapping(name="/save",method=RequestMethod.POST)
+	@RequestMapping(value="/save",method=RequestMethod.POST)
 	@Transactional
 	public @ResponseBody Borrow save(@RequestBody Borrow entity) throws Exception
 	{
-		Borrow borrow = borrowService.save(entity);
-		return borrow;
+		Borrow result = borrowService.save(entity);
+		return result;
 		
 	}
 
