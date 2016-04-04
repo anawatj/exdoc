@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Expression;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -49,18 +50,44 @@ public class BorrowRepository implements IBorrowRepository{
 	}
 
 	public void remove(Integer key) throws Exception {
-		// TODO Auto-generated method stub
+		Borrow data= findByKey(key);
+		factory.getCurrentSession().delete(data);
 		
 	}
 
 	public Borrow save(Borrow entity) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Borrow data = findByKey(entity.getId());
+		Borrow result = (Borrow) factory.getCurrentSession().merge(entity);
+		return result;
 	}
 
 	public Result<Borrow> findByQuery(BorrowQuery query) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Criteria criteria = factory.getCurrentSession().createCriteria(Borrow.class);
+		if(query.getBorrowCode()!=null && !query.getBorrowCode().equals(""))
+		{
+			if(query.getBorrowCode().contains("*")||query.getBorrowCode().contains("?"))
+			{
+				criteria.add(Restrictions.like("borrowCode",query.getBorrowCode().replace("*","%").replace("?","_")));
+			}else
+			{
+				criteria.add(Restrictions.eq("borrowCode",query.getBorrowCode()));
+			}
+		}
+		
+		if(query.getOrderBy()!=null && !query.getOrderBy().equals(""))
+		{
+			if(query.getOrderType().equals("desc"))
+			{
+				criteria.addOrder(Order.desc(query.getOrderBy()));
+			}else
+			{
+				criteria.addOrder(Order.asc(query.getOrderBy()));
+			}
+		}else
+		{
+			criteria.addOrder(Order.desc("borrowCode"));
+		}
+		return new Result<Borrow>(factory,criteria);
 	}
 
 }
