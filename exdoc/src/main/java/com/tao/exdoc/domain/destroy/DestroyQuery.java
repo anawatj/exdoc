@@ -3,8 +3,9 @@ package com.tao.exdoc.domain.destroy;
 import java.util.Date;
 
 import com.tao.exdoc.domain.AbstractDomain;
+import com.tao.exdoc.domain.AbstractQuery;
 
-public class DestroyQuery extends AbstractDomain{
+public class DestroyQuery extends AbstractQuery{
 
 	private String destroyCode;
 	private String destroyDesc;
