@@ -20,7 +20,20 @@ public class MasterDataRepository {
 	public Result<SimpleMasterObject> findAll(Class clazz)
 	{
 		Criteria criteria = factory.getCurrentSession().createCriteria(clazz);
-		return new Result<SimpleMasterObject>(factory,criteria,Projections.property("code"),
+		return new Result<SimpleMasterObject>(factory,
+				criteria,
+				Projections.property("id"),
+				Projections.property("code"),
 				Projections.property("description"));
+	}
+	public SimpleMasterObject save(Class clazz,SimpleMasterObject entity)
+	{
+		
+		SimpleMasterObject data =(SimpleMasterObject) factory.getCurrentSession().get(clazz,entity.getId());
+		SimpleMasterObject result = (SimpleMasterObject) factory.getCurrentSession().merge(entity);
+		return result;
+
+		
+		
 	}
 }
