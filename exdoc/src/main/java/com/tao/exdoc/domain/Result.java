@@ -7,11 +7,15 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
+import org.springframework.beans.factory.annotation.Value;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 public final class Result<E> {
+	
+	@Value("${config.pageSize}")
+	private int pageSize;
 	
 	private List<E> list;
 	
@@ -44,6 +48,7 @@ public final class Result<E> {
 	@JsonIgnore
 	public Result<E> getFullResult()
 	{
+		System.out.println(pageSize);
 		if(this.projections!=null || this.projections.length>0)
 		{
 			ProjectionList projectionList = Projections.projectionList();
