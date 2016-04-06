@@ -19,7 +19,6 @@ public class MasterDataRepository {
 	
 	public Result<SimpleMasterObject> findAll(Class clazz)
 	{
-		System.out.println(Config.PAGE_SIZE);
 		Criteria criteria = factory.getCurrentSession().createCriteria(clazz);
 		return new Result<SimpleMasterObject>(factory,criteria,Projections.property("code"),
 				Projections.property("description"));

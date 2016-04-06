@@ -12,8 +12,7 @@ import com.tao.exdoc.Config;
 
 public final class Page<E> {
 	
-	@Value("${config.pageSize}")
-	private int pageSize;
+
 	
 	private List<E> list;
 	private Long totalRecord;
@@ -55,12 +54,12 @@ public final class Page<E> {
 		this.criteria=criteria;
 		this.criteria.setProjection(null);
 		this.totalRecord= (Long) this.criteria.setProjection(Projections.id()).uniqueResult();
-		this.totalPage = this.totalRecord/pageSize;
-		if((this.totalRecord%pageSize)>0)
+		this.totalPage = this.totalRecord/Config.PAGE_SIZE;
+		if((this.totalRecord%Config.PAGE_SIZE)>0)
 		{
 			this.totalPage++;
 		}
-		Integer start = (page-1)*pageSize;
+		Integer start = (page-1)*Config.PAGE_SIZE;
 		this.criteria.setProjection(null);
 		if(this.projections!=null || this.projections.length>0)
 		{
@@ -73,7 +72,7 @@ public final class Page<E> {
 		}
 		this.list = this.criteria
 				.setFirstResult(start)
-				.setMaxResults(pageSize)
+				.setMaxResults(Config.PAGE_SIZE)
 				.list();
 	}
 
