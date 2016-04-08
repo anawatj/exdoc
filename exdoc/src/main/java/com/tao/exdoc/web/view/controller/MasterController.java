@@ -13,89 +13,101 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tao.exdoc.domain.Result;
 import com.tao.exdoc.domain.SimpleMasterObject;
+import com.tao.exdoc.domain.master.Branch;
 import com.tao.exdoc.domain.master.Department;
 import com.tao.exdoc.repository.MasterDataRepository;
 
 @Controller
 @RequestMapping("/master")
 public class MasterController {
-	
-	
+
 	@Autowired
 	private MasterDataRepository masterDataRepository;
-	
-	@RequestMapping(value="/department/getAll",method=RequestMethod.GET)
+
+	@RequestMapping(value = "/department/getAll", method = RequestMethod.GET)
 	@Transactional
-	public @ResponseBody Result<SimpleMasterObject> getAllDepartment()
-	{
+	public @ResponseBody Result<SimpleMasterObject> getAllDepartment() {
 		Result<SimpleMasterObject> result = masterDataRepository.findAll(Department.class);
 		return result.getFullResult();
 	}
-	
-	@RequestMapping(value="/batch",method=RequestMethod.GET)
+
+	@RequestMapping(value = "/batch", method = RequestMethod.GET)
 	@Transactional
-	public @ResponseBody String batch() throws Exception
-	{
+	public @ResponseBody String batch() throws Exception {
 		List<Department> departments = new ArrayList<Department>();
-		
-			Department department = new Department();
-			department.setId(0);
-			department.setCode("DEP001");
-			department.setDescription("Accounting");
-			department.setCreatedBy("SYSTEM");
-			department.setCreatedDate(new Date());
-			department.setUpdatedBy("SYSTEM");
-			department.setUpdatedDate(new Date());
-			departments.add(department);
-			
-			department = new Department();
-			department.setId(0);
-			department.setCode("DEP002");
-			department.setDescription("Stock");
-			department.setCreatedBy("SYSTEM");
-			department.setCreatedDate(new Date());
-			department.setUpdatedBy("SYSTEM");
-			department.setUpdatedDate(new Date());
-			departments.add(department);
-			
-			department = new Department();
-			department.setId(0);
-			department.setCode("DEP003");
-			department.setDescription("Market");
-			department.setCreatedBy("SYSTEM");
-			department.setCreatedDate(new Date());
-			department.setUpdatedBy("SYSTEM");
-			department.setUpdatedDate(new Date());
-			departments.add(department);
-			
-			department = new Department();
-			department.setId(0);
-			department.setCode("DEP004");
-			department.setDescription("Credit");
-			department.setCreatedBy("SYSTEM");
-			department.setCreatedDate(new Date());
-			department.setUpdatedBy("SYSTEM");
-			department.setUpdatedDate(new Date());
-			departments.add(department);
-			
-			department = new Department();
-			department.setId(0);
-			department.setCode("DEP005");
-			department.setDescription("IT");
-			department.setCreatedBy("SYSTEM");
-			department.setCreatedDate(new Date());
-			department.setUpdatedBy("SYSTEM");
-			department.setUpdatedDate(new Date());
-			departments.add(department);
-			
-			
-		for(Department item : departments)
-		{
+
+		Department department = new Department();
+		department.setId(0);
+		department.setCode("DEP001");
+		department.setDescription("Accounting");
+		department.setCreatedBy("SYSTEM");
+		department.setCreatedDate(new Date());
+		department.setUpdatedBy("SYSTEM");
+		department.setUpdatedDate(new Date());
+		departments.add(department);
+
+		department = new Department();
+		department.setId(0);
+		department.setCode("DEP002");
+		department.setDescription("Stock");
+		department.setCreatedBy("SYSTEM");
+		department.setCreatedDate(new Date());
+		department.setUpdatedBy("SYSTEM");
+		department.setUpdatedDate(new Date());
+		departments.add(department);
+
+		department = new Department();
+		department.setId(0);
+		department.setCode("DEP003");
+		department.setDescription("Market");
+		department.setCreatedBy("SYSTEM");
+		department.setCreatedDate(new Date());
+		department.setUpdatedBy("SYSTEM");
+		department.setUpdatedDate(new Date());
+		departments.add(department);
+
+		department = new Department();
+		department.setId(0);
+		department.setCode("DEP004");
+		department.setDescription("Credit");
+		department.setCreatedBy("SYSTEM");
+		department.setCreatedDate(new Date());
+		department.setUpdatedBy("SYSTEM");
+		department.setUpdatedDate(new Date());
+		departments.add(department);
+
+		department = new Department();
+		department.setId(0);
+		department.setCode("DEP005");
+		department.setDescription("IT");
+		department.setCreatedBy("SYSTEM");
+		department.setCreatedDate(new Date());
+		department.setUpdatedBy("SYSTEM");
+		department.setUpdatedDate(new Date());
+		departments.add(department);
+
+		for (Department item : departments) {
 			masterDataRepository.save(Department.class, item);
 		}
 		
-		return "Complete";
+		List<Branch> branches = new ArrayList<Branch>();
+	
+		Branch branch = new  Branch();
+		branch.setCode("B001");
+		branch.setDescription("Bangkok");
+		branch.setCreatedBy("SYSTEM");
+		branch.setCreatedDate(new Date());
+		branch.setUpdatedBy("SYSTEM");
+		branch.setUpdatedDate(new Date());
+		branches.add(branch);
 		
+		for(Branch item : branches)
+		{
+			
+		}
+
+		return "Complete";
+
 	}
 
 }
