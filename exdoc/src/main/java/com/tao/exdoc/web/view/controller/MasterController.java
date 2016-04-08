@@ -37,22 +37,61 @@ public class MasterController {
 	public @ResponseBody String batch() throws Exception
 	{
 		List<Department> departments = new ArrayList<Department>();
-		for(int index=1;index<=5;index++)
-		{
+		
 			Department department = new Department();
 			department.setId(0);
 			department.setCode("DEP001");
-			department.setDescription("½èÒÂäÍ·Õ");
+			department.setDescription("Accounting");
 			department.setCreatedBy("SYSTEM");
 			department.setCreatedDate(new Date());
 			department.setUpdatedBy("SYSTEM");
 			department.setUpdatedDate(new Date());
 			departments.add(department);
 			
-		}
-		for(Department department : departments)
+			department = new Department();
+			department.setId(0);
+			department.setCode("DEP002");
+			department.setDescription("Stock");
+			department.setCreatedBy("SYSTEM");
+			department.setCreatedDate(new Date());
+			department.setUpdatedBy("SYSTEM");
+			department.setUpdatedDate(new Date());
+			departments.add(department);
+			
+			department = new Department();
+			department.setId(0);
+			department.setCode("DEP003");
+			department.setDescription("Market");
+			department.setCreatedBy("SYSTEM");
+			department.setCreatedDate(new Date());
+			department.setUpdatedBy("SYSTEM");
+			department.setUpdatedDate(new Date());
+			departments.add(department);
+			
+			department = new Department();
+			department.setId(0);
+			department.setCode("DEP004");
+			department.setDescription("Credit");
+			department.setCreatedBy("SYSTEM");
+			department.setCreatedDate(new Date());
+			department.setUpdatedBy("SYSTEM");
+			department.setUpdatedDate(new Date());
+			departments.add(department);
+			
+			department = new Department();
+			department.setId(0);
+			department.setCode("DEP005");
+			department.setDescription("IT");
+			department.setCreatedBy("SYSTEM");
+			department.setCreatedDate(new Date());
+			department.setUpdatedBy("SYSTEM");
+			department.setUpdatedDate(new Date());
+			departments.add(department);
+			
+			
+		for(Department item : departments)
 		{
-			masterDataRepository.save(Department.class, department);
+			masterDataRepository.save(Department.class, item);
 		}
 		
 		return "Complete";
