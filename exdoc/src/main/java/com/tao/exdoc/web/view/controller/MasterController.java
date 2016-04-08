@@ -103,7 +103,7 @@ public class MasterController {
 		
 		for(Branch item : branches)
 		{
-			
+			masterDataRepository.save(Branch.class, item);
 		}
 
 		return "Complete";
