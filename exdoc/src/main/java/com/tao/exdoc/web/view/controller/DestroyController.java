@@ -51,5 +51,13 @@ public class DestroyController {
 		Result<Destroy> result = destroyRepository.findByQuery(query);
 		return result.getPage(query.getPage());
 	}
+	
+	@RequestMapping(value="/save",method=RequestMethod.POST)
+	@Transactional
+	public @ResponseBody Destroy save(@RequestBody Destroy entity) throws Exception
+	{
+		Destroy result = destroyService.save(entity);
+		return result;
+	}
 
 }
