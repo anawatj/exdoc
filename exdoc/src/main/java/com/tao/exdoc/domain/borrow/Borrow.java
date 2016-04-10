@@ -40,18 +40,39 @@ public class Borrow extends AbstractDomain<Integer>{
 	
 	
 	public Branch getBranch() {
+		if(branch!=null)
+		{
+			if(branch.getId()==null || branch.getId()==0)
+			{
+				return null;
+			}
+		}
 		return branch;
 	}
 	public void setBranch(Branch branch) {
 		this.branch = branch;
 	}
 	public Department getDepartment() {
+		if(department!=null)
+		{
+			if(department.getId()==null || department.getId()==0)
+			{
+				return null;
+			}
+		}
 		return department;
 	}
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
 	public Position getPosition() {
+		if(position!=null)
+		{
+			if(position.getId()==null || position.getId()==0)
+			{
+				return null;
+			}
+		}
 		return position;
 	}
 	public void setPosition(Position position) {
@@ -64,6 +85,13 @@ public class Borrow extends AbstractDomain<Integer>{
 		this.dueDate = dueDate;
 	}
 	public BorrowObjective getObjective() {
+		if(objective!=null)
+		{
+			if(objective.getId()==null || objective.getId()==0)
+			{
+				return null;
+			}
+		}
 		return objective;
 	}
 	public void setObjective(BorrowObjective objective) {
@@ -88,18 +116,33 @@ public class Borrow extends AbstractDomain<Integer>{
 		this.borrowDate = borrowDate;
 	}
 	public User getBorrowBy() {
+		if(borrowBy!=null)
+		{
+			if(borrowBy.getId()==null||borrowBy.getId()==0)
+			{
+				return null;
+			}
+		}
 		return borrowBy;
 	}
 	public void setBorrowBy(User borrowBy) {
 		this.borrowBy = borrowBy;
 	}
 	public Date getReviewDate() {
+		
 		return reviewDate;
 	}
 	public void setReviewDate(Date reviewDate) {
 		this.reviewDate = reviewDate;
 	}
 	public User getReviewBy() {
+		if(reviewBy!=null)
+		{
+			if(reviewBy.getId()==null || reviewBy.getId()==0)
+			{
+				return null;
+			}
+		}
 		return reviewBy;
 	}
 	public void setReviewBy(User reviewBy) {
@@ -112,6 +155,13 @@ public class Borrow extends AbstractDomain<Integer>{
 		this.approveDate = approveDate;
 	}
 	public User getApproveBy() {
+		if(approveBy!=null)
+		{
+			if(approveBy.getId()==null || approveBy.getId()==0)
+			{
+				return null;
+			}
+		}
 		return approveBy;
 	}
 	public void setApproveBy(User approveBy) {

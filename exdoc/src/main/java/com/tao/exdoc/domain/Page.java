@@ -16,8 +16,8 @@ public final class Page<E> {
 
 	
 	private List<E> list;
-	private Long totalRecord;
-	private Long totalPage;
+	private Integer totalRecord;
+	private Integer totalPage;
 	
 	public List<E> getList() {
 		return list;
@@ -25,16 +25,16 @@ public final class Page<E> {
 	public void setList(List<E> list) {
 		this.list = list;
 	}
-	public Long getTotalRecord() {
+	public Integer getTotalRecord() {
 		return totalRecord;
 	}
-	public void setTotalRecord(Long totalRecord) {
+	public void setTotalRecord(Integer totalRecord) {
 		this.totalRecord = totalRecord;
 	}
-	public Long getTotalPage() {
+	public Integer getTotalPage() {
 		return totalPage;
 	}
-	public void setTotalPage(Long totalPage) {
+	public void setTotalPage(Integer totalPage) {
 		this.totalPage = totalPage;
 	}
 	private Criteria criteria;
@@ -53,8 +53,9 @@ public final class Page<E> {
 	private void getPaging(Criteria criteria,Integer page,Class clazz,String...columns)
 	{
 		this.criteria=criteria;
+		this.columns= columns;
 		this.criteria.setProjection(null);
-		this.totalRecord= (Long) this.criteria.setProjection(Projections.id()).uniqueResult();
+		this.totalRecord=(Integer) this.criteria.setProjection(Projections.id()).uniqueResult();
 		this.totalPage = this.totalRecord/Config.PAGE_SIZE;
 		if((this.totalRecord%Config.PAGE_SIZE)>0)
 		{
@@ -62,7 +63,7 @@ public final class Page<E> {
 		}
 		Integer start = (page-1)*Config.PAGE_SIZE;
 		this.criteria.setProjection(null);
-		if(this.columns!=null || this.columns.length>0)
+		if(this.columns!=null && this.columns.length>0)
 		{
 			ProjectionList projectionList = Projections.projectionList();
 			for(String column : columns)

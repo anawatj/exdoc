@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
@@ -64,6 +65,10 @@ public class BorrowRepository implements IBorrowRepository{
 
 	public Result<Borrow> findByQuery(BorrowQuery query) throws Exception {
 		Criteria criteria = factory.getCurrentSession().createCriteria(Borrow.class);
+		
+		criteria.setFetchMode("borrowBy",FetchMode.JOIN);
+		criteria.setFetchMode("objective",FetchMode.JOIN);
+		
 		if(query.getBorrowCode()!=null && !query.getBorrowCode().equals(""))
 		{
 			if(query.getBorrowCode().contains("*")||query.getBorrowCode().contains("?"))
@@ -89,16 +94,14 @@ public class BorrowRepository implements IBorrowRepository{
 			criteria.addOrder(Order.desc("borrowCode"));
 		}
 		
-
 	
 		return new Result<Borrow>(factory,criteria,
 				Borrow.class,
 				"borrowCode",
 				"borrowDesc",
-				"borrowBy.firstName",
-				"borrowBy.lastName",
+				"borrowBy",
 				"borrowDate",
-				"objective.description"
+				"objective"
 				);
 	}
 

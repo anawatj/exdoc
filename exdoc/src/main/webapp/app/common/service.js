@@ -20,6 +20,35 @@ app.service("commonService",['$http',function($http)
 									{
 										return $http.get(url+"master/position/getAll");
 									};
+									service.getAllDocumentGroup=function()
+									{
+										return $http.get(url+"master/documentGroup/getAll");
+									};
+									service.getAllDocumentMode=function()
+									{
+										return $http.get(url+"master/documentMode/getAll");
+									};
+									service.getAllDocumentType=function()
+									{
+										return $http.get(url+"master/documentType/getAll");
+									};
+									service.getObject=function(obj)
+									{
+										if(obj==null || obj==undefined)
+										{
+											obj = {};
+											
+										}
+										if(obj.id==undefined)
+										{
+												obj.id=0;
+										}
+										return obj;
+									};
+									service.getDate=function(obj)
+									{
+										return new Date(obj);
+									}
 									return service;
 									
                              }]);

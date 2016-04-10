@@ -76,7 +76,7 @@ public final class Result<E> {
 	}
 	public Page<E> getPage(Integer page)
 	{
-		return new Page<E>(criteria,page);
+		return new Page<E>(criteria,clazz,page,columns);
 	}
 
 }

@@ -1,7 +1,14 @@
 /**
  * 
  */
-app.controller('borrowListCtrl',function($scope,$http)
+app.controller('borrowListCtrl',function($scope,$http,commonService,borrowService)
 		{
-	
+			$scope.model={page:1};
+			$scope.init=function()
+			{
+				borrowService.search($scope.model).success(function(data)
+						{
+							alert("Success")
+						});
+			}
 		});

@@ -6,13 +6,13 @@
 				<label>BorrowCode</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="text" class="form-control" />
+				<input type="text" class="form-control" ng-model="model.borrowCode"/>
 			</div>
 			<div class="col-xs-3">
 				<label>BorrowDesc</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="text" class="form-control" />
+				<input type="text" class="form-control" ng-model="model.borrowDesc"/>
 			</div>
 		</div>
 		<div class="row">
@@ -20,7 +20,7 @@
 				<label>BorrowDate</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="date" class="form-control" />
+				<input type="date" class="form-control" ng-model="model.borrowDate" />
 			</div>
 			<div class="col-xs-3">
 				<label>BorrowBy</label>
@@ -57,35 +57,26 @@
 				<input type="text" class="form-control" disabled/>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-xs-3">
-				<label>DocumentGroup</label>
-			</div>
-			<div class="col-xs-3">
-				<select class="form-control"></select>
-			</div>
-			<div class="col-xs-3">
-				<label>DocumentMode</label>
-			</div>
-			<div class="col-xs-3">
-				<select class="form-control"></select>
-			</div>
-		</div>
+		
 		<div class="row">
 			<div class="col-xs-3">
 					<label>Objective</label>
 			</div>
 			<div class="col-xs-3">
-					<select class="form-control">
+					<select class="form-control" ng-model="model.objective.id">
+							<option value="0"></option>
+							<option ng-repeat="objective in objectives" ng-selected="objective.id==model.objective.id" value="{{objective.id}}">
+									{{objective.description}}
+							</option>
 					</select>
 			</div>
 			<div class="col-xs-3">
 					<label>Branch</label>
 			</div>
 			<div class="col-xs-3">
-					<select class="form-control" >
+					<select class="form-control" ng-model="model.branch.id" >
 							<option value="0"></option>
-							<option ng-repeat="branch in branches" value="{{branch.id}}">{{branch.description}}</option>
+							<option ng-repeat="branch in branches" ng-selected="branch.id==model.branch.id"  value="{{branch.id}}">{{branch.description}}</option>
 							
 					</select>
 			</div>
@@ -95,9 +86,9 @@
 					<label>Department</label>
 			</div>
 			<div class="col-xs-3">
-					<select class="form-control">
+					<select class="form-control" ng-model="model.department.id">
 							<option value="0"></option>
-							<option ng-repeat="department in departments" value="{{department.id}}">
+							<option ng-repeat="department in departments" ng-selected="department.id==model.department.id" value="{{department.id}}">
 									{{department.description}}
 							
 							</option>
@@ -107,7 +98,10 @@
 					<label>Position</label>
 			</div>
 			<div class="col-xs-3">
-					<select class="form-control"></select>
+					<select class="form-control" ng-model="model.position.id">
+							<option value="0"></option>
+							<option ng-repeat="position in positions" value="{{position.id}}" ng-selected="position.id==model.position.id">{{position.description}}</option>
+					</select>
 			</div>
 		</div>
 		<div class="row">
@@ -115,7 +109,7 @@
 						<label>Remark</label>
 				</div>
 				<div class="col-xs-9">
-						<textarea class="form-control">
+						<textarea class="form-control" ng-model="model.remark">
 								
 						</textarea>
 				</div>
@@ -146,7 +140,7 @@
 		</div>
 		<div class="row">
 				<div class="col-xs-12">
-						<button class="btn btn-primary">Save</button>
+						<button class="btn btn-primary" ng-click="save()">Save</button>
 						<button class="btn btn-primary">Release</button>
 						<button class="btn btn-primary">Clear</button>
 				</div>
