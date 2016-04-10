@@ -119,6 +119,7 @@ public class MasterController {
 		List<Branch> branches = new ArrayList<Branch>();
 	
 		Branch branch = new  Branch();
+		branch.setId(0);
 		branch.setCode("B001");
 		branch.setDescription("Bangkok");
 		branch.setCreatedBy("SYSTEM");

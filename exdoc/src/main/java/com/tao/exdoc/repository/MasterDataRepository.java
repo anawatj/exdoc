@@ -22,9 +22,10 @@ public class MasterDataRepository {
 		Criteria criteria = factory.getCurrentSession().createCriteria(clazz);
 		return new Result<SimpleMasterObject>(factory,
 				criteria,
-				Projections.property("id"),
-				Projections.property("code"),
-				Projections.property("description"));
+				clazz,
+				"id",
+				"code",
+				"description");
 	}
 	public SimpleMasterObject save(Class clazz,SimpleMasterObject entity)
 	{

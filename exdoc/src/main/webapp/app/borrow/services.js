@@ -1,7 +1,7 @@
 /**
  * 
  */
-app.factory('borrowService',['$http',function($http)
+app.service('borrowService',['$http',function($http)
                              {
 									var service={};
 									service.getByKey=function(id)
@@ -15,5 +15,6 @@ app.factory('borrowService',['$http',function($http)
 									service.save=function(model)
 									{
 										return $http.post(url+"borrow/save",model);
-									}
+									};
+									return service;
                              }]);

@@ -1,7 +1,7 @@
 /**
  * 
  */
-app.factory("commonService",['$http',function($http)
+app.service("commonService",['$http',function($http)
                              {
 									var service={};
 									service.getAllDepartment=function()
@@ -20,5 +20,6 @@ app.factory("commonService",['$http',function($http)
 									{
 										return $http.get(url+"master/position/getAll");
 									};
+									return service;
 									
                              }]);

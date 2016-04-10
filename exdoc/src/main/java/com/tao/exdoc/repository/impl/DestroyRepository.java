@@ -19,9 +19,7 @@ public class DestroyRepository implements IDestroyRepository{
 
 	public Result<Destroy> findAll() throws Exception {
 		Criteria criteria = factory.getCurrentSession().createCriteria(Destroy.class);
-		return new Result<Destroy>(factory,criteria,
-				Projections.property("destroyCode"),
-				Projections.property("destroyDesc"));
+		return new Result<Destroy>(factory,criteria,Destroy.class,"destroyCode","destroyDesc");
 	}
 
 	public Destroy findByKey(Integer key) throws Exception {

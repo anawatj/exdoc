@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.tao.exdoc.Config;
@@ -37,19 +38,19 @@ public final class Page<E> {
 		this.totalPage = totalPage;
 	}
 	private Criteria criteria;
-	private Projection[] projections;
+	private String []columns;
 	public Page(Criteria criteria,Integer page)
 	{
-		this.getPaging(criteria, page, null);
+		this.getPaging(criteria, page,null, null);
 		
 	}
 
-	public Page(Criteria criteria,Integer page,Projection...projections)
+	public Page(Criteria criteria,Class clazz,Integer page,String... columns)
 	{
-		this.getPaging(criteria, page, projections);
+		this.getPaging(criteria, page,clazz, columns);
 	}
 	
-	private void getPaging(Criteria criteria,Integer page,Projection...projections)
+	private void getPaging(Criteria criteria,Integer page,Class clazz,String...columns)
 	{
 		this.criteria=criteria;
 		this.criteria.setProjection(null);
@@ -61,14 +62,18 @@ public final class Page<E> {
 		}
 		Integer start = (page-1)*Config.PAGE_SIZE;
 		this.criteria.setProjection(null);
-		if(this.projections!=null || this.projections.length>0)
+		if(this.columns!=null || this.columns.length>0)
 		{
 			ProjectionList projectionList = Projections.projectionList();
-			for(Projection projection : projections)
+			for(String column : columns)
 			{
-				projectionList.add(projection);
+				projectionList.add(Projections.property(column),column);
 			}
 			this.criteria.setProjection(projectionList);
+			this.criteria.setResultTransformer(Transformers.aliasToBean(clazz));
+		}else
+		{
+			this.criteria.setResultTransformer(Criteria.ROOT_ENTITY);
 		}
 		this.list = this.criteria
 				.setFirstResult(start)

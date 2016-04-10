@@ -2,11 +2,15 @@ package com.tao.exdoc.domain;
 
 import java.util.List;
 
+import javassist.convert.Transformer;
+
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +25,8 @@ public final class Result<E> {
 	
 	private SessionFactory factory;
 	private Criteria criteria;
-	private Projection[] projections;
+	private String[] columns;
+	private Class clazz;
 	
 	
 	public List<E> getList() {
@@ -39,25 +44,32 @@ public final class Result<E> {
 		this.factory= factory;
 		this.criteria=criteria;
 	}
-	public Result(SessionFactory factory,Criteria criteria,Projection...projections)
+	public Result(SessionFactory factory,Criteria criteria,Class clazz,String...columns)
 	{
 		this.factory= factory;
 		this.criteria=criteria;
-		this.projections= projections;
+		this.columns=columns;
+		this.clazz= clazz;
 	}
 	@JsonIgnore
 	public Result<E> getFullResult()
 	{
 
-		if(this.projections!=null || this.projections.length>0)
+		if(this.columns!=null && this.columns.length>0)
 		{
-			ProjectionList projectionList = Projections.projectionList();
-			for(Projection projection : projections)
+			ProjectionList projectionList= Projections.projectionList();
+			for(String column : columns)
 			{
-				projectionList.add(projection);
+				projectionList.add(Projections.property(column),column);
 			}
 			criteria.setProjection(projectionList);
+			criteria.setResultTransformer(Transformers.aliasToBean(clazz));
+		}else
+		{
+			criteria.setResultTransformer(Criteria.ROOT_ENTITY);
 		}
+	
+		
 		this.list= this.criteria.list();
 		return this;
 		
