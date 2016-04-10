@@ -1,6 +1,7 @@
 /**
  * 
  */
+var url = "http://localhost:8484/exdoc/"
 var app = angular.module('exdoc',['ngRoute','ngStorage','ui.bootstrap']);
 app.config(['$routeProvider', function($routeProvider){
     $routeProvider

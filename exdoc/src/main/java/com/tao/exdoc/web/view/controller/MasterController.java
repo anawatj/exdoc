@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tao.exdoc.domain.Result;
 import com.tao.exdoc.domain.SimpleMasterObject;
+import com.tao.exdoc.domain.master.BorrowObjective;
 import com.tao.exdoc.domain.master.Branch;
 import com.tao.exdoc.domain.master.Department;
+import com.tao.exdoc.domain.master.Position;
 import com.tao.exdoc.repository.MasterDataRepository;
 
 @Controller
@@ -30,6 +32,30 @@ public class MasterController {
 		Result<SimpleMasterObject> result = masterDataRepository.findAll(Department.class);
 		return result.getFullResult();
 	}
+	
+	@RequestMapping(value="/position/getAll",method=RequestMethod.GET)
+	@Transactional
+	public @ResponseBody Result<SimpleMasterObject> getAllPosition()
+	{
+		Result<SimpleMasterObject> result = masterDataRepository.findAll(Position.class);
+		return result.getFullResult();
+	}
+	@RequestMapping(value="/branch/getAll",method=RequestMethod.GET)
+	@Transactional
+	public @ResponseBody Result<SimpleMasterObject> getAllBranch()
+	{
+		Result<SimpleMasterObject> result = masterDataRepository.findAll(Branch.class);
+		return result.getFullResult();
+	}
+	@RequestMapping(value="/borrow/objective/getAll",method=RequestMethod.GET)
+	@Transactional
+	public @ResponseBody Result<SimpleMasterObject> getAllBorrowObjective()
+	{
+		Result<SimpleMasterObject> result=  masterDataRepository.findAll(BorrowObjective.class);
+		return result.getFullResult();
+	}
+	
+	
 
 	@RequestMapping(value = "/batch", method = RequestMethod.GET)
 	@Transactional
