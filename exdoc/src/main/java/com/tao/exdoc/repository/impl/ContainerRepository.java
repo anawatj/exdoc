@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import com.tao.exdoc.domain.Result;
 import com.tao.exdoc.domain.container.Container;
+import com.tao.exdoc.domain.container.ContainerQuery;
 import com.tao.exdoc.repository.IContainerRepository;
 @Repository
 public class ContainerRepository implements IContainerRepository {
@@ -28,6 +29,11 @@ public class ContainerRepository implements IContainerRepository {
 	}
 
 	public Container save(Container entity) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Result<Container> findByQuery(ContainerQuery query) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
