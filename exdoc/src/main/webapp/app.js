@@ -18,5 +18,10 @@ app.config(['$routeProvider', function($routeProvider){
         			templateUrl:"./app/borrow/views/list.html",
         			controller:"borrowListCtrl"
         		})
+        .when('/depositEntry',
+        		{
+        			templateUrl:"./app/deposit/views/entry.html",
+        			controller:"depositEntryCtrl"
+        		})
         .otherwise({redirectTo:'/'});
 }]);

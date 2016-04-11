@@ -1,10 +1,164 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<div class="panel panel-default">
+	<form>
+		<div class="row">
+			<div class="col-xs-3">
+				<label>DepositCode</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="text" class="form-control" />
+			</div>
+			<div class="col-xs-3">
+				<label>DepositDesc</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="text" class="form-control" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<label>DepositDate</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="date" class="form-control" />
+			</div>
+			<div class="col-xs-3">
+				<label>DepositBy</label>
+			</div>
+			<div class="col-xs-3">
+				<div class="input-group">
+					<input type="text" class="form-control" />
+					<div class="input-group-btn">
+						<button class="btn btn-primary">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
 
-</body>
-</html>
+					</div>
+					<label></label>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<label>ReviewDate</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="date" class="form-control" disabled />
+			</div>
+			<div class="col-xs-3">
+				<label>ReviewBy</label>
+			</div>
+			<div class="col-xs-3">
+				<div class="input-group">
+					<input type="text" class="form-control" disabled />
+					<div class="input-group-btn">
+						<button class="btn btn-primary">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</div>
+					<label></label>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<label>ApproveDate</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="date" class="form-control" disabled />
+			</div>
+			<div class="col-xs-3">
+				<label>ApproveBy</label>
+			</div>
+			<div class="col-xs-3">
+				<div class="input-group">
+					<input type="text" class="form-control" disabled />
+					<div class="input-group-btn">
+						<button class="btn btn-primary">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</div>
+					<label></label>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<label>DocumentGroup</label>
+			</div>
+			<div class="col-xs-3">
+				<select class="form-control">
+				</select>
+			</div>
+			<div class="col-xs-3">
+				<label>DocumentMode</label>
+			</div>
+			<div class="col-xs-3">
+				<select class="form-control">
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<label>Objective</label>
+			</div>
+			<div class="col-xs-3">
+				<select class="form-control">
+				</select>
+			</div>
+			<div class="col-xs-3">
+				<label>Branch</label>
+			</div>
+			<div class="col-xs-3">
+				<select class="form-control">
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<label>Department</label>
+			</div>
+			<div class="col-xs-3">
+				<select class="form-control">
+				</select>
+			</div>
+			<div class="col-xs-3">
+				<label>Position</label>
+			</div>
+			<div class="col-xs-3">
+				<select class="form-control">
+				</select>
+			</div>
+		</div>
+			<div class="row">
+				<div class="col-xs-12">
+						<table class="table table-bordered table-striped table-hover table-condensed">
+							<thead>
+									<tr>
+											<th><input type="checkbox"/></th>
+											<th>DocumentType</th>
+											<th>Remark</th>
+	
+									</tr>
+							</thead>
+							<tbody>
+							</tbody>
+							<tfoot>
+									<tr>
+											<td colspan="3">
+													<button class="btn btn-primary">Add</button>
+													<button class="btn btn-primary">Delete</button>
+											</td>
+									</tr>
+							</tfoot>
+						</table>
+				</div>
+		</div>
+			<div class="row">
+				<div class="col-xs-12">
+						<button class="btn btn-primary" >Save</button>
+						<button class="btn btn-primary">Release</button>
+						<button class="btn btn-primary">Clear</button>
+				</div>
+		</div>
+	</form>
+</div>
