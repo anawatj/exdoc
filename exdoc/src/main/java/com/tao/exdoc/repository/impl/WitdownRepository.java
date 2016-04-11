@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import com.tao.exdoc.domain.Result;
 import com.tao.exdoc.domain.witdown.Witdown;
+import com.tao.exdoc.domain.witdown.WitdownQuery;
 import com.tao.exdoc.repository.IWitdownRepository;
 @Repository
 public class WitdownRepository implements IWitdownRepository {
@@ -26,6 +27,11 @@ public class WitdownRepository implements IWitdownRepository {
 	public void remove(Integer key) throws Exception {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public Result<Witdown> findByQuery(WitdownQuery query) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

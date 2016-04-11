@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import com.tao.exdoc.domain.Result;
 import com.tao.exdoc.domain.security.User;
+import com.tao.exdoc.domain.security.UserQuery;
 import com.tao.exdoc.repository.IUserRepository;
 @Repository
 public class UserRepository implements IUserRepository {
@@ -24,6 +25,11 @@ public class UserRepository implements IUserRepository {
 	}
 
 	public User save(User entity) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Result<User> findByQuery(UserQuery query) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

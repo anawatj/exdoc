@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.tao.exdoc.domain.Result;
 import com.tao.exdoc.domain.document.Document;
+import com.tao.exdoc.domain.document.DocumentQuery;
 import com.tao.exdoc.repository.IDocumentRepository;
 @Repository
 public class DocumentRepository implements IDocumentRepository{
@@ -30,6 +31,11 @@ public class DocumentRepository implements IDocumentRepository{
 	}
 
 	public Document save(Document entity) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Result<Document> findByQuery(DocumentQuery query) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

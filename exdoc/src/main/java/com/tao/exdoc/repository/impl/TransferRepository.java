@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import com.tao.exdoc.domain.Result;
 import com.tao.exdoc.domain.transfer.Transfer;
+import com.tao.exdoc.domain.transfer.TransferQuery;
 import com.tao.exdoc.repository.ITransferRepository;
 @Repository
 public class TransferRepository implements ITransferRepository{
@@ -24,6 +25,11 @@ public class TransferRepository implements ITransferRepository{
 	}
 
 	public Transfer save(Transfer entity) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Result<Transfer> findByQuery(TransferQuery query) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

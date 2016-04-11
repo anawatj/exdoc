@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import com.tao.exdoc.domain.Result;
 import com.tao.exdoc.domain.security.Role;
+import com.tao.exdoc.domain.security.RoleQuery;
 import com.tao.exdoc.repository.IRoleRepository;
 @Repository
 public class RoleRepository implements IRoleRepository{
@@ -24,6 +25,11 @@ public class RoleRepository implements IRoleRepository{
 	}
 
 	public Role save(Role entity) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Result<Role> findByQuery(RoleQuery query) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
