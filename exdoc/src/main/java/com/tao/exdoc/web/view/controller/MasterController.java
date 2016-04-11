@@ -86,7 +86,7 @@ public class MasterController {
 	@RequestMapping(value = "/batch", method = RequestMethod.GET)
 	@Transactional
 	public @ResponseBody String batch() throws Exception {
-		/*List<Department> departments = new ArrayList<Department>();
+		List<Department> departments = new ArrayList<Department>();
 
 		Department department = new Department();
 		department.setId(0);
@@ -140,9 +140,9 @@ public class MasterController {
 
 		for (Department item : departments) {
 			masterDataRepository.save(Department.class, item);
-		}*/
+		}
 		
-		/*List<Branch> branches = new ArrayList<Branch>();
+		List<Branch> branches = new ArrayList<Branch>();
 	
 		Branch branch = new  Branch();
 		branch.setId(0);
@@ -290,7 +290,7 @@ public class MasterController {
 		{
 			masterDataRepository.save(DocumentType.class,item);
 			
-		}*/
+		}
 		
 		List<BorrowObjective> borrows = new ArrayList<BorrowObjective>();
 	    BorrowObjective borrow = new BorrowObjective();
