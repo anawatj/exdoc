@@ -49,5 +49,11 @@ app.controller('depositListCtrl',function($scope,$q,$routeParams,$location,commo
 								$scope.totalRecord=data.totalRecord;
 								$scope.totalPage =data.totalPage;
 							})	;
-				}
+				};
+				$scope.edit=function(id)
+				{
+					$location.path("/depositEntry").search("id",id);
+					
+				};
+				
 		});
