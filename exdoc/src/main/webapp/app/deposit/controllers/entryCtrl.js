@@ -39,11 +39,11 @@ app
 												commonService.getAllPosition(),
 												commonService
 														.getAllDepositObjective(),
-												commonSerivce
+												commonService
 														.getAllDocumentGroup(),
 												commonService
 														.getAllDocumentMode(),
-												commonSerivce
+												commonService
 														.getAllDocumentType(),
 												depositService
 														.getByKey($scope.id) ])
@@ -57,6 +57,11 @@ app
 											$scope.documentModes = data[5].data.list;
 											$scope.documentTypes = data[6].data.list;
 											$scope.model = data[7].data;
+											if($scope.model==null || $scope.model==undefined)
+											{
+												$scope.model={};
+												$scope.model.items=[];
+											}
 											$scope.model.id = $scope.id;
 											if ($scope.model.id > 0) {
 												$scope.model.depositBy = commonService
@@ -82,7 +87,7 @@ app
 												$scope.model.documentMode = commonService
 														.getObject($scope.model.documentMode);
 												$scope.model.items = commonService
-														.getObject($scope.model.items);
+														.getArray($scope.model.items);
 												for (var index = 0; index < $scope.model.items.length; index++) {
 													var item = $scope.model.items[index];
 													item.documentType = commonService
@@ -95,6 +100,10 @@ app
 						return promise;
 					};
 					$scope.addItem = function() {
+						if($scope.model.items==null || $scope.model.items==undefined)
+							{
+								$scope.model.items=[];
+							}
 						var item = {};
 						if ($scope.id == 0) {
 							item.depositId = undefined;
@@ -102,9 +111,7 @@ app
 							item.depositId = $scope.id;
 						}
 						item.selected = false;
-						if ($scope.model.items == undefined) {
-							$scope.model.items = [];
-						}
+						
 						$scope.model.items.push(item);
 					};
 					$scope.delItem = function() {
@@ -128,6 +135,9 @@ app
 					$scope.save = function() {
 						depositService.save($scope.model).success(
 								function(data) {
+									$scope.model = {
+											id : 0
+										};
 									alert("success");
 								});
 					};

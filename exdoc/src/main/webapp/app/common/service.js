@@ -35,7 +35,7 @@ app.service("commonService",['$http',function($http)
 									service.getAllDepositObjective=function()
 									{
 										return $http.get(url+"master/deposit/objective/getAll");
-									}
+									};
 									service.getObject=function(obj)
 									{
 										if(obj==null || obj==undefined)
