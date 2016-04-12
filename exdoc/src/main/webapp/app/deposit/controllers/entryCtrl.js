@@ -7,7 +7,9 @@ app
 				function($scope, $http, $q, commonService, depositService,
 						$routeParams) {
 					$scope.model = {
-						id : 0
+						id : 0,
+						version:0,
+						items:[]
 					};
 					$scope.departments = [];
 					$scope.branches = [];
@@ -57,13 +59,17 @@ app
 											$scope.documentModes = data[5].data.list;
 											$scope.documentTypes = data[6].data.list;
 											$scope.model = data[7].data;
-											if($scope.model==null || $scope.model==undefined)
-											{
-												$scope.model={};
-												$scope.model.items=[];
-											}
-											$scope.model.id = $scope.id;
-											if ($scope.model.id > 0) {
+										    if(!$scope.model)
+										    {
+										    	$scope.model = {
+														id : 0,
+														version:0,
+														items:[]
+													};
+										    }
+										    $scope.model.id= $scope.id;
+											if ($scope.model.id> 0) {
+										
 												$scope.model.depositBy = commonService
 														.getObject($scope.model.depositBy);
 												$scope.model.reviewBy = commonService
@@ -88,6 +94,7 @@ app
 														.getObject($scope.model.documentMode);
 												$scope.model.items = commonService
 														.getArray($scope.model.items);
+												alert($scope.model.department.id);
 												for (var index = 0; index < $scope.model.items.length; index++) {
 													var item = $scope.model.items[index];
 													item.documentType = commonService
@@ -100,10 +107,7 @@ app
 						return promise;
 					};
 					$scope.addItem = function() {
-						if($scope.model.items==null || $scope.model.items==undefined)
-							{
-								$scope.model.items=[];
-							}
+						
 						var item = {};
 						if ($scope.id == 0) {
 							item.depositId = undefined;
@@ -136,7 +140,9 @@ app
 						depositService.save($scope.model).success(
 								function(data) {
 									$scope.model = {
-											id : 0
+											id : 0,
+											version:0,
+											items:[]
 										};
 									alert("success");
 								});

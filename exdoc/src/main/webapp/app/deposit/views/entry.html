@@ -88,7 +88,7 @@
 			<div class="col-xs-3">
 				<select class="form-control" ng-model="model.documentGroup.id">
 						<option value="0"></option>
-						<option ng-repeat="item in documentGroups" ng-selected="item.id==model.documentGroup.id" value="{{item.id}}">{{item.description}}</option>
+						<option ng-repeat="item in documentGroups" ng-selected="{{item.id==model.documentGroup.id}}" value="{{item.id}}">{{item.description}}</option>
 				</select>
 			</div>
 			<div class="col-xs-3">
@@ -97,7 +97,7 @@
 			<div class="col-xs-3">
 				<select class="form-control" ng-model="model.documentMode.id">
 						<option value="0"></option>
-						<option ng-repeat="item in documentModes" ng-selected="item.id==model.documentMode.id">{{item.description}}</option>
+						<option ng-repeat="item in documentModes" ng-selected="item.id==model.documentMode.id" value="{{item.id}}">{{item.description}}</option>
 				</select>
 			</div>
 		</div>
@@ -108,7 +108,7 @@
 			<div class="col-xs-3">
 				<select class="form-control" ng-model="model.objective.id">
 						<option value="0"></option>
-						<option ng-repeat="item in objectives" ng-selected="item.id==model.objective.id" value="{{item.id}}">{{item.description}}</option>
+						<option ng-repeat="item in objectives" ng-selected="item.id == model.objective.id" value="{{item.id}}">{{item.description}}</option>
 				</select>
 			</div>
 			<div class="col-xs-3">
@@ -117,7 +117,7 @@
 			<div class="col-xs-3">
 				<select class="form-control" ng-model="model.branch.id">
 						<option value="0"></option>
-						<option ng-repeat="item in branches" ng-selected="item.id==model.branch.id" value="{{item.id}}">{{item.description}}</option>
+						<option ng-repeat="item in branches" ng-selected="item.id == model.branch.id" value="{{item.id}}">{{item.description}}</option>
 				</select>
 			</div>
 		</div>
@@ -128,7 +128,7 @@
 			<div class="col-xs-3">
 			<select class="form-control" ng-model="model.department.id">
 						<option value="0"></option>
-						<option ng-repeat="item in departments" ng-selected="item.id==model.department.id" value="{{item.id}}">{{item.description}}</option>
+						<option ng-repeat="item in departments" ng-selected="item.id == model.department.id" value="{{item.id}}">{{item.description}}</option>
 				</select>
 			</div>
 			<div class="col-xs-3">
@@ -158,7 +158,7 @@
 												<td>
 												<select class="form-control" ng-model="item.documentType.id">
 													<option value="0"></option>
-													<option ng-repeat="sitem in documentTypes" ng-repeat="sitem.id==item.documentType.id" value="{{sitem.id}}">{{sitem.description}}</option>
+													<option ng-repeat="sitem in documentTypes" ng-selected="sitem.id==item.documentType.id" value="{{sitem.id}}">{{sitem.description}}</option>
 												</select></td>
 												<td>
 												<textarea class="form-control" ng-model="item.remark"></textarea>

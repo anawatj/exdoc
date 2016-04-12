@@ -38,15 +38,17 @@ app.service("commonService",['$http',function($http)
 									};
 									service.getObject=function(obj)
 									{
+										if(!obj)
+										{
+											obj ={id:0};
+										}
 										if(obj==null || obj==undefined)
 										{
-											obj = {};
+											obj = {id:0};
 											
 										}
-										if(obj.id==undefined)
-										{
-												obj.id=0;
-										}
+										
+										
 										return obj;
 									};
 									service.getDate=function(obj)
