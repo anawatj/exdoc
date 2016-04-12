@@ -35,6 +35,13 @@ public class DepositItem extends AbstractDomain<Integer>{
 	}
 	private Container container;
 	public Container getContainer() {
+		if(container!=null)
+		{
+			if(container.getId()==null || container.getId()==0)
+			{
+				return null;
+			}
+		}
 		return container;
 	}
 	public void setContainer(Container container) {
@@ -47,6 +54,13 @@ public class DepositItem extends AbstractDomain<Integer>{
 		this.depositId = depositId;
 	}
 	public DocumentType getDocumentType() {
+		if(documentType!=null)
+		{
+			if(documentType.getId()==null || documentType.getId()==0)
+			{
+				return null;
+			}
+		}
 		return documentType;
 	}
 	public void setDocumentType(DocumentType documentType) {
@@ -59,6 +73,13 @@ public class DepositItem extends AbstractDomain<Integer>{
 		this.description = description;
 	}
 	public Document getDocument() {
+		if(document!=null)
+		{
+			if(document.getId()==null || document.getId()==0)
+			{
+				return null;
+			}
+		}
 		return document;
 	}
 	public void setDocument(Document document) {

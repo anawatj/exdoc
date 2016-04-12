@@ -1,6 +1,11 @@
 package com.tao.exdoc.repository.impl;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -20,28 +25,69 @@ public class DepositRepository implements IDepositRepository{
 	}
 
 	public Result<Deposit> findAll() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+			Criteria criteria = factory.getCurrentSession().createCriteria(Deposit.class);
+			
+			return new Result<Deposit>(factory,criteria,
+					Deposit.class,
+					"depositCode",
+					"depositDesc");
 	}
 
 	public Deposit findByKey(Integer key) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Criteria criteria = factory.getCurrentSession().createCriteria(Deposit.class);
+		criteria.setFetchMode("department", FetchMode.JOIN);
+		criteria.setFetchMode("branch",FetchMode.JOIN);
+		criteria.setFetchMode("position", FetchMode.JOIN);
+		criteria.setFetchMode("objective",FetchMode.JOIN);
+		criteria.setFetchMode("documentGroup", FetchMode.JOIN);
+		criteria.setFetchMode("documentMode", FetchMode.JOIN);
+		criteria.setFetchMode("depositBy", FetchMode.JOIN);
+		criteria.setFetchMode("reviewBy", FetchMode.JOIN);
+		criteria.setFetchMode("approveBy",FetchMode.JOIN);
+		criteria.setFetchMode("items", FetchMode.JOIN);
+		criteria.setFetchMode("items.documentType",FetchMode.JOIN);
+		criteria.setFetchMode("items.container", FetchMode.JOIN);
+		criteria.setFetchMode("items.document", FetchMode.JOIN);
+		
+		criteria.add(Restrictions.eq("id", key));
+		
+		List<Deposit> result = criteria.list();
+		if(result!=null && result.size()>0)
+		{
+			return result.get(0);
+		}else
+		{
+			return null;
+		}
 	}
 
 	public void remove(Integer key) throws Exception {
-		// TODO Auto-generated method stub
+		Deposit data = findByKey(key);
+		factory.getCurrentSession().delete(data);
 		
 	}
 
 	public Deposit save(Deposit entity) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+			Deposit data = findByKey(entity.getId());
+			Deposit result = (Deposit) factory.getCurrentSession().merge(entity);
+			return result;
+			
 	}
 
 	public Result<Deposit> findByQuery(DepositQuery query) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Criteria criteria = factory.getCurrentSession().createCriteria(Deposit.class);
+		criteria.setFetchMode("depositBy", FetchMode.JOIN);
+		criteria.setFetchMode("department", FetchMode.JOIN);
+		criteria.setFetchMode("branch", FetchMode.JOIN);
+		
+		return new Result<Deposit>(factory,criteria,Deposit.class,
+				"id",
+				"depositCode",
+				"depositDesc",
+				"depositDate",
+				"depositBy",
+				"departmnt",
+				"branch");
 	}
 
 }

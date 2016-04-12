@@ -40,24 +40,52 @@ public class Deposit extends AbstractDomain<Integer>{
 	private Department department;
 	private Position position;
 	public Branch getBranch() {
+		if(branch!=null)
+		{
+			if(branch.getId()==null || branch.getId()==0)
+			{
+				return null;
+			}
+		}
 		return branch;
 	}
 	public void setBranch(Branch branch) {
 		this.branch = branch;
 	}
 	public Department getDepartment() {
+		if(department!=null)
+		{
+			if(department.getId()==null || department.getId()==0)
+			{
+				return null;
+			}
+		}
 		return department;
 	}
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
 	public Position getPosition() {
+		if(position!=null)
+		{
+			if(position.getId()==null || position.getId()==0)
+			{
+				return null;
+			}
+		}
 		return position;
 	}
 	public void setPosition(Position position) {
 		this.position = position;
 	}
 	public DepositObjective getObjective() {
+		if(objective!=null)
+		{
+			if(objective.getId()==null || objective.getId()==0)
+			{
+				return null;
+			}
+		}
 		return objective;
 	}
 	public void setObjective(DepositObjective objective) {
@@ -88,6 +116,13 @@ public class Deposit extends AbstractDomain<Integer>{
 		this.depositDate = depositDate;
 	}
 	public User getDepositBy() {
+		if(depositBy!=null)
+		{
+			if(depositBy.getId()==null || depositBy.getId()==0)
+			{
+				return null;
+			}
+		}
 		return depositBy;
 	}
 	public void setDepositBy(User depositBy) {
@@ -100,6 +135,13 @@ public class Deposit extends AbstractDomain<Integer>{
 		this.reviewDate = reviewDate;
 	}
 	public User getReviewBy() {
+		if(reviewBy!=null)
+		{
+			if(reviewBy.getId()==null || reviewBy.getId()==0)
+			{
+				return null;
+			}
+		}
 		return reviewBy;
 	}
 	public void setReviewBy(User reviewBy) {
@@ -112,18 +154,39 @@ public class Deposit extends AbstractDomain<Integer>{
 		this.approveDate = approveDate;
 	}
 	public User getApproveBy() {
+		if(approveBy!=null)
+		{
+			if(approveBy.getId()==null || approveBy.getId()==0)
+			{
+				return null;
+			}
+		}
 		return approveBy;
 	}
 	public void setApproveBy(User approveBy) {
 		this.approveBy = approveBy;
 	}
 	public DocumentGroup getDocumentGroup() {
+		if(documentGroup!=null)
+		{
+			if(documentGroup.getId()==null || documentGroup.getId()==0)
+			{
+				return null;
+			}
+		}
 		return documentGroup;
 	}
 	public void setDocumentGroup(DocumentGroup documentGroup) {
 		this.documentGroup = documentGroup;
 	}
 	public DocumentMode getDocumentMode() {
+		if(documentMode!=null)
+		{
+			if(documentMode.getId()==null || documentMode.getId()==0)
+			{
+				return null;
+			}
+		}
 		return documentMode;
 	}
 	public void setDocumentMode(DocumentMode documentMode) {
