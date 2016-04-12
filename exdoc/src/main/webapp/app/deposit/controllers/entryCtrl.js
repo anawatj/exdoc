@@ -58,11 +58,32 @@ app.controller('depositEntryCtrl',function($scope,$http,$q,commonService,deposit
 				};
 				$scope.addItem=function()
 				{
-					
+					var item = {};
+					if($scope.id==0)
+					{
+						item.depositId= undefined;
+					}else
+					{
+						item.depositId= $scope.id;
+					}
+					item.selected=false;
+					if($scope.model.items==undefined)
+					{
+						$scope.model.items=[];
+					}
+					$scope.model.items.push(item);
 				};
 				$scope.delItem=function()
 				{
-					
+					for(var index=0;index<$scope.model.items.length;index++)
+					{
+						var item = $scope.model.items[index];
+						if(item.selected)
+						{
+							$scope.model.items.splice(index,1);
+							index--;
+						}
+					}
 				};
 				$scope.findBorrowBy=function()
 				{

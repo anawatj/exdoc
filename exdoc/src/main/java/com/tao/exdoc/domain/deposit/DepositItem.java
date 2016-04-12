@@ -19,7 +19,14 @@ public class DepositItem extends AbstractDomain<Integer>{
 	private Document document;
 	private String remark;
 	private CheckStatus status;
+	private boolean selected;
 
+	public boolean getSelected() {
+		return selected;
+	}
+	public void setSelected(boolean selected) {
+		this.selected = selected;
+	}
 	public CheckStatus getStatus() {
 		return status;
 	}

@@ -141,12 +141,21 @@
 									</tr>
 							</thead>
 							<tbody>
+										<tr ng-repeat="item in model.items">
+												<td><input type="checkbox"/></td>
+												<td>
+												<select class="form-control">
+												</select></td>
+												<td>
+												<textarea class="form-control"></textarea>
+												</td>
+										</tr>
 							</tbody>
 							<tfoot>
 									<tr>
 											<td colspan="3">
-													<button class="btn btn-primary">Add</button>
-													<button class="btn btn-primary">Delete</button>
+													<button class="btn btn-primary" ng-click="addItem()">Add</button>
+													<button class="btn btn-primary" ng-click="delItem()">Delete</button>
 											</td>
 									</tr>
 							</tfoot>
