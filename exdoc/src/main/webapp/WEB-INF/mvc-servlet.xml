@@ -26,7 +26,20 @@
 	</mvc:annotation-driven>
 	<mvc:default-servlet-handler />
 	<mvc:resources location="/**" mapping="/"></mvc:resources>
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+    <property name="mediaTypes">
+        <map>
+          
+            <entry key="json" value="application/json"/>
+        </map>
+    </property>
 
+    <property name="defaultViews">
+        <list>
+            <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+        </list>
+    </property>
+</bean>
 	<!-- ... -->
 	<mvc:view-controller path="/example" view-name="example"/>
 </beans>
