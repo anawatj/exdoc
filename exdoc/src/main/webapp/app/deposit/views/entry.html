@@ -5,13 +5,13 @@
 				<label>DepositCode</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="text" class="form-control" />
+				<input type="text" class="form-control" ng-model="model.depositCode"/>
 			</div>
 			<div class="col-xs-3">
 				<label>DepositDesc</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="text" class="form-control" />
+				<input type="text" class="form-control"  ng-model="model.depositDesc"/>
 			</div>
 		</div>
 		<div class="row">
@@ -19,7 +19,7 @@
 				<label>DepositDate</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="date" class="form-control" />
+				<input type="date" class="form-control" ng-model="model.depositDate" />
 			</div>
 			<div class="col-xs-3">
 				<label>DepositBy</label>
@@ -86,14 +86,18 @@
 				<label>DocumentGroup</label>
 			</div>
 			<div class="col-xs-3">
-				<select class="form-control">
+				<select class="form-control" ng-model="model.documentGroup.id">
+						<option value="0"></option>
+						<option ng-repeat="item in documentGroups" ng-selected="item.id==model.documentGroup.id" value="{{item.id}}">{{item.description}}</option>
 				</select>
 			</div>
 			<div class="col-xs-3">
 				<label>DocumentMode</label>
 			</div>
 			<div class="col-xs-3">
-				<select class="form-control">
+				<select class="form-control" ng-model="model.documentMode.id">
+						<option value="0"></option>
+						<option ng-repeat="item in documentModes" ng-selected="item.id==model.documentMode.id">{{item.description}}</option>
 				</select>
 			</div>
 		</div>
@@ -102,14 +106,18 @@
 				<label>Objective</label>
 			</div>
 			<div class="col-xs-3">
-				<select class="form-control">
+				<select class="form-control" ng-model="model.objective.id">
+						<option value="0"></option>
+						<option ng-repeat="item in objectives" ng-selected="item.id==model.objective.id" value="{{item.id}}">{{item.description}}</option>
 				</select>
 			</div>
 			<div class="col-xs-3">
 				<label>Branch</label>
 			</div>
 			<div class="col-xs-3">
-				<select class="form-control">
+				<select class="form-control" ng-model="model.branch.id">
+						<option value="0"></option>
+						<option ng-repeat="item in branches" ng-selected="item.id==model.branch.id" value="{{item.id}}">{{item.description}}</option>
 				</select>
 			</div>
 		</div>
@@ -118,14 +126,18 @@
 				<label>Department</label>
 			</div>
 			<div class="col-xs-3">
-				<select class="form-control">
+			<select class="form-control" ng-model="model.department.id">
+						<option value="0"></option>
+						<option ng-repeat="item in departments" ng-selected="item.id==model.department.id" value="{{item.id}}">{{item.description}}</option>
 				</select>
 			</div>
 			<div class="col-xs-3">
 				<label>Position</label>
 			</div>
 			<div class="col-xs-3">
-				<select class="form-control">
+				<select class="form-control" ng-model="model.position.id">
+						<option value="0"></option>
+						<option ng-repeat="item in positions" ng-selected="item.id==model.position.id" value="{{item.id}}">{{item.description}}</option>
 				</select>
 			</div>
 		</div>
@@ -142,12 +154,14 @@
 							</thead>
 							<tbody>
 										<tr ng-repeat="item in model.items">
-												<td><input type="checkbox"/></td>
+												<td><input type="checkbox" ng-model="item.selected"/></td>
 												<td>
-												<select class="form-control">
+												<select class="form-control" ng-model="item.documentType.id">
+													<option value="0"></option>
+													<option ng-repeat="sitem in documentTypes" ng-repeat="sitem.id==item.documentType.id" value="{{sitem.id}}">{{sitem.description}}</option>
 												</select></td>
 												<td>
-												<textarea class="form-control"></textarea>
+												<textarea class="form-control" ng-model="item.remark"></textarea>
 												</td>
 										</tr>
 							</tbody>
@@ -164,7 +178,7 @@
 		</div>
 			<div class="row">
 				<div class="col-xs-12">
-						<button class="btn btn-primary" >Save</button>
+						<button class="btn btn-primary" ng-click="save()" >Save</button>
 						<button class="btn btn-primary">Release</button>
 						<button class="btn btn-primary">Clear</button>
 				</div>
