@@ -58,6 +58,13 @@ public class MasterController {
 		Result<SimpleMasterObject> result=  masterDataRepository.findAll(BorrowObjective.class);
 		return result.getFullResult();
 	}
+	@RequestMapping(value="/deposit/objective/getAll",method=RequestMethod.GET)
+	@Transactional
+	public @ResponseBody Result<SimpleMasterObject> getAllDepositObjective()
+	{
+		Result<SimpleMasterObject> result = masterDataRepository.findAll(DepositObjective.class);
+		return result.getFullResult();
+	}
 	
 	@RequestMapping(value="/documentGroup/getAll",method=RequestMethod.GET)
 	@Transactional
