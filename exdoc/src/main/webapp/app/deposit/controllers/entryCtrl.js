@@ -5,7 +5,7 @@ app
 		.controller(
 				'depositEntryCtrl',
 				function($scope, $http, $q, commonService, depositService,
-						$routeParams) {
+						$routeParams,$location) {
 					$scope.model = {
 						id : 0,
 						version:0,
@@ -139,12 +139,12 @@ app
 					$scope.save = function() {
 						depositService.save($scope.model).success(
 								function(data) {
-									$scope.model = {
+									/*$scope.model = {
 											id : 0,
 											version:0,
 											items:[]
-										};
-									alert("success");
+										};*/
+									$location.path("/depositEntry").search('id',data.id);
 								});
 					};
 				});
