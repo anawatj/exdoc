@@ -16,10 +16,19 @@ public class User extends AbstractDomain<Integer>{
 	}
 	private String username;
 	private String password;
+	
 	private String firstName;
 	private String lastName;
 	private String email;
 	private Set<Role> roles;
+	
+	private String confirmPassword;
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 	public Set<Role> getRoles() {
 		return roles;
 	}
