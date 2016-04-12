@@ -16,6 +16,7 @@ import com.tao.exdoc.domain.SimpleMasterObject;
 import com.tao.exdoc.domain.master.BorrowObjective;
 import com.tao.exdoc.domain.master.Branch;
 import com.tao.exdoc.domain.master.Department;
+import com.tao.exdoc.domain.master.DepositObjective;
 import com.tao.exdoc.domain.master.DocumentGroup;
 import com.tao.exdoc.domain.master.DocumentMode;
 import com.tao.exdoc.domain.master.DocumentType;
@@ -386,6 +387,72 @@ public class MasterController {
 	    for(Position item : positions)
 	    {
 	    	masterDataRepository.save(Position.class,item);
+	    }
+	    
+	    
+	    
+		List<DepositObjective> deposits = new ArrayList<DepositObjective>();
+		DepositObjective deposit = new DepositObjective();
+		deposit.setId(0);
+		deposit.setCode("DEPO0001");
+		deposit.setDescription("Objective 01");
+		deposit.setCreatedBy("SYSTEM");
+		deposit.setCreatedDate(new Date());
+		deposit.setUpdatedBy("SYSTEM");
+		deposit.setUpdatedDate(new Date());
+	    
+		deposits.add(deposit);
+	    
+	    deposit = new DepositObjective();
+	    deposit.setId(0);
+	    deposit.setCode("DEPO0002");
+	    deposit.setDescription("Objective 02");
+	    deposit.setCreatedBy("SYSTEM");
+	    deposit.setCreatedDate(new Date());
+	    deposit.setUpdatedBy("SYSTEM");
+	    deposit.setUpdatedDate(new Date());
+	    
+	    deposits.add(deposit);
+	    
+	    
+	    deposit = new DepositObjective();
+	    deposit.setId(0);
+	    deposit.setCode("DEPO0003");
+	    deposit.setDescription("Objective 03");
+	    deposit.setCreatedBy("SYSTEM");
+	    deposit.setCreatedDate(new Date());
+	    deposit.setUpdatedBy("SYSTEM");
+	    deposit.setUpdatedDate(new Date());
+	    
+	    deposits.add(deposit);
+	    
+	    
+	    deposit = new DepositObjective();
+	    deposit.setId(0);
+	    deposit.setCode("DEPO0004");
+	    deposit.setDescription("Objective 04");
+	    deposit.setCreatedBy("SYSTEM");
+	    deposit.setCreatedDate(new Date());
+	    deposit.setUpdatedBy("SYSTEM");
+	    deposit.setUpdatedDate(new Date());
+	    
+	    deposits.add(deposit);
+	    
+	    
+	    
+	    deposit = new DepositObjective();
+	    deposit.setId(0);
+	    deposit.setCode("DEPO0005");
+	    deposit.setDescription("Objective 05");
+	    deposit.setCreatedBy("SYSTEM");
+	    deposit.setCreatedDate(new Date());
+	    deposit.setUpdatedBy("SYSTEM");
+	    deposit.setUpdatedDate(new Date());
+	    
+	    deposits.add(deposit);
+	    for(DepositObjective item:deposits)
+	    {
+	    	masterDataRepository.save(DepositObjective.class, item);
 	    }
 		return "Complete";
 
