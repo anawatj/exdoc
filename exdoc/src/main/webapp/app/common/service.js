@@ -49,6 +49,14 @@ app.service("commonService",['$http',function($http)
 									{
 										return new Date(obj);
 									}
+									service.getArray=function(items)
+									{
+										if(items==null || items==undefined)
+											{
+												items = [];
+											}
+										return items;
+									}
 									return service;
 									
                              }]);
