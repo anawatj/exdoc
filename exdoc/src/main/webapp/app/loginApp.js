@@ -9,7 +9,7 @@ loginApp.controller('loginCtrl',function($scope,$http, $location, $localStorage,
 	{
 	
 				   $.ajax({
-					   url: 'j_spring_security_check?ajax=true',
+					   url: './j_spring_security_check?ajax=true',
 	                    method: 'POST',
 	                    dataType: 'json',
 	                    data: {

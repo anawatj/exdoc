@@ -40,6 +40,8 @@
         </list>
     </property>
 </bean>
+   <bean id="authorizationFilterBean" class="com.tao.exdoc.web.filter.AuthorizationFilter">
+    </bean>
 	<!-- ... -->
 	<mvc:view-controller path="/example" view-name="example"/>
 </beans>
