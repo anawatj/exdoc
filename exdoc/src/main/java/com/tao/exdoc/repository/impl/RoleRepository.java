@@ -1,5 +1,8 @@
 package com.tao.exdoc.repository.impl;
 
+import org.hibernate.Criteria;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.tao.exdoc.domain.Result;
@@ -9,6 +12,9 @@ import com.tao.exdoc.repository.IRoleRepository;
 @Repository
 public class RoleRepository implements IRoleRepository{
 
+	@Autowired
+	private SessionFactory factory;
+	
 	public Result<Role> findAll() throws Exception {
 		// TODO Auto-generated method stub
 		return null;
@@ -30,8 +36,10 @@ public class RoleRepository implements IRoleRepository{
 	}
 
 	public Result<Role> findByQuery(RoleQuery query) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Criteria criteria = factory.getCurrentSession().createCriteria(Role.class);
+		
+		
+		return new Result<Role>(factory,criteria);
 	}
 
 }
