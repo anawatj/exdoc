@@ -1,0 +1,56 @@
+<div class="modal-header">
+	<h3 class="modal-title">Search Role</h3>
+</div>
+<div
+	class="modal-body col-xs-12 form-horizontal form-group-sm table-bordered"
+	ng-init="init()">
+	<div class="col-xs-12">
+		<div class="row">
+			<div class="col-xs-3">
+				<label>Username</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="text" class="form-control" />
+			</div>
+			<div class="col-xs-3">
+				<label>FirstName</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="text" class="form-control" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<label>LastName</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="text" class="form-control" />
+			</div>
+		
+		</div>
+		<div class="row">
+				<div class="col-xs-12">
+						<button class="btn btn-primary">Search</button>
+						<button class="btn btn-primary" ng-click="close()">Close</button>
+				</div>
+		</div>
+		<div class="row">
+				<div class="col-xs-12">
+						<table class="table table-bordered table-striped table-hover table-condensed">
+								<thead>
+										<tr>
+												<th></th>
+												<th>Username</th>
+												<th>FirstName</th>
+												<th>LastName</th>
+										</tr>
+								</thead>
+								<tbody>
+								</tbody>
+						</table>
+				</div>
+		</div>
+	
+	</div>
+</div>
+<div class="modal-footer"></div>

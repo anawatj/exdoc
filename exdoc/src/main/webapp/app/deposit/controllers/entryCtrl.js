@@ -5,7 +5,7 @@ app
 		.controller(
 				'depositEntryCtrl',
 				function($scope, $http, $q, commonService, depositService,
-						$routeParams,$location) {
+						$routeParams,$location,$uibModal) {
 					$scope.model = {
 						id : 0,
 						version:0,
@@ -127,8 +127,31 @@ app
 							}
 						}
 					};
-					$scope.findBorrowBy = function() {
+					$scope.findDepositBy = function() {
+						var modalInstance = $uibModal.open({
+							templateUrl : url+"app/center/views/user.html",
+							controller : 'userPopupCtrl',
+							size : 'lg',
+							backdrop : false,
+							animation : true,
+							resolve : {
+						/*		parameter : function() {
+									return model = {
+										subject : subject,
+										page : 1
+									};
+								}*/
+							}
+						});
 
+						modalInstance.result.then(function(selectedItem) {
+							$scope.model.depositBy= selectedItem;
+						
+						}, function() {
+							// $log.info('Modal
+							// dismissed at: ' + new
+							// Date());
+						});
 					};
 					$scope.findReviewBy = function() {
 
