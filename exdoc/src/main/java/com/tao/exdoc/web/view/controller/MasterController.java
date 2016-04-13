@@ -21,6 +21,8 @@ import com.tao.exdoc.domain.master.DocumentGroup;
 import com.tao.exdoc.domain.master.DocumentMode;
 import com.tao.exdoc.domain.master.DocumentType;
 import com.tao.exdoc.domain.master.Position;
+import com.tao.exdoc.domain.security.User;
+import com.tao.exdoc.repository.IUserRepository;
 import com.tao.exdoc.repository.MasterDataRepository;
 
 @Controller
@@ -29,6 +31,9 @@ public class MasterController {
 
 	@Autowired
 	private MasterDataRepository masterDataRepository;
+	
+	@Autowired
+	private IUserRepository userRepository;
 
 	@RequestMapping(value = "/department/getAll", method = RequestMethod.GET)
 	@Transactional
@@ -154,6 +159,16 @@ public class MasterController {
 	
 		Branch branch = new  Branch();
 		branch.setId(0);
+		branch.setCode("B001");
+		branch.setDescription("Bangkok");
+		branch.setCreatedBy("SYSTEM");
+		branch.setCreatedDate(new Date());
+		branch.setUpdatedBy("SYSTEM");
+		branch.setUpdatedDate(new Date());
+		branches.add(branch);
+		
+		branch = new  Branch();
+		branch.setId(0);
 		branch.setCode("B002");
 		branch.setDescription("Chiangmai");
 		branch.setCreatedBy("SYSTEM");
@@ -161,7 +176,6 @@ public class MasterController {
 		branch.setUpdatedBy("SYSTEM");
 		branch.setUpdatedDate(new Date());
 		branches.add(branch);
-		
 		for(Branch item : branches)
 		{
 			masterDataRepository.save(Branch.class, item);
@@ -460,6 +474,23 @@ public class MasterController {
 	    for(DepositObjective item:deposits)
 	    {
 	    	masterDataRepository.save(DepositObjective.class, item);
+	    }
+	    
+	    List<User> users = new ArrayList<User>();
+	    User user= new User();
+	    user.setUsername("Admin");;
+	    user.setPassword("1234");
+	    user.setFirstName("Admin");
+	    user.setLastName("Admin");
+	    user.setEmail("ajarusiripot@gmail.com");
+	    user.setCreatedBy("SYSTEM");;
+	    user.setCreatedDate(new Date());
+	    user.setUpdatedBy("SYSTEM");
+	    user.setUpdatedDate(new Date());
+	    users.add(user);
+	    for(User item : users)
+	    {
+	    	userRepository.save(item);
 	    }
 		return "Complete";
 
