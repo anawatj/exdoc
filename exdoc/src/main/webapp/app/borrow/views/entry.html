@@ -100,7 +100,7 @@
 			<div class="col-xs-3">
 					<select class="form-control" ng-model="model.position.id">
 							<option value="0"></option>
-							<option ng-repeat="position in positions" value="{{position.id}}" ng-selected="position.id===model.position.id">{{position.description}}</option>
+							<option ng-repeat="position in positions" ng-selected="position.id==model.position.id" value="{{position.id}}" >{{position.description}}</option>
 					</select>
 			</div>
 		</div>

@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default" ng-init="init()">
 	<form>
 		<div class="row">
 			<div class="col-xs-3">
@@ -68,7 +68,7 @@
 							<tr>
 									<td colspan="3">
 									
-											<button class="btn btn-primary">Add</button>
+											<button class="btn btn-primary" ng-click="addRow()">Add</button>
 											<button class="btn btn-primary">Del</button>
 									</td>
 							</tr>
