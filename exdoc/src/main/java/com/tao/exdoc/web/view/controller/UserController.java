@@ -3,6 +3,8 @@ package com.tao.exdoc.web.view.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -54,6 +56,19 @@ public class UserController {
 		return result.getPage(query.getPage());
 		
 	}
+	
+	  @RequestMapping(value = "/getProfile", method = RequestMethod.GET)
+	    @Transactional
+	    public @ResponseBody User getUserProfile() {
+	        if (SecurityContextHolder.getContext().getAuthentication() == null
+	                || !SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
+	         //   LOGGER.info("cannot get profile. user not logged in");
+	            return null;
+	        }
+	        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	        User user = userRepository.findUserByUserName(userDetails.getUsername());
+	        return user;
+	    }
 	
 
 

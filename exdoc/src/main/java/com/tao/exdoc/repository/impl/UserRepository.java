@@ -58,4 +58,17 @@ public class UserRepository implements IUserRepository {
 		return null;
 	}
 
+	public User findUserByUserName(String username) {
+		Criteria criteria = factory.getCurrentSession().createCriteria(User.class);
+		criteria.add(Restrictions.eq("username",username));
+		List<User> result = criteria.list();
+		if(result!=null || result.size()>0)
+		{
+			return result.get(0);
+		}else
+		{
+			return null;
+		}
+	}
+
 }

@@ -28,5 +28,22 @@ app.config(['$routeProvider', function($routeProvider){
         			templateUrl:"./app/deposit/views/list.html",
         			controller:"depositListCtrl"
         		})
+        .when('/userEntry',
+        		{
+        			templateUrl:"./app/user/views/entry.html",
+        			controller:"userEntryCtrl"
+        		})
+        .when('/userList',
+        		{
+        			templateUrl:"./app/user/views/list.html",
+        			controller:"userListCtrl"
+        		})
         .otherwise({redirectTo:'/'});
-}]);
+}])
+.controller('mainCtrl',function($scope,$http,$localStorage)
+		{
+				$scope.init=function()
+				{
+					
+				}
+		});

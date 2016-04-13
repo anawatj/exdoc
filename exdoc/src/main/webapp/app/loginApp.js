@@ -8,8 +8,8 @@ loginApp.controller('loginCtrl',function($scope,$http, $location, $localStorage,
 	$scope.login=function()
 	{
 	
-				   $.ajax({
-					   url: './j_spring_security_check?ajax=true',
+				 /*  $.ajax({
+					   url: 'j_spring_security_check',
 	                    method: 'POST',
 	                    dataType: 'json',
 	                    data: {
@@ -28,7 +28,7 @@ loginApp.controller('loginCtrl',function($scope,$http, $location, $localStorage,
 			               }
 			               window.location="/index.html";
 			           }
-			         });
+			         });*/
 
 	};
 });

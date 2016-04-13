@@ -12,4 +12,6 @@ public interface IUserRepository extends Repository<User,Integer>{
 	User save(User entity) throws Exception;
 	
 	Result<User> findByQuery(UserQuery query) throws Exception;
+	
+	User findUserByUserName(String username);
 }

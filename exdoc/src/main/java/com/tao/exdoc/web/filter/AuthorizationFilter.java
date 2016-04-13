@@ -37,10 +37,10 @@ public class AuthorizationFilter extends GenericFilterBean {
         // if not a authenticated request, return unauthorized error.
        if (SecurityContextHolder.getContext().getAuthentication() == null
                 || !SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
-            System.out.println("not a authenticated request, return unauthorized error.");
-            response.setStatus(403);
-            response.sendRedirect(request.getContextPath() + "/unauthorized.html");
-            return;
+            //System.out.println("not a authenticated request, return unauthorized error.");
+            //response.setStatus(403);
+            //response.sendRedirect(request.getContextPath() + "/unauthorized.html");
+            //return;
         } else {
             Object userDetails = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
