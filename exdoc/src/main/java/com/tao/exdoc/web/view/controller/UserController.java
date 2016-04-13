@@ -1,5 +1,7 @@
 package com.tao.exdoc.web.view.controller;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,5 +54,7 @@ public class UserController {
 		return result.getPage(query.getPage());
 		
 	}
+	
+
 
 }

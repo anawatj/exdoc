@@ -3,12 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Login Page</title>
-<link rel="stylesheet"
-	href="./resources/theme/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="./resources/theme/bootstrap/css/bootstrap.min.css"/>
+<script type="text/javascript" src="./resources/lib/jquery-1.12.3.min.js"></script>
+<script type="text/javascript" src="./resources/theme/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./resources/lib/angular/angular.min.js"></script>
+<script type="text/javascript" src="./resources/lib/angular/angular-route.min.js"></script>
+<script type="text/javascript" src="./resources/lib/ngStorage.min.js"></script>
+<script type="text/javascript" src="./app/loginApp.js"></script>
 </head>
-<body>
+<body ng-app="loginApp">
 
-	<div class="col-xs-12" style="border: solid red; border-radius: 10px;">
+	<div class="col-xs-12" style="border: solid red; border-radius: 10px;" ng-controller="loginCtrl">
 		<div class="row">
 			<div class="col-xs-3">
 				<img src="" style="height: 100px" />
@@ -23,14 +28,14 @@
 				
 				<div class="panel panel-default">
 					<h2>Login</h2>
-					<form>
+					<form id="loginForm" ng-submit="login()">
 						<div class="row">
 							<div class="col-xs-3">
 								<label for="Username">Username</label>
 							</div>
 							<div class="col-xs-3">
 								<input type="text" class="form-control" name="username"
-									placeholder="Username" />
+									placeholder="Username" ng-model="model.username" />
 							</div>
 						</div>
 						<div class="row">
@@ -39,7 +44,7 @@
 							</div>
 							<div class="col-xs-3">
 								<input type="password" class="form-control" name="password"
-									placeholder="Password" />
+									placeholder="Password" ng-model="model.password"/>
 							</div>
 						</div>
 						<div class="row">

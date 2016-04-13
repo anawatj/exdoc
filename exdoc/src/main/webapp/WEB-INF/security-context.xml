@@ -1,49 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans xmlns="http://www.springframework.org/schema/security"
-	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-                   http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
-                   http://www.springframework.org/schema/security
-                   http://www.springframework.org/schema/security/spring-security-3.1.xsd">
-	<beans:import resource="datasource-context.xml" />
+<beans:beans xmlns:sec="http://www.springframework.org/schema/security" xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/security
+http://www.springframework.org/schema/security/spring-security.xsd">
 
-	<http pattern="/resources/**" security="none"></http>
-	<http use-expressions="true" auto-config="true"
-		disable-url-rewriting="true">
-		<intercept-url pattern="/app/**" access="premitAll" />
-	</http>
-	<beans:bean id="contextSource"
-		class="org.springframework.security.ldap.DefaultSpringSecurityContextSource">
-		<beans:constructor-arg
-			value="ldap://localhost:389/dc=exdox,dc=local" />
-		<beans:property name="anonymousReadOnly" value="true" />
-	</beans:bean>
 
-	<beans:bean id="userSearch"
-		class="org.springframework.security.ldap.search.FilterBasedLdapUserSearch">
-		<beans:constructor-arg index="0" value="" />
-		<beans:constructor-arg index="1" value="(uid={0})" />
-		<beans:constructor-arg index="2" ref="contextSource" />
-	</beans:bean>
+    <beans:import resource="datasource-context.xml" ></beans:import>
+    
+    <sec:http pattern="/resources/**" security="none" />
+    <sec:http pattern="/webjars/**" security="none" />
+    <sec:http pattern="/app/**" security="none"/>
+   
 
-	<beans:bean id="ldapAuthProvider"
-		class="org.springframework.security.ldap.authentication.LdapAuthenticationProvider">
-		<beans:constructor-arg>
-			<beans:bean
-				class="org.springframework.security.ldap.authentication.BindAuthenticator">
-				<beans:constructor-arg ref="contextSource" />
-				<beans:property name="userSearch" ref="userSearch" />
-				<!-- <beans:property name="userDnPatterns"> <beans:list><beans:value>uid={0},ou=People</beans:value></beans:list> 
-					</beans:property> -->
-			</beans:bean>
-		</beans:constructor-arg>
-		<beans:constructor-arg>
-			<beans:bean
-				class="gr.serafeim.springldapcustom.CustomLdapAuthoritiesPopulator" />
-		</beans:constructor-arg>
-	</beans:bean>
+ 
+    <!-- enable use-expressions -->
+    <sec:http auto-config="true" use-expressions="true"  >
+        <sec:intercept-url pattern="/login.html" access="permitAll()" />
+        <sec:intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
+        
+        
+        <sec:form-login login-page="/login.html" default-target-url="/index.html"
+                    authentication-failure-url="/login.html?error=true" username-parameter="username"
+                    password-parameter="password" />
+        <sec:logout logout-url="/logout" logout-success-url="/login.html" delete-cookies="JSESSIONID"
+                invalidate-session="true" />
+        <sec:anonymous username="guest" granted-authority="ROLE_GUEST" />
+        <sec:remember-me />
+    </sec:http>
+	
+    <!-- Select users and user_roles from database -->
+    <sec:authentication-manager>
+        <sec:authentication-provider>
+            <sec:jdbc-user-service data-source-ref="dataSource"
+                               users-by-username-query="select username,password,'true' as enabled from sec_m_user where code=?"
+                               authorities-by-username-query="select username ,'ROLE_USER' as authorities from  sec_m_user where code=?"
+            />
+        </sec:authentication-provider>
+    </sec:authentication-manager>
+    <!--        <beans:bean id="csrfTokenRepository" class="org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository">
+        <property name="headerName" value="X-XSRF-TOKEN" />
+    </beans:bean>-->
 
-	<authentication-manager>
-		<authentication-provider ref="ldapAuthProvider" />
-	</authentication-manager>
 </beans:beans>
