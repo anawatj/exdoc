@@ -1,14 +1,14 @@
 /**
  * 
  */
-app.controller('rowPopupCtrl',function($scope,$http, $uibModalInstance,$uibModal)
+app.controller('rowPopupCtrl',function($scope,$http, $uibModalInstance,$uibModal,config)
 		{
 	
 				$scope.totalItems =0;
 				$scope.results=[];
 				$scope.model={page:0};
-				$scope.pageSize = 10;
-				$scope.maxSize =10;
+				$scope.pageSize = config.pageSize;
+				$scope.maxSize =config.maxSize;
 				
 				$scope.save=function()
 				{

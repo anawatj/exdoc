@@ -3,6 +3,13 @@
  */
 var url = "http://localhost:8484/exdoc/";
 var app = angular.module('exdoc',['ngStorage','ngRoute','ui.bootstrap']);
+app.constant('config',
+{
+
+	pageSize : 10,
+	maxSize : 10
+
+	});
 app.run(function($rootScope) {
 
 });
