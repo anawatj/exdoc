@@ -7,9 +7,10 @@ app.controller('depositListCtrl',function($scope,$q,$routeParams,$location,commo
 				$scope.branches=[];
 				$scope.positions=[];
 				$scope.objectives=[];
-				$scope.list=[];
-				$scope.totalRecord=0;
-				$scope.totalPage=0;
+				$scope.results=[];
+				$scope.totalItems=0;
+				$scope.maxSize=0;
+				$scope.maxPage=0;
 				$scope.model={page:1,orderBy:'id',orderType:'desc'};
 				$scope.init=function()
 				{
