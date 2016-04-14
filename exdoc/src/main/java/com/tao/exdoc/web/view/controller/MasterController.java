@@ -608,7 +608,7 @@ public class MasterController {
 	    
 	    for(ContainerType item : containerTypes)
 	    {
-	    	masterDataRepository.save(ContainerType.class, containerType);
+	    	masterDataRepository.save(ContainerType.class, item);
 	    }
 		return "Complete";
 
