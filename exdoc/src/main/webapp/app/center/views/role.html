@@ -10,18 +10,18 @@
 				<label>RoleCode</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="text" class="form-control" />
+				<input type="text" class="form-control" ng-model="model.roleCode"/>
 			</div>
 			<div class="col-xs-3">
 				<label>RoleName</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="text" class="form-control" />
+				<input type="text" class="form-control" ng-model="model.roleDesc"/>
 			</div>
 		</div>
 		<div class="row">
 				<div class="col-xs-12">
-						<button class="btn btn-primary">Search</button>
+						<button class="btn btn-primary" ng-click="search()">Search</button>
 				</div>
 		</div>
 		<div class="row">
@@ -35,8 +35,17 @@
 										</tr>
 								</thead>
 								<tbody>
+										<tr ng-repeat="item in results">
+												<td><input type="checkbox" ng-model="item.selected"/></td>
+												<td>{{item.roleCode}}</td>
+												<td>{{item.roleDesc}}</td>
+										</tr>
 								</tbody>
 						</table>
+						<div>
+								{{model.page}} of {{numPages}}
+						</div>
+						 <uib-pagination total-items="totalItems" num-pages="numPages" items-per-page="pageSize" max-size="maxSize"  ng-change="search()" ng-model="model.page" class="pagination-xs" boundary-links="true" rotate="false"></uib-pagination>
 				</div>
 		</div>
 		<div class="row">

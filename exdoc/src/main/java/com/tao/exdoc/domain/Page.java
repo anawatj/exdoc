@@ -16,8 +16,8 @@ public final class Page<E> {
 
 	
 	private List<E> list;
-	private Integer totalRecord;
-	private Integer totalPage;
+	private Long totalRecord;
+	private Long totalPage;
 	
 	public List<E> getList() {
 		return list;
@@ -25,16 +25,16 @@ public final class Page<E> {
 	public void setList(List<E> list) {
 		this.list = list;
 	}
-	public Integer getTotalRecord() {
+	public Long getTotalRecord() {
 		return totalRecord;
 	}
-	public void setTotalRecord(Integer totalRecord) {
+	public void setTotalRecord(Long totalRecord) {
 		this.totalRecord = totalRecord;
 	}
-	public Integer getTotalPage() {
+	public Long getTotalPage() {
 		return totalPage;
 	}
-	public void setTotalPage(Integer totalPage) {
+	public void setTotalPage(Long totalPage) {
 		this.totalPage = totalPage;
 	}
 	private Criteria criteria;
@@ -55,7 +55,7 @@ public final class Page<E> {
 		this.criteria=criteria;
 		this.columns= columns;
 		this.criteria.setProjection(null);
-		this.totalRecord=(Integer) this.criteria.setProjection(Projections.id()).uniqueResult();
+		this.totalRecord=(Long) this.criteria.setProjection(Projections.count("id")).uniqueResult();
 		this.totalPage = this.totalRecord/Config.PAGE_SIZE;
 		if((this.totalRecord%Config.PAGE_SIZE)>0)
 		{

@@ -5,7 +5,7 @@
 				<label>Username</label>
 			</div>
 			<div class="col-xs-6">
-				<input type="text" class="form-control" />
+				<input type="text" class="form-control" ng-model="model.username" />
 			</div>
 
 		</div>
@@ -14,7 +14,7 @@
 				<label>Password</label>
 			</div>
 			<div class="col-xs-6">
-				<input type="password" class="form-control" />
+				<input type="password" class="form-control" ng-model="model.password"/>
 			</div>
 		</div>
 		<div class="row">
@@ -22,7 +22,7 @@
 				<label>Confirm</label>
 			</div>
 			<div class="col-xs-6">
-				<input type="password" class="form-control" />
+				<input type="password" class="form-control" ng-model="model.confirmPassword" />
 			</div>
 		</div>
 		<div class="row">
@@ -30,7 +30,7 @@
 				<label>FirstName</label>
 			</div>
 			<div class="col-xs-6">
-				<input type="text" class="form-control" />
+				<input type="text" class="form-control" ng-model="model.firstName" />
 			</div>
 		</div>
 		<div class="row">
@@ -38,7 +38,7 @@
 				<label>LastName</label>
 			</div>
 			<div class="col-xs-6">
-				<input type="text" class="form-control" />
+				<input type="text" class="form-control" ng-model="model.lastName" />
 			</div>
 		</div>
 		<div class="row">
@@ -46,7 +46,7 @@
 				<label>Email</label>
 			</div>
 			<div class="col-xs-6">
-				<input type="email" class="form-control" />
+				<input type="email" class="form-control" ng-model="model.email"/>
 			</div>
 		</div>
 		<div class="row">
@@ -62,14 +62,18 @@
 						</tr>
 					</thead>
 					<tbody>
-					
+							<tr ng-repeat="item in model.roles">
+									<td><input type="checkbox" ng-model="item.selected"/></td>
+									<td>{{item.roleCode}}</td>
+									<td>{{item.roleDesc}}</td>
+							</tr>
 					</tbody>
 					<tfoot>
 							<tr>
 									<td colspan="3">
 									
 											<button class="btn btn-primary" ng-click="addRow()">Add</button>
-											<button class="btn btn-primary">Del</button>
+											<button class="btn btn-primary" ng-click="delRow()">Del</button>
 									</td>
 							</tr>
 					</tfoot>
@@ -78,7 +82,7 @@
 			</div>
 			<div class="row">
 					<div class="col-xs-9">
-							<button class="btn btn-primary">Save</button>
+							<button class="btn btn-primary" ng-click="save()">Save</button>
 							<button class="btn btn-primary">Clear</button>
 					</div>
 			</div>

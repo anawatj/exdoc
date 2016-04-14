@@ -13,10 +13,21 @@ public class Role extends AbstractDomain<Integer>{
 	{
 		this.authorizes = new HashSet<Authorize>();
 	}
+	
 	private String roleCode;
 	private String roleDesc;
 	
 	private Set<Authorize> authorizes;
+	
+	private boolean selected;
+
+	public boolean getSelected() {
+		return selected;
+	}
+
+	public void setSelected(boolean selected) {
+		this.selected = selected;
+	}
 
 	public String getRoleCode() {
 		return roleCode;
