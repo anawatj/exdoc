@@ -1,7 +1,7 @@
 /**
  * 
  */
-app.controller('containerListCtrl',function($scope,$q,$routeParams,$location,containerService,commonService,config,$pageUtil)
+app.controller('containerListCtrl',function($scope,$q,$routeParams,$location,containerService,commonService,config,$pageUtil,$uibModal)
 		{
 				$scope.model = {page:1};
 				$scope.results=[];
