@@ -1,3 +1,60 @@
-<div class="panel panel-default">
+<div class="panel panel-default" ng-init="init()">
+		<div class="col-xs-12">
+		<div class="row">
+			<div class="col-xs-3">
+				<label>Username</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="text" class="form-control" ng-model="model.username" />
+			</div>
+			<div class="col-xs-3">
+				<label>FirstName</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="text" class="form-control" ng-model="model.firstName"/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<label>LastName</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="text" class="form-control" ng-model="model.lastName" />
+			</div>
+		
+		</div>
+		<div class="row">
+				<div class="col-xs-12">
+						<button class="btn btn-primary" ng-click="search()">Search</button>
+				</div>
+		</div>
+		<div class="row">
+				<div class="col-xs-12">
+						<table class="table table-bordered table-striped table-hover table-condensed">
+								<thead>
+										<tr>
+												<th></th>
+												<th>Username</th>
+												<th>FirstName</th>
+												<th>LastName</th>
+										</tr>
+								</thead>
+								<tbody>
+										<tr ng-repeat="item in results">
+												<td><button class="btn btn-primary" ng-click="edit(item.id)"><i class="glyphicon glyphicon-pencil"></i></button></td>
+												<td>{{item.username}}</td>
+												<td>{{item.firstName}}</td>
+												<td>{{item.lastName}}</td>
+										</tr>
+								</tbody>
+						</table>
+						<div>
+								{{model.page}} of {{numPages}} of {{totalItems}}
+						</div>
+						 <uib-pagination total-items="totalItems" num-pages="numPages" items-per-page="pageSize" max-size="maxSize"  ng-change="search()" ng-model="model.page" class="pagination-xs" boundary-links="true" rotate="false"></uib-pagination>
+				</div>
+		</div>
+	
+	</div>
 
 </div>

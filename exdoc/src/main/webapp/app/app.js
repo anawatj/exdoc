@@ -10,6 +10,28 @@ app.constant('config',
 	maxSize : 10
 
 	});
+app.factory("$pageUtil",function()
+{
+	var factory = {};
+	factory.getPage=function(page)
+	{
+		if(!page)
+		{
+			page = 1;
+		}
+		if(page==null || page == undefined)
+		{
+			page =1;
+		}
+		if(page==0)
+		{
+			page=1;
+		}
+		return page;
+			
+	}
+	return factory;
+});
 app.run(function($rootScope) {
 
 });

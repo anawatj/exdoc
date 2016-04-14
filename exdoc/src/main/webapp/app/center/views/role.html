@@ -43,7 +43,7 @@
 								</tbody>
 						</table>
 						<div>
-								{{model.page}} of {{numPages}}
+								{{model.page}} of {{numPages}} of {{totalItems}}
 						</div>
 						 <uib-pagination total-items="totalItems" num-pages="numPages" items-per-page="pageSize" max-size="maxSize"  ng-change="search()" ng-model="model.page" class="pagination-xs" boundary-links="true" rotate="false"></uib-pagination>
 				</div>

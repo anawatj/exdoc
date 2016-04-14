@@ -1,7 +1,7 @@
 /**
  * 
  */
-app.controller('rowPopupCtrl',function($scope,$http, $uibModalInstance,$uibModal,config)
+app.controller('rowPopupCtrl',function($scope,$http, $uibModalInstance,$uibModal,config,$pageUtil)
 		{
 	
 				$scope.totalItems =0;
@@ -30,18 +30,7 @@ app.controller('rowPopupCtrl',function($scope,$http, $uibModalInstance,$uibModal
 				};
 				$scope.search=function()
 				{
-					if(!$scope.model.page)
-						{
-							$scope.model.page=1;
-						}
-					if($scope.model.page==null || $scope.model.page==undefined)
-					{
-						$scope.model.page=1;
-					}
-					if($scope.model.page==0)
-						{
-						$scope.model.page=1;
-						}
+					$scope.model.page =$pageUtil.getPage($scope.model.page);
 					$http.post(url+"role/search",$scope.model)
 					.success(function(data)
 							{
