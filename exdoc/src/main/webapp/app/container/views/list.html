@@ -5,13 +5,13 @@
 				<label>ContainerCode</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="text" class="form-control" />
+				<input type="text" class="form-control"  ng-model="model.containerCode"/>
 			</div>
 			<div class="col-xs-3">
 				<label>ContainerDesc</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="text" class="form-control" />
+				<input type="text" class="form-control" ng-model="model.containerDesc" />
 			</div>
 		</div>
 		<div class="row">
@@ -20,20 +20,31 @@
 			</div>
 			<div class="col-xs-3">
 				<div class="input-group">
-					<input type="text" class="form-control" />
-					<div class="input-group-btn">
+					<input type="text" class="form-control" ng-model="model.containerByCode"/>
+					<div class="input-group-btn" ng-click="findContainerBy()">
 						<button class="btn btn-primary">
 							<i class="glyphicon glyphicon-search"></i>
 						</button>
 
 					</div>
+					<label>{{model.containerByDesc}}</label>
 				</div>
 			</div>
-			<div class="col-xs-3">
+		
+			
+		</div>
+		<div class="row">
+				<div class="col-xs-3">
 				<label>ContainerDate</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="date" class="form-control" />
+				<input type="date" class="form-control" ng-model="model.containerDateStart"/>
+			</div>
+			<div class="col-xs-3">
+				<label>To</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="date" class="form-control" ng-model="model.containerDateEnd"/>
 			</div>
 		</div>
 		<div class="row">
@@ -41,13 +52,19 @@
 				<label>ContainerType</label>
 			</div>
 			<div class="col-xs-3">
-				<select class="form-control"></select>
+				<select class="form-control" ng-model="model.containerType">
+						<option value="0"></option>
+						<option ng-repeat="item in containerTypes" value="{{item.id}}" >{{item.description}}</option>
+				</select>
 			</div>
 			<div class="col-xs-3">
 				<label>Branch</label>
 			</div>
 			<div class="col-xs-3">
-				<select class="form-control"></select>
+				<select class="form-control" ng-model="model.branch">
+						<option value="0"></option>
+						<option ng-repeat="item in branches" value="{{item.id}}">{{item.description}}</option>
+				</select>
 			</div>
 
 		</div>
@@ -56,13 +73,16 @@
 				<label>Department</label>
 			</div>
 			<div class="col-xs-3">
-				<select class="form-control"></select>
+				<select class="form-control" ng-model="model.department">
+					<option value="0"></option>
+					<option ng-repeat="item in departments" value="{{item.id}}">{{item.description}}</option>
+				</select>
 			</div>
 			<div class="col-xs-3">
-				<label>MaxDoc</label>
+				<label>Level</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="number" class="form-control" />
+				<input type="number" class="form-control" ng-model="model.level"/>
 			</div>
 		</div>
 

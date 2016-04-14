@@ -52,5 +52,34 @@ app.controller('containerListCtrl',function($scope,$q,$routeParams,$location,con
 				{
 					$location.path("/containerEntry").search("id",id);
 				};
+				$scope.findContainerBy=function()
+				{
+					var modalInstance = $uibModal.open({
+						templateUrl : url+"app/center/views/user.html",
+						controller : 'userPopupCtrl',
+						size : 'lg',
+						backdrop : false,
+						animation : true,
+						resolve : {
+					/*		parameter : function() {
+								return model = {
+									subject : subject,
+									page : 1
+								};
+							}*/
+						}
+					});
+
+					modalInstance.result.then(function(selectedItem) {
+						$scope.model.containerById= selectedItem.id;
+						$scope.model.containerByCode = selectedItem.username;
+						$scope.model.containerByDesc = selectedItem.firstName+" "+selectedItem.lastName;
+					
+					}, function() {
+						// $log.info('Modal
+						// dismissed at: ' + new
+						// Date());
+					});
+				}
 				
 		});
