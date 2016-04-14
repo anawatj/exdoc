@@ -36,8 +36,16 @@ public class Container extends AbstractDomain<Integer> {
 	private Integer maxDoc;
 	private Integer numDoc;
 	
+	private boolean selected;
+	
 
 	
+	public boolean getSelected() {
+		return selected;
+	}
+	public void setSelected(boolean selected) {
+		this.selected = selected;
+	}
 	public Integer getNumDoc() {
 		return numDoc;
 	}

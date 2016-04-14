@@ -36,6 +36,10 @@ app.service("commonService",['$http',function($http)
 									{
 										return $http.get(url+"master/deposit/objective/getAll");
 									};
+									service.getAllContainerType=function()
+									{
+										return $http.get(url+"master/containerType/getAll");
+									}
 									service.getObject=function(obj)
 									{
 										if(!obj)

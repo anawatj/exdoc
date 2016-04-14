@@ -6,13 +6,13 @@
 				<label>ContainerCode</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="text" class="form-control" />
+				<input type="text" class="form-control" ng-model="model.containerCode"/>
 			</div>
 			<div class="col-xs-3">
 				<label>ContainerDesc</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="text" class="form-control" />
+				<input type="text" class="form-control" ng-model="model.containerDesc"/>
 			</div>
 		</div>
 		<div class="row">
@@ -21,9 +21,9 @@
 			</div>
 			<div class="col-xs-3">
 				<div class="input-group">
-					<input type="text" class="form-control" />
+					<input type="text" class="form-control" ng-model="model.containerBy.username" />
 					<div class="input-group-btn">
-						<button class="btn btn-primary">
+						<button class="btn btn-primary" ng-click="findContainerBy()">
 							<i class="glyphicon glyphicon-search"></i>
 						</button>
 
@@ -118,13 +118,22 @@
 							<td><textarea class="form-control"></textarea></td>
 						</tr>
 					</tbody>
+					<tfoot>
+						
+							<tr>
+									<td colspan="9">
+											<button class="btn btn-primary" ng-click="addItem()">Add</button>
+											<button class="btn btn-primary" ng-click="delItem()">Del</button>
+									</td>
+							</tr>
+					</tfoot>
 				</table>
 
 			</div>
 		</div>
 		<div class="row">
 				<div class="col-xs-12">
-						<button class="btn btn-primary">Save</button>
+						<button class="btn btn-primary" ng-click="save()">Save</button>
 						<button class="btn btn-primary">Clear</button>
 				</div>
 		</div>

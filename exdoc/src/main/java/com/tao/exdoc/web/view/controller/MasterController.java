@@ -101,6 +101,13 @@ public class MasterController {
 		return result.getFullResult();
 	}
 	
+	@RequestMapping(value="/containerType/getAll",method=RequestMethod.GET)
+	@Transactional
+	public @ResponseBody Result<SimpleMasterObject> getAllContainerType()	
+	{
+		Result<SimpleMasterObject> result = masterDataRepository.findAll(ContainerType.class);
+		return result.getFullResult();
+	}
 	
 
 	@RequestMapping(value = "/batch", method = RequestMethod.GET)
