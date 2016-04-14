@@ -50,6 +50,16 @@ app.controller('containerEntryCtrl',function($scope,$q,$routeParams,$location,$u
 							$scope.model.containerType= commonService.getObject($scope.model.containerType);
 							$scope.model.items = commonService.getArray($scope.model.items);
 							$scope.model.containerDate =commonService.getDate($scope.model.containerDate);
+							for(var index=0;index<$scope.model.items.length;index++)
+							{
+								var item  =$scope.model.items[index];
+								item.containerBy= commonService.getObject(item.containerBy);
+								item.branch= commonService.getObject(item.branch);
+								item.department=commonService.getObject(item.department);
+								item.containerType= commonService.getObject(item.containerType);
+								item.items = commonService.getArray(item.items);
+								item.containerDate =commonService.getDate(item.containerDate);
+							}
 						}
 						deferred.resolve(data);
 					});
@@ -61,7 +71,7 @@ app.controller('containerEntryCtrl',function($scope,$q,$routeParams,$location,$u
 					item.id=0;
 					if($scope.model.id==0)
 					{
-						item.parentId = undefined
+						item.parentId = undefined;
 					}else
 					{
 						item.parentId=$scope.model.id;
@@ -141,7 +151,15 @@ app.controller('containerEntryCtrl',function($scope,$q,$routeParams,$location,$u
 					containerService.save($scope.model)
 					.success(function(data)
 							{
-									$location.path("/containerEntry").search("id",data.id);
+									if($scope.id==0)
+									{
+										
+										$location.path("/containerEntry").search("id",data.id);
+									}else
+									{
+										window.location.reload();
+									}
+									
 							})	;
 				};
 				

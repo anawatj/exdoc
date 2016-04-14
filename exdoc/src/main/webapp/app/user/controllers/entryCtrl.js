@@ -90,7 +90,17 @@ app.controller('userEntryCtrl',['$scope', '$q', '$location', '$routeParams',
 		userService.save($scope.model)
 		.success(function(data)
 				{
-					$location.path('/userEntry').search('id',data.id);
+					
+						if($scope.id==0)
+						{
+							$location.path('/userEntry').search('id',data.id);
+						}else
+						{
+							window.location.reload();
+						}
+				
+					
+			
 				})	;
 	};
 }]);

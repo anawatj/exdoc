@@ -57,16 +57,42 @@ public class ContainerRepository implements IContainerRepository {
 	}
 
 	public Container save(Container entity) throws Exception {
+		for(Container item :entity.getItems())
+		{
+			item= setItems(item);
+		}
 		Container data = findByKey(entity.getId());
 		Container result = (Container) factory.getCurrentSession().merge(entity);
 		return  result;
 	}
+	public Container setItems(Container item) throws Exception
+	{
+		
+		Container data  = findByKey(item.getId());
+		if(data==null)
+		{
+			return item;
+		}
+		if(data.getItems()!=null && data.getItems().size()>0)
+		{
+			for(Container sitem:data.getItems())
+			{
+					setItems(sitem);
+			}
+			item.setItems(data.getItems());
+		
+		}
+		
+		return item;
+	}
+	
 
 	public Result<Container> findByQuery(ContainerQuery query) throws Exception {
 		Criteria criteria = factory.getCurrentSession().createCriteria(Container.class);
 		criteria.setFetchMode("containerType",FetchMode.JOIN);
 		criteria.setFetchMode("department",FetchMode.JOIN);
 		criteria.setFetchMode("branch", FetchMode.JOIN);
+		criteria.setFetchMode("containerBy",FetchMode.JOIN);
 		
 		if(query.getContainerCode()!=null && !query.getContainerCode().equals(""))
 		{
@@ -121,7 +147,7 @@ public class ContainerRepository implements IContainerRepository {
 			criteria.add(Restrictions.eq("cb.id", query.getContainerById()));
 		}
 		
-		return new Result<Container>(factory,criteria,Container.class,"id","containerCode","containerDesc","containerType","containerDate","level","departmnt","branch","containerBy");
+		return new Result<Container>(factory,criteria,Container.class,"id","containerCode","containerDesc","containerType","containerDate","level","department","branch","containerBy");
 		
 	}
 
