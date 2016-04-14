@@ -71,12 +71,26 @@ public class Container extends AbstractDomain<Integer> {
 		this.parentId = parentId;
 	}
 	public Branch getBranch() {
+		if(branch!=null)
+		{
+			if(branch.getId()==null || branch.getId()==0)
+			{
+				return null;
+			}
+		}
 		return branch;
 	}
 	public void setBranch(Branch branch) {
 		this.branch = branch;
 	}
 	public Department getDepartment() {
+		if(department!=null)
+		{
+			if(department.getId()==null || department.getId()==0)
+			{
+				return null;
+			}
+		}
 		return department;
 	}
 	public void setDepartment(Department department) {
@@ -96,6 +110,13 @@ public class Container extends AbstractDomain<Integer> {
 		this.containerDesc = containerDesc;
 	}
 	public ContainerType getContainerType() {
+		if(containerType!=null)
+		{
+			if(containerType.getId()==null || containerType.getId()==0)
+			{
+				return null;
+			}
+		}
 		return containerType;
 	}
 	public void setContainerType(ContainerType containerType) {
@@ -104,6 +125,13 @@ public class Container extends AbstractDomain<Integer> {
 	
 
 	public User getContainerBy() {
+		if(containerBy!=null)
+		{
+			if(containerBy.getId()==null || containerBy.getId()==0)
+			{
+				return null;
+			}
+		}
 		return containerBy;
 	}
 	public void setContainerBy(User containerBy) {
