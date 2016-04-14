@@ -34,7 +34,7 @@
 				<label>ContainerDate</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="date" class="form-control" />
+				<input type="date" class="form-control" ng-model="model.containerDate"/>
 			</div>
 		</div>
 		<div class="row">
@@ -42,13 +42,15 @@
 				<label>ContainerType</label>
 			</div>
 			<div class="col-xs-3">
-				<select class="form-control"></select>
+				<select class="form-control" ng-model="model.containerType.id" ng-options="item.id as item.description for item in containerTypes" >
+						<option value="0"></option>
+				</select>
 			</div>
 			<div class="col-xs-3">
 				<label>Branch</label>
 			</div>
 			<div class="col-xs-3">
-				<select class="form-control"></select>
+				<select class="form-control" ng-model="model.branch.id" ng-options="item.id as item.description for item in branches"></select>
 			</div>
 
 		</div>
@@ -57,13 +59,13 @@
 				<label>Department</label>
 			</div>
 			<div class="col-xs-3">
-				<select class="form-control"></select>
+				<select class="form-control" ng-model="model.department.id" ng-options="item.id as item.description for item in departments"></select>
 			</div>
 			<div class="col-xs-3">
 				<label>MaxDoc</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="number" class="form-control" />
+				<input type="number" class="form-control" ng-model="model.maxDoc" />
 			</div>
 		</div>
 
@@ -72,7 +74,7 @@
 				<label>Remark</label>
 			</div>
 			<div class="col-xs-6">
-				<textarea class="form-control"></textarea>
+				<textarea class="form-control" ng-model="model.remark"></textarea>
 			</div>
 		</div>
 		<div class="row">
@@ -96,26 +98,29 @@
 					<tbody>
 						<tr ng-repeat="item in model.items">
 
-							<td><input type="checkbox" /></td>
-							<td><input type="text" class="form-control" /></td>
-							<td><input type="text" class="form-control" /></td>
+							<td><input type="checkbox" ng-model="item.selected" /></td>
+							<td><input type="text" class="form-control" ng-model="item.containerCode"/></td>
+							<td><input type="text" class="form-control" ng-model="item.containerDesc" /></td>
 							<td>
 								<div class="input-group">
-									<input type="text" class="form-control" />
+									<input type="text" class="form-control" ng-model="item.containerBy.username" />
 									<div class="input-group-btn">
-										<button class="btn btn-primary">
+										<button class="btn btn-primary" ng-click="findSubContainerBy(item)">
 											<i class="glyphicon glyphicon-search"></i>
 										</button>
 
 									</div>
 								</div>
 							</td>
-							<td><input type="date" class="form-control"/></td>
-							<td><select class="form-control"></select></td>
-							<td><select class="form-control"></select></td>
-							<td><select class="form-control"></select></td>
-							<td><input type="number" class="form-control"/></td>
-							<td><textarea class="form-control"></textarea></td>
+							<td><input type="date" class="form-control" ng-model="item.containerDate"/></td>
+							<td>
+							<select class="form-control" ng-model="item.containerType.id" ng-options="sitem.id as sitem.description for sitem in containerTypes">
+							</select>
+							</td>
+							<td><select class="form-control" ng-model="item.branch.id" ng-options="sitem.id as sitem.description for sitem in branches"></select></td>
+							<td><select class="form-control" ng-model="item.department.id" ng-options="sitem.id as sitem.description for sitem in departments"></select></td>
+							<td><input type="number" class="form-control" ng-model="item.maxDoc"/></td>
+							<td><textarea class="form-control" ng-model="item.remark"></textarea></td>
 						</tr>
 					</tbody>
 					<tfoot>

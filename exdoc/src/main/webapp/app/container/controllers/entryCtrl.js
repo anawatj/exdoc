@@ -3,7 +3,7 @@
  */
 app.controller('containerEntryCtrl',function($scope,$q,$routeParams,$location,$uibModal,commonService,containerService)
 		{
-				$scope.model={id:0,items:[]};
+				$scope.model={id:0,level:1,items:[]};
 				$scope.id= $routeParams.id;
 				$scope.departments=[];
 				$scope.branches=[];
@@ -39,7 +39,7 @@ app.controller('containerEntryCtrl',function($scope,$q,$routeParams,$location,$u
 						$scope.model = data[3].data;
 						if(!$scope.model)
 						{
-							$scope.model={id:0,items:[]};
+							$scope.model={id:0,level:1,items:[]};
 						}
 						$scope.model.id= $scope.id;
 						if($scope.model.id>0)
@@ -66,6 +66,7 @@ app.controller('containerEntryCtrl',function($scope,$q,$routeParams,$location,$u
 					{
 						item.parentId=$scope.model.id;
 					}
+					item.level = $scope.model.level+1;
 					item.selected=false;
 					$scope.model.items.push(item);
 				};
