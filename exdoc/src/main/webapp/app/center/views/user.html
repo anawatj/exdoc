@@ -30,11 +30,11 @@
 		</div>
 		<div class="row">
 				<div class="col-xs-12">
-						<button class="btn btn-primary">Search</button>
+						<button class="btn btn-primary" ng-click="search()">Search</button>
 						<button class="btn btn-primary" ng-click="close()">Close</button>
 				</div>
 		</div>
-		<div class="row">
+			<div class="row">
 				<div class="col-xs-12">
 						<table class="table table-bordered table-striped table-hover table-condensed">
 								<thead>
@@ -46,11 +46,20 @@
 										</tr>
 								</thead>
 								<tbody>
+										<tr ng-repeat="item in results">
+												<td><button class="btn btn-primary" ng-click="select(item)"><i class="glyphicon glyphicon-pencil"></i></button></td>
+												<td>{{item.username}}</td>
+												<td>{{item.firstName}}</td>
+												<td>{{item.lastName}}</td>
+										</tr>
 								</tbody>
 						</table>
+						<div>
+								{{model.page}} of {{numPages}} of {{totalItems}}
+						</div>
+						 <uib-pagination total-items="totalItems" num-pages="numPages" items-per-page="pageSize" max-size="maxSize"  ng-change="search()" ng-model="model.page" class="pagination-xs" boundary-links="true" rotate="false"></uib-pagination>
 				</div>
 		</div>
-	
 	</div>
 </div>
 <div class="modal-footer"></div>

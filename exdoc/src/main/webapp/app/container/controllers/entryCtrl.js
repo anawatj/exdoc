@@ -29,7 +29,7 @@ app.controller('containerEntryCtrl',function($scope,$q,$routeParams,$location,$u
 							 		commonService.getAllDepartment(),
 							 		commonService.getAllBranch(),
 							 		commonService.getAllContainerType(),
-							 		containrService.getByKey($scope.id)
+							 		containerService.getByKey($scope.id)
 							 ]
 					).then(function(data)
 					{

@@ -35,6 +35,8 @@ public class ContainerRepository implements IContainerRepository {
 		Criteria criteria = factory.getCurrentSession().createCriteria(Container.class);
 		criteria.setFetchMode("containerType", FetchMode.JOIN);
 		criteria.setFetchMode("department", FetchMode.JOIN);
+		criteria.setFetchMode("branch", FetchMode.JOIN);
+		criteria.setFetchMode("containerBy", FetchMode.JOIN);
 		criteria.setFetchMode("items",FetchMode.JOIN);
 		criteria.add(Restrictions.eq("id",key));
 		
