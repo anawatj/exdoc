@@ -30,8 +30,22 @@ public class Container extends AbstractDomain<Integer> {
 	private Set<Container> items;
 	private Branch branch;
 	private Department department;
+	private Integer parentId;
+	private Integer level;
 
 	
+	public Integer getLevel() {
+		return level;
+	}
+	public void setLevel(Integer level) {
+		this.level = level;
+	}
+	public Integer getParentId() {
+		return parentId;
+	}
+	public void setParentId(Integer parentId) {
+		this.parentId = parentId;
+	}
 	public Branch getBranch() {
 		return branch;
 	}

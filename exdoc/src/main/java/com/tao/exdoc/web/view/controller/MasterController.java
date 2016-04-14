@@ -15,6 +15,7 @@ import com.tao.exdoc.domain.Result;
 import com.tao.exdoc.domain.SimpleMasterObject;
 import com.tao.exdoc.domain.master.BorrowObjective;
 import com.tao.exdoc.domain.master.Branch;
+import com.tao.exdoc.domain.master.ContainerType;
 import com.tao.exdoc.domain.master.Department;
 import com.tao.exdoc.domain.master.DepositObjective;
 import com.tao.exdoc.domain.master.DocumentGroup;
@@ -546,7 +547,62 @@ public class MasterController {
 	    {
 	    	roleRepository.save(item);
 	    }
+	    List<ContainerType> containerTypes = new ArrayList<ContainerType>();
+	    ContainerType containerType = new ContainerType();
+	    containerType.setId(0);
+	    containerType.setCode("CT00001");
+	    containerType.setDescription("ContainerType1");
+	    containerType.setCreatedBy("SYSTEM");
+	    containerType.setCreatedDate(new Date());
+	    containerType.setUpdatedBy("SYSTEM");
+	    containerType.setUpdatedDate(new Date());
+	    containerTypes.add(containerType);
 	    
+	    containerType = new ContainerType();
+	    containerType.setId(0);
+	    containerType.setCode("CT00002");
+	    containerType.setDescription("ContainerType2");
+	    containerType.setCreatedBy("SYSTEM");
+	    containerType.setCreatedDate(new Date());
+	    containerType.setUpdatedBy("SYSTEM");
+	    containerType.setUpdatedDate(new Date());
+	    containerTypes.add(containerType);
+	
+	    
+	    containerType = new ContainerType();
+	    containerType.setId(0);
+	    containerType.setCode("CT00003");
+	    containerType.setDescription("ContainerType3");
+	    containerType.setCreatedBy("SYSTEM");
+	    containerType.setCreatedDate(new Date());
+	    containerType.setUpdatedBy("SYSTEM");
+	    containerType.setUpdatedDate(new Date());
+	    containerTypes.add(containerType);
+	    
+	    containerType = new ContainerType();
+	    containerType.setId(0);
+	    containerType.setCode("CT00004");
+	    containerType.setDescription("ContainerType4");
+	    containerType.setCreatedBy("SYSTEM");
+	    containerType.setCreatedDate(new Date());
+	    containerType.setUpdatedBy("SYSTEM");
+	    containerType.setUpdatedDate(new Date());
+	    containerTypes.add(containerType);
+	    
+	    containerType = new ContainerType();
+	    containerType.setId(0);
+	    containerType.setCode("CT00005");
+	    containerType.setDescription("ContainerType5");
+	    containerType.setCreatedBy("SYSTEM");
+	    containerType.setCreatedDate(new Date());
+	    containerType.setUpdatedBy("SYSTEM");
+	    containerType.setUpdatedDate(new Date());
+	    containerTypes.add(containerType);
+	    
+	    for(ContainerType item : containerTypes)
+	    {
+	    	masterDataRepository.save(ContainerType.class, containerType);
+	    }
 		return "Complete";
 
 	}
