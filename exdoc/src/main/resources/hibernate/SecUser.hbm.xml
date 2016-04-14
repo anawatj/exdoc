@@ -12,6 +12,7 @@
 		<property name="password" column="PASSWORD" length="2000"></property>
 		<property name="firstName" column="FIRSTNAME" length="200"></property>
 		<property name="lastName" column="LASTNAME" length="200"></property>
+		<property name="email" column="EMAIL"></property>
 		<set name="roles" table="SEC_M_USER_ROLE" cascade="all" lazy="true">
 			<key column="USER_ID" foreign-key="FK_USER_ROLE"></key>
 			<many-to-many class="com.tao.exdoc.domain.security.Role"
