@@ -21,7 +21,9 @@ import com.tao.exdoc.domain.master.DocumentGroup;
 import com.tao.exdoc.domain.master.DocumentMode;
 import com.tao.exdoc.domain.master.DocumentType;
 import com.tao.exdoc.domain.master.Position;
+import com.tao.exdoc.domain.security.Role;
 import com.tao.exdoc.domain.security.User;
+import com.tao.exdoc.repository.IRoleRepository;
 import com.tao.exdoc.repository.IUserRepository;
 import com.tao.exdoc.repository.MasterDataRepository;
 
@@ -34,6 +36,10 @@ public class MasterController {
 	
 	@Autowired
 	private IUserRepository userRepository;
+	
+	
+	@Autowired
+	private IRoleRepository roleRepository;
 
 	@RequestMapping(value = "/department/getAll", method = RequestMethod.GET)
 	@Transactional
@@ -492,6 +498,55 @@ public class MasterController {
 	    {
 	    	userRepository.save(item);
 	    }
+	    
+	    List<Role> roles = new ArrayList<Role>();
+	    Role role = new Role();
+	    role.setId(0);
+	    role.setRoleCode("ROLE0001");
+	    role.setRoleDesc("SuperAdmin");
+	    role.setCreatedBy("SYSTEM");
+	    role.setCreatedDate(new Date());
+	    role.setUpdatedBy("SYSTEM");
+	    role.setUpdatedDate(new Date());
+	    roles.add(role);
+	    
+	    role = new Role();
+	    role.setId(0);
+	    role.setRoleCode("ROLE0002");
+	    role.setRoleDesc("Admin");
+	    role.setCreatedBy("SYSTEM");
+	    role.setCreatedDate(new Date());
+	    role.setUpdatedBy("SYSTEM");
+	    role.setUpdatedDate(new Date());
+	    roles.add(role);
+	    
+	    role = new Role();
+	    role.setId(0);
+	    role.setRoleCode("ROLE0003");
+	    role.setRoleDesc("User");
+	    role.setCreatedBy("SYSTEM");
+	    role.setCreatedDate(new Date());
+	    role.setUpdatedBy("SYSTEM");
+	    role.setUpdatedDate(new Date());
+	    roles.add(role);
+	    
+	    
+	    role = new Role();
+	    role.setId(0);
+	    role.setRoleCode("ROLE0004");
+	    role.setRoleDesc("Guest");
+	    role.setCreatedBy("SYSTEM");
+	    role.setCreatedDate(new Date());
+	    role.setUpdatedBy("SYSTEM");
+	    role.setUpdatedDate(new Date());
+	    roles.add(role);
+	    
+	    
+	    for(Role item : roles)
+	    {
+	    	roleRepository.save(item);
+	    }
+	    
 		return "Complete";
 
 	}

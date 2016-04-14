@@ -1,6 +1,9 @@
 package com.tao.exdoc.repository.impl;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +25,19 @@ public class RoleRepository implements IRoleRepository{
 	}
 
 	public Role findByKey(Integer key) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Criteria criteria = factory.getCurrentSession().createCriteria(Role.class);
+		criteria.setFetchMode("authorizes", FetchMode.JOIN);
+		
+		criteria.add(Restrictions.eq("id",key));
+		
+		List<Role> result =criteria.list();
+		if(result!=null && result.size()>0)
+		{
+			return result.get(0);
+		}else
+		{
+			return null;
+		}
 	}
 
 	public void remove(Integer key) throws Exception {
@@ -32,8 +46,9 @@ public class RoleRepository implements IRoleRepository{
 	}
 
 	public Role save(Role entity) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Role data = findByKey(entity.getId());
+		Role result = (Role) factory.getCurrentSession().merge(entity);
+		return result;
 	}
 
 	public Result<Role> findByQuery(RoleQuery query) throws Exception {
