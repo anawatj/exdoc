@@ -38,6 +38,8 @@
 		</property>
 		<property name="parentId" column="CONTAINER_PARENT_ID"></property>
 		<property name="level" column="LEVEL"></property>
+		<property name="maxDoc" column="MAX_DOC"></property>
+		<property name="numDoc" column="NUM_DOC"></property>
 		<set name="items" cascade="all-delete-orphan" lazy="true">
 				<key column="CONTAINER_PARENT_ID" foreign-key="FK_CONTAINER_PARENT"></key>
 				<one-to-many class="com.tao.exdoc.domain.container.Container" not-found="ignore"/>

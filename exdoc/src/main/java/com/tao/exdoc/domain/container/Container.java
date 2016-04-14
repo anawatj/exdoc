@@ -32,8 +32,24 @@ public class Container extends AbstractDomain<Integer> {
 	private Department department;
 	private Integer parentId;
 	private Integer level;
+	
+	private Integer maxDoc;
+	private Integer numDoc;
+	
 
 	
+	public Integer getNumDoc() {
+		return numDoc;
+	}
+	public void setNumDoc(Integer numDoc) {
+		this.numDoc = numDoc;
+	}
+	public Integer getMaxDoc() {
+		return maxDoc;
+	}
+	public void setMaxDoc(Integer maxDoc) {
+		this.maxDoc = maxDoc;
+	}
 	public Integer getLevel() {
 		return level;
 	}

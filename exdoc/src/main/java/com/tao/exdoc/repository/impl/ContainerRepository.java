@@ -112,8 +112,13 @@ public class ContainerRepository implements IContainerRepository {
 			criteria.createAlias("department","d",JoinType.LEFT_OUTER_JOIN);
 			criteria.add(Restrictions.eq("d.id",query.getDepartment()));
 		}
+		if(query.getContainerById()!=null && query.getContainerById()!=0)
+		{
+			criteria.createAlias("containerBy", "cb",JoinType.LEFT_OUTER_JOIN);
+			criteria.add(Restrictions.eq("cb.id", query.getContainerById()));
+		}
 		
-		return new Result<Container>(factory,criteria,Container.class,"id","containerCode","containerDesc","containerType","containerDate","level","departmnt","branch");
+		return new Result<Container>(factory,criteria,Container.class,"id","containerCode","containerDesc","containerType","containerDate","level","departmnt","branch","containerBy");
 		
 	}
 

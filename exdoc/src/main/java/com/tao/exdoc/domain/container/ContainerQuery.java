@@ -16,6 +16,27 @@ public class ContainerQuery extends AbstractQuery
 	private Date containerDateStart;
 	private Date containerDateEnd;
 	private Integer branch;
+	private Integer containerById;
+	private String containerByCode;
+	private String containerByDesc;
+	public Integer getContainerById() {
+		return containerById;
+	}
+	public void setContainerById(Integer containerById) {
+		this.containerById = containerById;
+	}
+	public String getContainerByCode() {
+		return containerByCode;
+	}
+	public void setContainerByCode(String containerByCode) {
+		this.containerByCode = containerByCode;
+	}
+	public String getContainerByDesc() {
+		return containerByDesc;
+	}
+	public void setContainerByDesc(String containerByDesc) {
+		this.containerByDesc = containerByDesc;
+	}
 	public String getContainerCode() {
 		return containerCode;
 	}

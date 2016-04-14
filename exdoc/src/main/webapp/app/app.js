@@ -70,6 +70,16 @@ app.config(['$routeProvider', function($routeProvider){
         			templateUrl:"./app/user/views/list.html",
         			controller:"userListCtrl"
         		})
+        .when('/containerEntry',
+        		{
+        			templateUrl:"./app/container/views/entry.html",
+        			controller:"containerEntryCtrl"
+        		})
+        .when("/containerList",
+        		{
+        			templateUrl:"./app/container/views/list.html",
+        			controller:'containerListCtrl'
+        		})
         .otherwise({redirectTo:'/'});
 }])
 .controller('mainCtrl',function($scope,$http,$localStorage)
