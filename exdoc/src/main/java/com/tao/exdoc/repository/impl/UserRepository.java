@@ -39,6 +39,7 @@ public class UserRepository implements IUserRepository {
 		{
 			return null;
 		}
+		
 	}
 
 	public void remove(Integer key) throws Exception {
@@ -54,8 +55,38 @@ public class UserRepository implements IUserRepository {
 	}
 
 	public Result<User> findByQuery(UserQuery query) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Criteria criteria = factory.getCurrentSession().createCriteria(User.class);
+		if(query.getUsername()!=null && !query.getUsername().equals(""))
+		{
+			if(query.getUsername().contains("*")|| query.getUsername().contains("?"))
+			{
+				criteria.add(Restrictions.like("username",query.getUsername().replace("*","%").replace("?","_")));
+			}else
+			{
+				criteria.add(Restrictions.eq("username",query.getUsername()));
+			}
+		}
+		if(query.getFirstName()!=null && !query.getFirstName().equals(""))
+		{
+			if(query.getFirstName().contains("*") || query.getFirstName().contains("?"))
+			{
+				criteria.add(Restrictions.like("firstName", query.getFirstName().replace("*","%").replace("?","_")));
+			}else
+			{
+				criteria.add(Restrictions.eq("firstName",query.getFirstName()));
+			}
+		}
+		if(query.getLastName()!=null && !query.getLastName().equals(""))
+		{
+			if(query.getLastName().contains("*") || query.getLastName().contains("?"))
+			{
+				criteria.add(Restrictions.like("lastName",query.getLastName().replace("*","%").replace("?","_")));
+			}else
+			{
+				criteria.add(Restrictions.eq("lastName",query.getLastName()));
+			}
+		}
+		return new Result<User>(factory,criteria,User.class,"id","username","firstName","lastName");
 	}
 
 	public User findUserByUserName(String username) {
