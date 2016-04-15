@@ -16,6 +16,7 @@ public class DepositQuery extends AbstractQuery {
 	private Date depositDateStart;
 	private Date depositDateEnd;
 	private Integer depositBy;
+	
 	private Date reviewDateStart;
 	private Date reviewDateEnd;
 	private Integer reviewBy;
@@ -23,6 +24,14 @@ public class DepositQuery extends AbstractQuery {
 	private Integer branch;
 	private Integer department;
 	private Integer position;
+	private String username;
+
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public String getDepositCode() {
 		return depositCode;
 	}

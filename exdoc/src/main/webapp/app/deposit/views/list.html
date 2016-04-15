@@ -5,13 +5,13 @@
 				<label>DepositCode</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="text" class="form-control" />
+				<input type="text" class="form-control" ng-model="model.depositCode"/>
 			</div>
 			<div class="col-xs-3">
 				<label>DepositDesc</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="text" class="form-control" />
+				<input type="text" class="form-control" ng-model="model.depositDesc" />
 			</div>
 		</div>
 		<div class="row">
@@ -19,13 +19,13 @@
 				<label>DepositDate</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="date" class="form-control" />
+				<input type="date" class="form-control" ng-model="model.depositDateStart"/>
 			</div>
 			<div class="col-xs-3">
 				<label>To</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="date" class="form-control" />
+				<input type="date" class="form-control" ng-model="model.depositDateEnd" />
 			</div>
 		</div>
 		<div class="row">
@@ -144,6 +144,11 @@
 						<option ng-repeat="item in positions" value="{{item.id}}">{{item.description}}</option>
 				</select>
 			</div>
+		</div>
+		<div class="row">
+				<div class="col-xs-12">
+						<buton class="btn btn-primary" ng-click="search()">Search</buton>
+				</div>
 		</div>
 		<div class="row">
 				<div class="col-xs-12">

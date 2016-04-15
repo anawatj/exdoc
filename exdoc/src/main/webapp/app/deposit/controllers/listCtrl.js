@@ -1,7 +1,7 @@
 /**
  * 
  */
-app.controller('depositListCtrl',function($scope,$q,$routeParams,$location,commonService,depositService)
+app.controller('depositListCtrl',function($scope,$q,$routeParams,$location,commonService,depositService,$uibModal)
 		{
 				$scope.departments=[];
 				$scope.branches=[];
@@ -55,6 +55,34 @@ app.controller('depositListCtrl',function($scope,$q,$routeParams,$location,commo
 				{
 					$location.path("/depositEntry").search("id",id);
 					
+				};
+				$scope.findDepositBy=function()
+				{
+					var modalInstance = $uibModal.open({
+						templateUrl : url+"app/center/views/user.html",
+						controller : 'userPopupCtrl',
+						size : 'lg',
+						backdrop : false,
+						animation : true,
+						resolve : {
+					/*		parameter : function() {
+								return model = {
+									subject : subject,
+									page : 1
+								};
+							}*/
+						}
+					});
+
+					modalInstance.result.then(function(selectedItem) {
+						$scope.model.depositBy= selectedItem.id;
+						$scope.model.username = selectedItem.username;
+					
+					}, function() {
+						// $log.info('Modal
+						// dismissed at: ' + new
+						// Date());
+					});
 				};
 				
 		});
