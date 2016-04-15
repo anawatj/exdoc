@@ -1,6 +1,10 @@
 package com.tao.exdoc.web.view.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +17,7 @@ import com.tao.exdoc.domain.Page;
 import com.tao.exdoc.domain.Result;
 import com.tao.exdoc.domain.container.Container;
 import com.tao.exdoc.domain.container.ContainerQuery;
+import com.tao.exdoc.domain.enumurate.Status;
 import com.tao.exdoc.repository.IContainerRepository;
 
 @Controller
@@ -44,6 +49,36 @@ public class ContainerController {
 		@Transactional
 		public @ResponseBody Container save(@RequestBody Container entity) throws Exception
 		{
+			   UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			   if(entity.getId()==0)
+			   {
+				   entity.setCreatedBy(userDetails.getUsername());
+				   entity.setCreatedDate(new Date());
+				   entity.setUpdatedBy(entity.getCreatedBy());
+				   entity.setUpdatedDate(entity.getCreatedDate());
+				   for(Container item : entity.getItems())
+				   {
+					   item.setCreatedBy(entity.getCreatedBy());
+					   item.setCreatedDate(entity.getCreatedDate());
+					   item.setUpdatedBy(entity.getCreatedBy());
+					   item.setUpdatedDate(entity.getCreatedDate());
+				   }
+			   }else
+			   {
+				   entity.setUpdatedBy(userDetails.getUsername());
+				   entity.setUpdatedDate(new Date());
+				   for(Container item : entity.getItems())
+				   {
+					   if(item.getId()==0)
+					   {
+						   item.setCreatedBy(entity.getUpdatedBy());
+						   item.setCreatedDate(entity.getUpdatedDate());
+					   }
+					   item.setUpdatedBy(entity.getUpdatedBy());
+					   item.setUpdatedDate(entity.getUpdatedDate());
+				   }
+			   }
+			  
 			Container result = containerRepository.save(entity);
 			return result;
 			

@@ -10,8 +10,10 @@ import com.tao.exdoc.domain.deposit.DepositItem;
 import com.tao.exdoc.domain.document.Document;
 import com.tao.exdoc.domain.enumurate.DocumentStatus;
 import com.tao.exdoc.domain.enumurate.Status;
+import com.tao.exdoc.domain.security.User;
 import com.tao.exdoc.repository.IDepositRepository;
 import com.tao.exdoc.repository.IDocumentRepository;
+import com.tao.exdoc.repository.IUserRepository;
 import com.tao.exdoc.service.IDepositService;
 @Service
 public class DepositService implements IDepositService{
@@ -23,6 +25,10 @@ public class DepositService implements IDepositService{
 	
 	@Autowired
 	private IDocumentRepository documentRepository;
+	
+	
+	@Autowired
+	private IUserRepository userRepository;
 
 	public Deposit approve(Deposit entity) throws Exception {
 		// TODO Auto-generated method stub
@@ -31,11 +37,17 @@ public class DepositService implements IDepositService{
 
 	public Deposit save(Deposit entity) throws Exception {
 		Deposit result = depositRepository.save(entity);
+		User user = userRepository.findUserByUserName(entity.getUpdatedBy());
+		if(result.getStatus()== Status.SP)
+		{
+			
+			result.setReviewBy(user);
+			result.setReviewDate(new Date());
+		}
 		if(result.getStatus()== Status.AP)
 		{
-			result.setReviewBy(result.getDepositBy());
-			result.setReviewDate(new Date());
-			result.setApproveBy(result.getDepositBy());
+			
+			result.setApproveBy(user);
 			result.setApproveDate(new Date());
 			for(DepositItem item : result.getItems())
 			{
@@ -51,6 +63,10 @@ public class DepositService implements IDepositService{
 				document.setBranch(result.getBranch());
 				document.setDepartment(result.getDepartment());
 				document.setContainer(item.getContainer());
+				document.setCreatedBy(entity.getApproveBy().getUsername());
+				document.setCreatedDate(entity.getApproveDate());
+				document.setUpdatedBy(entity.getCreatedBy());
+				document.setUpdatedDate(entity.getCreatedDate());
 				
 				documentRepository.save(document);
 				

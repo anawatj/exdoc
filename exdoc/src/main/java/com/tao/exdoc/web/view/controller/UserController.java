@@ -2,6 +2,8 @@ package com.tao.exdoc.web.view.controller;
 
 
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -38,6 +40,7 @@ public class UserController {
 	@Transactional
 	public @ResponseBody User getByKey(@RequestParam Integer key) throws Exception
 	{
+		
 		User result = userRepository.findByKey(key);
 		return result;
 	}
@@ -45,6 +48,18 @@ public class UserController {
 	@Transactional
 	public @ResponseBody User save(@RequestBody User entity) throws Exception
 	{
+		 UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		 if(entity.getId()==0)
+		 {
+			 entity.setCreatedBy(userDetails.getUsername());
+			 entity.setCreatedDate(new Date());
+			 entity.setUpdatedBy(entity.getCreatedBy());
+			 entity.setUpdatedDate(entity.getCreatedDate());
+		 }else
+		 {
+			 entity.setUpdatedBy(userDetails.getUsername());
+			 entity.setUpdatedDate(new Date());
+		 }
 		User result = userRepository.save(entity);
 		return result;
 	}
