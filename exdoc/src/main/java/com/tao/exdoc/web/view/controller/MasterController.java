@@ -22,6 +22,7 @@ import com.tao.exdoc.domain.master.DocumentGroup;
 import com.tao.exdoc.domain.master.DocumentMode;
 import com.tao.exdoc.domain.master.DocumentType;
 import com.tao.exdoc.domain.master.Position;
+import com.tao.exdoc.domain.master.WitdownObjective;
 import com.tao.exdoc.domain.security.Role;
 import com.tao.exdoc.domain.security.User;
 import com.tao.exdoc.repository.IRoleRepository;
@@ -609,6 +610,76 @@ public class MasterController {
 	    for(ContainerType item : containerTypes)
 	    {
 	    	masterDataRepository.save(ContainerType.class, item);
+	    }
+	    
+	    List<WitdownObjective> witdowns = new ArrayList<WitdownObjective>();
+	    
+	    WitdownObjective witdown = new WitdownObjective();
+	    witdown.setId(0);
+	    witdown.setCode("W0001");
+	    witdown.setDescription("WitdownObjective1");
+	    witdown.setCreatedBy("SYSTEM");
+	    witdown.setCreatedDate(new Date());
+	    witdown.setUpdatedBy("SYSTEM");
+	    witdown.setUpdatedDate(new Date());
+	    witdowns.add(witdown);
+	    
+	    
+	    witdown = new WitdownObjective();
+	    witdown.setId(0);
+	    witdown.setCode("W0002");
+	    witdown.setDescription("WitdownObjective2");
+	    witdown.setCreatedBy("SYSTEM");
+	    witdown.setCreatedDate(new Date());
+	    witdown.setUpdatedBy("SYSTEM");
+	    witdown.setUpdatedDate(new Date());
+	    witdowns.add(witdown);
+	    
+	    
+	    witdown = new WitdownObjective();
+	    witdown.setId(0);
+	    witdown.setCode("W0003");
+	    witdown.setDescription("WitdownObjective3");
+	    witdown.setCreatedBy("SYSTEM");
+	    witdown.setCreatedDate(new Date());
+	    witdown.setUpdatedBy("SYSTEM");
+	    witdown.setUpdatedDate(new Date());
+	    witdowns.add(witdown);
+	    
+	    
+	    witdown = new WitdownObjective();
+	    witdown.setId(0);
+	    witdown.setCode("W0004");
+	    witdown.setDescription("WitdownObjective4");
+	    witdown.setCreatedBy("SYSTEM");
+	    witdown.setCreatedDate(new Date());
+	    witdown.setUpdatedBy("SYSTEM");
+	    witdown.setUpdatedDate(new Date());
+	    witdowns.add(witdown);
+	    
+	    witdown = new WitdownObjective();
+	    witdown.setId(0);
+	    witdown.setCode("W0005");
+	    witdown.setDescription("WitdownObjective5");
+	    witdown.setCreatedBy("SYSTEM");
+	    witdown.setCreatedDate(new Date());
+	    witdown.setUpdatedBy("SYSTEM");
+	    witdown.setUpdatedDate(new Date());
+	    witdowns.add(witdown);
+	    
+	    witdown = new WitdownObjective();
+	    witdown.setId(0);
+	    witdown.setCode("W0006");
+	    witdown.setDescription("WitdownObjective6");
+	    witdown.setCreatedBy("SYSTEM");
+	    witdown.setCreatedDate(new Date());
+	    witdown.setUpdatedBy("SYSTEM");
+	    witdown.setUpdatedDate(new Date());
+	    witdowns.add(witdown);
+	    
+	    for(WitdownObjective item : witdowns)
+	    {
+	    	masterDataRepository.save(WitdownObjective.class, item);
 	    }
 		return "Complete";
 

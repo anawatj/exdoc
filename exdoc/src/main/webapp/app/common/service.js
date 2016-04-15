@@ -39,7 +39,11 @@ app.service("commonService",['$http',function($http)
 									service.getAllContainerType=function()
 									{
 										return $http.get(url+"master/containerType/getAll");
-									}
+									};
+									service.getAllWitdownObjective=function()
+									{
+										return $http.get(url+"master/witdown/objective/getAll");
+									};
 									service.getObject=function(obj)
 									{
 										if(!obj)
