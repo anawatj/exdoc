@@ -1,7 +1,7 @@
 /**
  * 
  */
-app.controller('borrowEntryCtrl',function($scope,$http,$q,commonService,borrowService,$routeParams,$uibModal,$location)
+app.controller('witdownEntryCtrl',function($scope,$http,$q,commonService,borrowService,$routeParams,$uibModal,$location)
 		{
 			$scope.departments=[];
 			$scope.branches=[];

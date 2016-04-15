@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 <hibernate-mapping>
-	<class name="com.tao.exdoc.domain.deposit.Deposit" table="DOC_T_DEPOSIT">
+	<class name="com.tao.exdoc.domain.deposit.Deposit" table="DOC_T_DEPOSIT" dynamic-insert="true" dynamic-update="true">
 		<id name="id" column="ID" type="integer">
 			<generator class="sequence">
 				<param name="sequence">DOC_T_DEPOSIT_SEQ</param>
