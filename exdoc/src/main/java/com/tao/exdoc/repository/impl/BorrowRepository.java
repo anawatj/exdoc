@@ -1,5 +1,6 @@
 package com.tao.exdoc.repository.impl;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -60,6 +61,11 @@ public class BorrowRepository implements IBorrowRepository{
 	public Borrow save(Borrow entity) throws Exception {
 		Borrow data = findByKey(entity.getId());
 		Borrow result = (Borrow) factory.getCurrentSession().merge(entity);
+		DecimalFormat format= new DecimalFormat("000000000000000000");
+		
+		
+		
+		result.setBorrowCode("BR"+format.format(result.getId()));
 		return result;
 	}
 

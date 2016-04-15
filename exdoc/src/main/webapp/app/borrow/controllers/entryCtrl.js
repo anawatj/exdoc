@@ -158,6 +158,35 @@ app.controller('borrowEntryCtrl',function($scope,$http,$q,commonService,borrowSe
 			};
 			$scope.save=function()
 			{
+				$scope.model.status = "S";
+				borrowService.save($scope.model).success(function(data)
+						{
+							if($scope.id==0)
+							{
+								$location.path("/borrowEntry").search("id",data.id);
+							}else
+								{
+									window.location.reload();
+								}
+						});
+			};
+			$scope.release=function()
+			{
+				$scope.model.status = "SP";
+				borrowService.save($scope.model).success(function(data)
+						{
+							if($scope.id==0)
+							{
+								$location.path("/borrowEntry").search("id",data.id);
+							}else
+								{
+									window.location.reload();
+								}
+						});
+			};
+			$scope.approve=function()
+			{
+				$scope.model.status = "AP";
 				borrowService.save($scope.model).success(function(data)
 						{
 							if($scope.id==0)

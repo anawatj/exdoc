@@ -1,5 +1,6 @@
 package com.tao.exdoc.repository.impl;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.tao.exdoc.domain.Result;
 import com.tao.exdoc.domain.deposit.Deposit;
 import com.tao.exdoc.domain.deposit.DepositQuery;
+import com.tao.exdoc.domain.enumurate.Status;
 import com.tao.exdoc.repository.IDepositRepository;
 @Repository
 public class DepositRepository implements IDepositRepository{
@@ -70,6 +72,15 @@ public class DepositRepository implements IDepositRepository{
 	public Deposit save(Deposit entity) throws Exception {
 			Deposit data = findByKey(entity.getId());
 			Deposit result = (Deposit) factory.getCurrentSession().merge(entity);
+			if(result.getStatus()==Status.S)
+			{
+				
+				DecimalFormat format= new DecimalFormat("000000000000000000");
+				
+				
+				
+				result.setDepositCode("DE"+format.format(result.getId()));
+			}
 			return result;
 			
 	}
@@ -79,6 +90,10 @@ public class DepositRepository implements IDepositRepository{
 		criteria.setFetchMode("depositBy", FetchMode.JOIN);
 		criteria.setFetchMode("department", FetchMode.JOIN);
 		criteria.setFetchMode("branch", FetchMode.JOIN);
+		criteria.setFetchMode("reviewBy", FetchMode.JOIN);
+		criteria.setFetchMode("approveBy", FetchMode.JOIN);
+		criteria.setFetchMode("position", FetchMode.JOIN);
+		criteria.setFetchMode("objective", FetchMode.JOIN);
 		
 		
 		return new Result<Deposit>(factory,criteria,Deposit.class,
@@ -88,7 +103,13 @@ public class DepositRepository implements IDepositRepository{
 				"depositDate",
 				"depositBy",
 				"department",
-				"branch");
+				"branch",
+				"reviewBy",
+				"reviewDate",
+				"approveBy",
+				"approveDate",
+				"position",
+				"objective");
 	}
 
 }

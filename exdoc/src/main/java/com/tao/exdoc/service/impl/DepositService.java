@@ -63,10 +63,10 @@ public class DepositService implements IDepositService{
 				document.setBranch(result.getBranch());
 				document.setDepartment(result.getDepartment());
 				document.setContainer(item.getContainer());
-				document.setCreatedBy(entity.getApproveBy().getUsername());
-				document.setCreatedDate(entity.getApproveDate());
-				document.setUpdatedBy(entity.getCreatedBy());
-				document.setUpdatedDate(entity.getCreatedDate());
+				document.setCreatedBy(result.getApproveBy().getUsername());
+				document.setCreatedDate(result.getApproveDate());
+				document.setUpdatedBy(result.getApproveBy().getUsername());
+				document.setUpdatedDate(result.getUpdatedDate());
 				
 				documentRepository.save(document);
 				

@@ -1,13 +1,14 @@
 <div class="panel panel-default" ng-init="init()"
 	>
-	<fieldset ng-disabled="model.status=='SP' || model.status=='AP'">
+
 		<form>
+			<fieldset ng-disabled="model.status=='SP' || model.status=='AP'">
 			<div class="row">
 				<div class="col-xs-3">
 					<label>DepositCode</label>
 				</div>
 				<div class="col-xs-3">
-					<input type="text" class="form-control"
+					<input type="text" class="form-control" disabled
 						ng-model="model.depositCode" />
 				</div>
 				<div class="col-xs-3">
@@ -48,14 +49,14 @@
 					<label>ReviewDate</label>
 				</div>
 				<div class="col-xs-3">
-					<input type="date" class="form-control" disabled />
+					<input type="date" class="form-control" disabled  ng-model="model.reviewDate"/>
 				</div>
 				<div class="col-xs-3">
 					<label>ReviewBy</label>
 				</div>
 				<div class="col-xs-3">
 					<div class="input-group">
-						<input type="text" class="form-control" disabled />
+						<input type="text" class="form-control" disabled ng-model="model.reviewBy.username" />
 						<div class="input-group-btn">
 							<button class="btn btn-primary">
 								<i class="glyphicon glyphicon-search"></i>
@@ -70,14 +71,14 @@
 					<label>ApproveDate</label>
 				</div>
 				<div class="col-xs-3">
-					<input type="date" class="form-control" disabled />
+					<input type="date" class="form-control" disabled ng-model="model.approveDate"/>
 				</div>
 				<div class="col-xs-3">
 					<label>ApproveBy</label>
 				</div>
 				<div class="col-xs-3">
 					<div class="input-group">
-						<input type="text" class="form-control" disabled />
+						<input type="text" class="form-control" disabled ng-model="model.approveBy.username"/>
 						<div class="input-group-btn">
 							<button class="btn btn-primary">
 								<i class="glyphicon glyphicon-search"></i>
@@ -212,14 +213,15 @@
 					</table>
 				</div>
 			</div>
+				</fieldset>
 			<div class="row">
 				<div class="col-xs-12">
-					<button class="btn btn-primary" ng-click="save()">Save</button>
-					<button class="btn btn-primary" ng-click="release()">Release</button>
-					<button class="btn btn-primary" ng-click="approve()">Approve</button>
-					<button class="btn btn-primary">Clear</button>
+					<button class="btn btn-primary" ng-click="save()" ng-show="model.id==0 || model.status=='S'">Save</button>
+					<button class="btn btn-primary" ng-click="release()" ng-show="model.id!=0 && model.status=='S'">Release</button>
+					<button class="btn btn-primary" ng-click="approve()" ng-show="model.id!=0 && model.status=='SP'" ng-disabled="model.id==0 || model.status!='SP'">Approve</button>
+					<button class="btn btn-primary" ng-show="model.id==0 || model.status=='S'">Clear</button>
 				</div>
 			</div>
 		</form>
-	</fieldset>
+
 </div>
