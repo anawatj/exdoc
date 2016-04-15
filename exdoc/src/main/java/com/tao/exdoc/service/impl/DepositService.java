@@ -44,6 +44,7 @@ public class DepositService implements IDepositService{
 				document.setDocumentStatus(DocumentStatus.D);
 				document.setBranch(result.getBranch());
 				document.setDepartment(result.getDepartment());
+				document.setContainer(item.getContainer());
 				
 				documentRepository.save(document);
 				
