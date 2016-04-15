@@ -47,13 +47,13 @@
 					<label>ReviewDate</label>
 				</div>
 				<div class="col-xs-3">
-					<input type="date" class="form-control" disabled />
+					<input type="date" class="form-control" disabled ng-model="model.reviewDate"/>
 				</div>
 				<div class="col-xs-3">
 					<label>ReviewBy</label>
 				</div>
 				<div class="col-xs-3">
-					<input type="text" class="form-control" disabled />
+					<input type="text" class="form-control" disabled  ng-model="model.reviewBy.username"/>
 				</div>
 			</div>
 			<div class="row">
@@ -61,23 +61,16 @@
 					<label>ApproveDate</label>
 				</div>
 				<div class="col-xs-3">
-					<input type="date" class="form-control" disabled />
+					<input type="date" class="form-control" disabled ng-model="model.approveDate"/>
 				</div>
 				<div class="col-xs-3">
 					<label>ApproveBy</label>
 				</div>
 				<div class="col-xs-3">
-					<input type="text" class="form-control" disabled />
+					<input type="text" class="form-control" disabled ng-model="modelapproveBy.username"/>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-xs-3">
-					<label>DueDate</label>
-				</div>
-				<div class="col-xs-3">
-					<input type="date" class="form-control" ng-model="model.dueDate" />
-				</div>
-			</div>
+	
 
 			<div class="row">
 				<div class="col-xs-3">
