@@ -138,6 +138,7 @@ app.controller('borrowEntryCtrl',function($scope,$http,$q,commonService,borrowSe
 			$scope.addItem = function() {
 				
 				var item = {};
+				item.id=0;
 				if ($scope.id == 0) {
 					item.borrowId = undefined;
 				} else {

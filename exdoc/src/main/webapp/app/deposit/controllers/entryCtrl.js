@@ -115,6 +115,7 @@ app
 						} else {
 							item.depositId = $scope.id;
 						}
+						item.id=0;
 						item.selected = false;
 						
 						$scope.model.items.push(item);
