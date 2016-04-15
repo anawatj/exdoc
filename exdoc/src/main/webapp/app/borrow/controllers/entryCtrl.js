@@ -59,6 +59,13 @@ app.controller('borrowEntryCtrl',function($scope,$http,$q,commonService,borrowSe
 				    					$scope.model.borrowDate =commonService.getDate($scope.model.borrowDate);
 				    					$scope.model.reviewDate = commonService.getDate($scope.model.reviewDate);
 				    					$scope.model.approveDate = commonService.getDate($scope.model.approveDate);
+				    					$scope.model.dueDate = commonService.getDate($scope.model.dueDate);
+				    					$scope.model.items = commonService.getArray($scope.model.items);
+				    					for(var index=0;index<$scope.model.items.length;index++)
+				    					{
+				    						var item = $scope.model.items[index];
+				    						item.document = commonService.getObject(item.document);
+				    					}
 				    					
 
 				    				}
