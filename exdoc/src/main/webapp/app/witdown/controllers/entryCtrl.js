@@ -32,7 +32,7 @@ app.controller('witdownEntryCtrl',function($scope,$http,$q,commonService,witdown
 				    		commonService.getAllDepartment(),
 				    		commonService.getAllBranch(),
 				    		commonService.getAllPosition(),
-				    		commonService.getAllBorrowObjective(),
+				    		commonService.getAllWitdownObjective(),
 				    		borrowService.getByKey($scope.id)
 				    ]).then(function(data)
 				    		{
@@ -50,13 +50,13 @@ app.controller('witdownEntryCtrl',function($scope,$http,$q,commonService,witdown
 				    				$scope.model.id=$scope.id;
 				    				if($scope.model.id>0)
 				    				{
-				    					$scope.model.borrowBy = commonService.getObject($scope.model.borrowBy);
+				    					$scope.model.witdownBy = commonService.getObject($scope.model.witdownBy);
 				    					$scope.model.reviewBy = commonService.getObject($scope.model.reviewBy);
 				    					$scope.model.approveBy= commonService.getObject($scope.model.approveBy);
 				    					$scope.model.branch = commonService.getObject($scope.model.branch);
 				    					$scope.model.department =commonService.getObject($scope.model.department);
 				    					$scope.model.position = commonService.getObject($scope.model.position);
-				    					$scope.model.borrowDate =commonService.getDate($scope.model.borrowDate);
+				    					$scope.model.witdownDate =commonService.getDate($scope.model.witdownDate);
 				    					$scope.model.reviewDate = commonService.getDate($scope.model.reviewDate);
 				    					$scope.model.approveDate = commonService.getDate($scope.model.approveDate);
 				    					$scope.model.dueDate = commonService.getDate($scope.model.dueDate);
@@ -73,7 +73,7 @@ app.controller('witdownEntryCtrl',function($scope,$http,$q,commonService,witdown
 				    		});
 				  return promise;
 			};
-			$scope.findBorrowBy=function()
+			$scope.findWitdownBy=function()
 			{
 				var modalInstance = $uibModal.open({
 					templateUrl : url+"app/center/views/user.html",
@@ -92,7 +92,7 @@ app.controller('witdownEntryCtrl',function($scope,$http,$q,commonService,witdown
 				});
 
 				modalInstance.result.then(function(selectedItem) {
-					$scope.model.borrowBy= selectedItem;
+					$scope.model.witdownBy= selectedItem;
 				
 				}, function() {
 					// $log.info('Modal
@@ -140,9 +140,9 @@ app.controller('witdownEntryCtrl',function($scope,$http,$q,commonService,witdown
 				var item = {};
 				item.id=0;
 				if ($scope.id == 0) {
-					item.borrowId = undefined;
+					item.witdownId = undefined;
 				} else {
-					item.borrowId = $scope.id;
+					item.witdownId = $scope.id;
 				}
 				item.selected = false;
 				
@@ -160,11 +160,11 @@ app.controller('witdownEntryCtrl',function($scope,$http,$q,commonService,witdown
 			$scope.save=function()
 			{
 				$scope.model.status = "S";
-				borrowService.save($scope.model).success(function(data)
+				witdownService.save($scope.model).success(function(data)
 						{
 							if($scope.id==0)
 							{
-								$location.path("/borrowEntry").search("id",data.id);
+								$location.path("/witdownEntry").search("id",data.id);
 							}else
 								{
 									window.location.reload();
@@ -174,11 +174,11 @@ app.controller('witdownEntryCtrl',function($scope,$http,$q,commonService,witdown
 			$scope.release=function()
 			{
 				$scope.model.status = "SP";
-				borrowService.save($scope.model).success(function(data)
+				witdownService.save($scope.model).success(function(data)
 						{
 							if($scope.id==0)
 							{
-								$location.path("/borrowEntry").search("id",data.id);
+								$location.path("/witdownEntry").search("id",data.id);
 							}else
 								{
 									window.location.reload();
@@ -188,11 +188,11 @@ app.controller('witdownEntryCtrl',function($scope,$http,$q,commonService,witdown
 			$scope.approve=function()
 			{
 				$scope.model.status = "AP";
-				borrowService.save($scope.model).success(function(data)
+				witdownService.save($scope.model).success(function(data)
 						{
 							if($scope.id==0)
 							{
-								$location.path("/borrowEntry").search("id",data.id);
+								$location.path("/witdownEntry").search("id",data.id);
 							}else
 								{
 									window.location.reload();

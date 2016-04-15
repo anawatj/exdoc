@@ -80,6 +80,16 @@ app.config(['$routeProvider', function($routeProvider){
         			templateUrl:"./app/container/views/list.html",
         			controller:'containerListCtrl'
         		})
+        .when("/witdownEntry",
+        		{
+        			templateUrl:"./app/witdown/views/entry.html",
+        			controller:"witdownEntryCtrl"
+        		})
+        .when('/witdownList',
+        		{
+        			templateUrl:"./app/witdown/views/list.html",
+        			controller:"witdownListCtrl"
+        		})
         .otherwise({redirectTo:'/'});
 }])
 .controller('mainCtrl',function($scope,$http,$localStorage)
