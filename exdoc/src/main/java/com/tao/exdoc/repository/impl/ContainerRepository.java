@@ -144,7 +144,7 @@ public class ContainerRepository implements IContainerRepository {
 		if(query.getContainerBy()!=null && !query.getContainerBy().equals(""))
 		{
 			criteria.createAlias("containerBy", "cb",JoinType.LEFT_OUTER_JOIN);
-			criteria.add(Restrictions.eq("cb.username", query.getContainerById()));
+			criteria.add(Restrictions.eq("cb.username", query.getContainerBy()));
 		}
 		
 		return new Result<Container>(factory,criteria,Container.class,"id","containerCode","containerDesc","containerType","containerDate","level","department","branch","containerBy");

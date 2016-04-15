@@ -11,7 +11,7 @@
 		<junit.version>4.12</junit.version>
 		<servlet.version>2.5</servlet.version>
 		<jackson.version>2.7.3</jackson.version>
-		<spring.version>4.1.5.RELEASE</spring.version>
+		<spring.version>4.2.5.RELEASE</spring.version>
 		<spring.security.version>3.2.6.RELEASE</spring.security.version>
 		<hibernate.version>4.3.11.Final</hibernate.version>
 	</properties>

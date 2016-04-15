@@ -26,7 +26,7 @@
 	</mvc:annotation-driven>
 	<mvc:default-servlet-handler />
 	<mvc:resources location="/**" mapping="/"></mvc:resources>
-	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+	<!-- <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
     <property name="mediaTypes">
         <map>
           
@@ -39,9 +39,9 @@
             <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
         </list>
     </property>
-</bean>
-   <bean id="authorizationFilterBean" class="com.tao.exdoc.web.filter.AuthorizationFilter">
-    </bean>
+</bean> -->
+<!--    <bean id="authorizationFilterBean" class="com.tao.exdoc.web.filter.AuthorizationFilter">
+    </bean> -->
 	<!-- ... -->
 	<mvc:view-controller path="/example" view-name="example"/>
 </beans>
