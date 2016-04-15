@@ -59,7 +59,7 @@ app.controller('witdownEntryCtrl',function($scope,$http,$q,commonService,witdown
 				    					$scope.model.witdownDate =commonService.getDate($scope.model.witdownDate);
 				    					$scope.model.reviewDate = commonService.getDate($scope.model.reviewDate);
 				    					$scope.model.approveDate = commonService.getDate($scope.model.approveDate);
-				    					$scope.model.dueDate = commonService.getDate($scope.model.dueDate);
+				    					
 				    					$scope.model.items = commonService.getArray($scope.model.items);
 				    					for(var index=0;index<$scope.model.items.length;index++)
 				    					{

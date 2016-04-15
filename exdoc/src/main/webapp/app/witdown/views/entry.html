@@ -1,7 +1,8 @@
 <h2>Witdown Request</h2>
 <div class="panel panel-default" ng-init="init()">
-	<fieldset ng-disabled="model.status=='SP' || model.status=='AP'">
+	
 		<form>
+		<fieldset ng-disabled="model.status=='SP' || model.status=='AP'">
 			<div class="row">
 				<div class="col-xs-3">
 					<label>WitdownCode</label>
@@ -170,6 +171,7 @@
 					</table>
 				</div>
 			</div>
+			</fieldset>
 			<div class="row">
 				<div class="col-xs-12">
 					<button class="btn btn-primary" ng-click="save()" ng-show="model.id==0 || model.status=='S'">Save</button>
@@ -181,5 +183,5 @@
 				</div>
 			</div>
 		</form>
-	</fieldset>
+	
 </div>

@@ -36,12 +36,12 @@ public class WitdownService implements IWitdownService {
 	public Witdown save(Witdown entity) throws Exception {
 			Witdown result = witdownRepository.save(entity);
 			User user = userRepository.findUserByUserName(entity.getUpdatedBy());
-			if(result.getStatus()==Status.SP)
+			if(entity.getStatus()==Status.SP)
 			{
 				result.setReviewBy(user);
 				result.setReviewDate(new Date());
 			}
-			if(result.getStatus()==Status.AP)
+			if(entity.getStatus()==Status.AP)
 			{
 				result.setApproveBy(user);
 				result.setApproveDate(new Date());
