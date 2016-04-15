@@ -1,7 +1,8 @@
 <h2>Borrow Request</h2>
 <div class="panel panel-default" ng-init="init()">
-	<fieldset ng-disabled="model.status=='SP' || model.status=='AP'">
+	
 		<form>
+		<fieldset ng-disabled="model.status=='SP' || model.status=='AP'">
 			<div class="row">
 				<div class="col-xs-3">
 					<label>BorrowCode</label>
@@ -177,16 +178,17 @@
 					</table>
 				</div>
 			</div>
+			</fieldset>
 			<div class="row">
 				<div class="col-xs-12">
 					<button class="btn btn-primary" ng-click="save()" ng-show="model.id==0 || model.status=='S'">Save</button>
 					<button class="btn btn-primary" ng-click="release()"
 						ng-show="model.id!=0 && model.status=='S'">Release</button>
 					<button class="btn btn-primary" ng-click="approve()"
-						ng-show="model.id!=0 && model.status=='SP'">Approve</button>
+						ng-show="model.id!=0 && model.status=='SP'" ng-disabled="model.id==0 || model.status!='SP'">Approve</button>
 					<button class="btn btn-primary" ng-show="model.id==0 || model.status=='S'">Clear</button>
 				</div>
 			</div>
 		</form>
-	</fieldset>
+	
 </div>
