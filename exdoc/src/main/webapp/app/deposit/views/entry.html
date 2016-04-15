@@ -26,7 +26,7 @@
 			</div>
 			<div class="col-xs-3">
 				<div class="input-group">
-					<input type="text" class="form-control" />
+					<input type="text" class="form-control" ng-model="model.depositBy.username"/>
 					<div class="input-group-btn">
 						<button class="btn btn-primary" ng-click="findDepositBy()">
 							<i class="glyphicon glyphicon-search"></i>
@@ -146,8 +146,10 @@
 							<thead>
 									<tr>
 											<th><input type="checkbox"/></th>
+											<th>DocumentCode</th>
+											<th>DocumentDesc</th>
+											<th>DocumentDate</th>
 											<th>DocumentType</th>
-											<th>Description</th>
 											<th>Remark</th>
 	
 									</tr>
@@ -156,13 +158,22 @@
 										<tr ng-repeat="item in model.items">
 												<td><input type="checkbox" ng-model="item.selected"/></td>
 												<td>
+													<input type="text" class="form-control" ng-model="item.documentCode"/>
+												</td>
+												<td>
+													<input type="text" class="form-control" ng-model="item.documentDesc"/>
+												</td>
+												<td>
+													<input type="date" class="form-control" ng-model="item.documentDate"/>
+												</td>
+												<td>
+												
 												<select class="form-control" ng-model="item.documentType.id" ng-options="sitem.id as sitem.description for sitem in documentTypes">
 													<option value="0"></option>
 													
-												</select></td>
-												<td>
-													<input type="text" class="form-control" ng-model="item.description"/>
+												</select>
 												</td>
+											
 												<td>
 												<textarea class="form-control" ng-model="item.remark"></textarea>
 												</td>

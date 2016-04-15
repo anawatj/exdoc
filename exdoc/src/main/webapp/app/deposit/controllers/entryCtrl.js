@@ -99,6 +99,7 @@ app
 													var item = $scope.model.items[index];
 													item.documentType = commonService
 															.getObject(item.documentType);
+													item.documentDate = commonService.getDate(item.documentDate);
 												}
 											}
 											deferred.resolve(data);
@@ -167,7 +168,14 @@ app
 											version:0,
 											items:[]
 										};*/
-									$location.path("/depositEntry").search('id',data.id);
+									if($scope.id==0)
+									{
+										$location.path("/depositEntry").search('id',data.id);
+									}else
+										{
+											window.location.reload();
+										}
+									
 								});
 					};
 				});
