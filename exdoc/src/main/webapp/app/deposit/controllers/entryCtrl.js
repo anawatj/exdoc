@@ -161,6 +161,27 @@ app
 
 					};
 					$scope.save = function() {
+						$scope.model.status="S";
+						depositService.save($scope.model).success(
+								function(data) {
+									/*$scope.model = {
+											id : 0,
+											version:0,
+											items:[]
+										};*/
+									if($scope.id==0)
+									{
+										$location.path("/depositEntry").search('id',data.id);
+									}else
+										{
+											window.location.reload();
+										}
+									
+								});
+					};
+					$scope.release=function()
+					{
+						$scope.model.status="SP";
 						depositService.save($scope.model).success(
 								function(data) {
 									/*$scope.model = {
