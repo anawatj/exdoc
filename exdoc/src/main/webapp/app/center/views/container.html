@@ -1,10 +1,53 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<div class="modal-header">
+	<h3 class="modal-title">Search Container</h3>
+</div>
+<div
+	class="modal-body col-xs-12 form-horizontal form-group-sm table-bordered"
+	ng-init="init()">
+	<div class="col-xs-12">
 
-</body>
-</html>
+		<div class="row">
+			<div class="col-xs-3">
+				<label>ContainerCode</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="text" class="form-control" ng-model="model.containerCode" />
+			</div>
+			<div class="col-xs-3">
+				<label>ContainerDesc</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="text" class="form-control" ng-model="model.containerDesc" />
+			</div>
+		</div>
+		<div class="row">
+				<div class='col-xs-12'>
+						<button class="btn btn-primary" ng-click="search()">Search</button>
+						<button class="btn btn-primary" ng-click="close()">Close</button>
+				</div>
+		</div>
+		<div class="row">
+						<table class="table table-bordered table-striped table-hover table-condensed">
+								<thead>
+										<tr>
+												<th></th>
+												<th>ContainerCode</th>
+												<th>ContainerDesc</th>
+										</tr>
+								</thead>
+								<tbody>
+										<tr ng-repeat="item in results">
+												<td><button class="btn btn-primary" ng-click="select(item)">Select</button></td>
+												<td>{{item.containerCode}}</td>
+												<td>{{item.containerDesc}}</td>
+										</tr>
+								</tbody>
+						</table>
+						<div>
+								{{model.page}} of {{numPages}} of {{totalItems}}
+						</div>
+						 <uib-pagination total-items="totalItems" num-pages="numPages" items-per-page="pageSize" max-size="maxSize"  ng-change="search()" ng-model="model.page" class="pagination-xs" boundary-links="true" rotate="false"></uib-pagination>
+		</div>
+	</div>
+</div>
+<div class="modal-footer"></div>

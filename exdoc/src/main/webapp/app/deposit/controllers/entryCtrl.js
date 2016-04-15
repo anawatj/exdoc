@@ -160,6 +160,33 @@ app
 					$scope.findApproveBy = function() {
 
 					};
+					$scope.findContainer=function(item)
+					{
+						var modalInstance = $uibModal.open({
+							templateUrl : url+"app/center/views/container.html",
+							controller : 'containerPopupCtrl',
+							size : 'lg',
+							backdrop : false,
+							animation : true,
+							resolve : {
+						/*		parameter : function() {
+									return model = {
+										subject : subject,
+										page : 1
+									};
+								}*/
+							}
+						});
+
+						modalInstance.result.then(function(selectedItem) {
+							item.container = selectedItem;
+						
+						}, function() {
+							// $log.info('Modal
+							// dismissed at: ' + new
+							// Date());
+						});
+					};
 					$scope.save = function() {
 						$scope.model.status="S";
 						depositService.save($scope.model).success(
@@ -219,5 +246,5 @@ app
 									
 								});
 					};
-					};
+					
 				});
