@@ -33,7 +33,7 @@ app.controller('witdownEntryCtrl',function($scope,$http,$q,commonService,witdown
 				    		commonService.getAllBranch(),
 				    		commonService.getAllPosition(),
 				    		commonService.getAllWitdownObjective(),
-				    		borrowService.getByKey($scope.id)
+				    		witdownService.getByKey($scope.id)
 				    ]).then(function(data)
 				    		{
 				    			

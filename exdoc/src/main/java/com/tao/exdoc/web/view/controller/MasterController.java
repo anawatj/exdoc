@@ -110,6 +110,14 @@ public class MasterController {
 		return result.getFullResult();
 	}
 	
+	@RequestMapping(value="/witdown/objective/getAll",method=RequestMethod.GET)
+	@Transactional
+	public @ResponseBody Result<SimpleMasterObject> getAllWitdownObjective()
+	{
+		Result<SimpleMasterObject> result = masterDataRepository.findAll(WitdownObjective.class);
+		return result.getFullResult();
+	}
+	
 
 	@RequestMapping(value = "/batch", method = RequestMethod.GET)
 	@Transactional
