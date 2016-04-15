@@ -1,5 +1,7 @@
 package com.tao.exdoc.service.impl;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,10 @@ public class DepositService implements IDepositService{
 		Deposit result = depositRepository.save(entity);
 		if(result.getStatus()== Status.AP)
 		{
+			result.setReviewBy(result.getDepositBy());
+			result.setReviewDate(new Date());
+			result.setApproveBy(result.getDepositBy());
+			result.setApproveDate(new Date());
 			for(DepositItem item : result.getItems())
 			{
 				Document document = new Document();
