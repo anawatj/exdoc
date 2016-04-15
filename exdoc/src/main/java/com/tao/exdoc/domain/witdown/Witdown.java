@@ -34,6 +34,7 @@ public class Witdown extends AbstractDomain<Integer>{
 	private Branch branch;
 	private Department department;
 	private Position position;
+	private Set<WitdownItem> items;
 	public Branch getBranch() {
 		return branch;
 	}
@@ -58,7 +59,7 @@ public class Witdown extends AbstractDomain<Integer>{
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-	private Set<WitdownItem> items;
+
 	public Set<WitdownItem> getItems() {
 		return items;
 	}

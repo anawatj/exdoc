@@ -15,11 +15,53 @@ public class WitdownQuery extends AbstractQuery{
 	private String witdownDesc;
 	private Date witdownDateStart;
 	private Date witdownDateEnd;
-	private Integer witdownBy;
-	private String username;
+	private String witdownBy;
 	private Integer department;
 	private Integer branch;
 	private Integer position;
+	private String reviewBy;
+	private Date reviewDateStart;
+	private Date reviewDateEnd;
+	private String approveBy;
+	private Date approveDateStart;
+	private Date approveDateEnd;
+	
+	public String getReviewBy() {
+		return reviewBy;
+	}
+	public void setReviewBy(String reviewBy) {
+		this.reviewBy = reviewBy;
+	}
+	public Date getReviewDateStart() {
+		return reviewDateStart;
+	}
+	public void setReviewDateStart(Date reviewDateStart) {
+		this.reviewDateStart = reviewDateStart;
+	}
+	public Date getReviewDateEnd() {
+		return reviewDateEnd;
+	}
+	public void setReviewDateEnd(Date reviewDateEnd) {
+		this.reviewDateEnd = reviewDateEnd;
+	}
+	public String getApproveBy() {
+		return approveBy;
+	}
+	public void setApproveBy(String approveBy) {
+		this.approveBy = approveBy;
+	}
+	public Date getApproveDateStart() {
+		return approveDateStart;
+	}
+	public void setApproveDateStart(Date approveDateStart) {
+		this.approveDateStart = approveDateStart;
+	}
+	public Date getApproveDateEnd() {
+		return approveDateEnd;
+	}
+	public void setApproveDateEnd(Date approveDateEnd) {
+		this.approveDateEnd = approveDateEnd;
+	}
 	public String getWitdownCode() {
 		return witdownCode;
 	}
@@ -44,18 +86,13 @@ public class WitdownQuery extends AbstractQuery{
 	public void setWitdownDateEnd(Date witdownDateEnd) {
 		this.witdownDateEnd = witdownDateEnd;
 	}
-	public Integer getWitdownBy() {
+	public String getWitdownBy() {
 		return witdownBy;
 	}
-	public void setWitdownBy(Integer witdownBy) {
+	public void setWitdownBy(String witdownBy) {
 		this.witdownBy = witdownBy;
 	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
+	
 	public Integer getDepartment() {
 		return department;
 	}
