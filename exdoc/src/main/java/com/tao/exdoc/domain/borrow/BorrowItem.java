@@ -16,6 +16,13 @@ public class BorrowItem extends AbstractDomain<Integer>{
 	private Document document;
 	private String remark;
 	private CheckStatus status;
+	private boolean selected;
+	public boolean getSelected() {
+		return selected;
+	}
+	public void setSelected(boolean selected) {
+		this.selected = selected;
+	}
 	public Integer getBorrowId() {
 		return borrowId;
 	}

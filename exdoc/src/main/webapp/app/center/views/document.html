@@ -90,7 +90,7 @@
 							</thead>
 							<tbody>
 									<tr ng-repeat="item in results">
-											<td><input type="checkbox"/></td>
+											<td><button class="btn btn-primary" ng-click="select(item)">Select</button></td>
 											<td>{{item.documentCode}}</td>
 											<td>{{item.documentDesc}}</td>
 											<td>{{item.documentGroup.description}}</td>
