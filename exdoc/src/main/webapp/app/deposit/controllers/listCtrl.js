@@ -1,7 +1,7 @@
 /**
  * 
  */
-app.controller('depositListCtrl',function($scope,$q,$routeParams,$location,commonService,depositService,$uibModal)
+app.controller('depositListCtrl',function($scope,$q,$routeParams,$location,commonService,depositService,$uibModal,config)
 		{
 				$scope.departments=[];
 				$scope.branches=[];
@@ -9,8 +9,8 @@ app.controller('depositListCtrl',function($scope,$q,$routeParams,$location,commo
 				$scope.objectives=[];
 				$scope.results=[];
 				$scope.totalItems=0;
-				$scope.maxSize=0;
-				$scope.maxPage=0;
+				$scope.maxSize=config.maxSize;
+				$scope.maxPage=config.maxPage;
 				$scope.model={page:1,orderBy:'id',orderType:'desc'};
 				$scope.init=function()
 				{
@@ -46,9 +46,8 @@ app.controller('depositListCtrl',function($scope,$q,$routeParams,$location,commo
 					depositService.search($scope.model)
 					.success(function(data)
 							{
-								$scope.list =data.list;
-								$scope.totalRecord=data.totalRecord;
-								$scope.totalPage =data.totalPage;
+								$scope.results =data.list;
+								$scope.totalItems=data.totalRecord;
 							})	;
 				};
 				$scope.edit=function(id)

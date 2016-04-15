@@ -86,7 +86,7 @@ public class DepositRepository implements IDepositRepository{
 				"depositDesc",
 				"depositDate",
 				"depositBy",
-				"departmnt",
+				"department",
 				"branch");
 	}
 
