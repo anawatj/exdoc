@@ -1,3 +1,187 @@
 <div class="panel panel-default">
+	<form>
+		<div class="row">
+			<div class="col-xs-3">
+				<label>WitdownCode</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="text" class="form-control" />
+			</div>
+			<div class="col-xs-3">
+				<label>WitdownDesc</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="text" class="form-control" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<label>WitdownDate</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="date" class="form-control" />
+			</div>
+			<div class="col-xs-3">
+				<label>To</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="date" class="form-control" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<label>WitdownBy</label>
+			</div>
+			<div class="col-xs-6">
+
+				<div class="input-group">
+					<input type="text" class="form-control" />
+					<div class="input-group-btn">
+						<button class="btn btn-primary" ng-click="findWitdownBy()">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<label>ReviewDate</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="date" class="form-control" />
+			</div>
+			<div class="col-xs-3">
+				<label>To</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="date" class="form-control" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<label>ReviewBy</label>
+			</div>
+			<div class="col-xs-6">
+
+				<div class="input-group">
+					<input type="text" class="form-control" />
+					<div class="input-group-btn">
+						<button class="btn btn-primary" ng-click="findWitdownBy()">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<label>ApproveDate</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="date" class="form-control" />
+			</div>
+			<div class="col-xs-3">
+				<label>To</label>
+			</div>
+			<div class="col-xs-3">
+				<input type="date" class="form-control" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<label>ApproveBy</label>
+			</div>
+			<div class="col-xs-6">
+
+				<div class="input-group">
+					<input type="text" class="form-control" />
+					<div class="input-group-btn">
+						<button class="btn btn-primary" ng-click="findWitdownBy()">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<label>Objective</label>
+			</div>
+			<div class="col-xs-3">
+				<select class="form-control"></select>
+			</div>
+			<div class="col-xs-3">
+				<label>Branch</label>
+			</div>
+			<div class="col-xs-3">
+				<select class="form-control"></select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<label>Department</label>
+			</div>
+			<div class="col-xs-3">
+				<select class="form-control"></select>
+			</div>
+			<div class="col-xs-3">
+				<label>Position</label>
+			</div>
+			<div class="col-xs-3">
+				<select class="form-control"></select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+					<button class='btn btn-primary'>Search</button>
+					
+			</div>
+		</div>
+		<div class="row">
+				<div class="col-xs-12">
+							<table class="table table-bordered table-striped table-hover table-condensed">
+									<thead>
+											<tr>
+													<th></th>
+													<th>WitdownCode</th>
+													<th>WitdownDesc</th>
+													<th>WitdownDate</th>
+													<th>WitdownBy</th>
+													<th>ReviewDate</th>
+													<th>ReviewBy</th>
+													<th>ApproveDate</th>
+													<th>ApproveBy</th>
+													<th>Objective</th>
+													<th>Branch</th>
+													<th>Department</th>
+													<th>Position</th>
+											</tr>
+									</thead>
+									<tbody>
+												<tr ng-repeat="item in results">
+													<td><button class="btn btn-primary" ng-click="edit(item.id)"><i class="glyphicon glyphicon-pencil"></i></button></td>
+													<td>{{item.witdownCode}}</td>
+													<td>{{item.witdownDesc}}</td>
+													<td>{{item.witdownDate | date:'dd/MM/yyyy'}}</td>
+													<td>{{item.witdownBy.firstName}} {{item.witdownBy.lastName}}</td>
+													<td>{{item.reviewDate | date:'dd/MM/yyyy'}}</td>
+													<td>{{item.reviewBy.firstName}} {{ item.reviewBy.lastName}}</td>
+													<td>{{item.approveDate | date:'dd/MM/yyyy'}}</td>
+													<td>{{item.approveBy.firstName}} {{ item.approveBy.lastName}}</td>
+													<td>{{item.objective.description}}</td>
+													<td>{{item.branch.description}}</td>
+													<td>{{item.department.description}}</td>
+													<td>{{item.position.description}}</td>
+											</tr>
+									</tbody>
+							</table>
+							 <uib-pagination total-items="totalItems" num-pages="numPages" items-per-page="pageSize" max-size="maxSize"  ng-change="search()" ng-model="model.page" class="pagination-xs" boundary-links="true" rotate="false"></uib-pagination>
+				</div>
+		</div>
+	</form>
 
 </div>
