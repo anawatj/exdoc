@@ -6,13 +6,13 @@
 				<label>BorrowCode</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="text" class="form-control" ng-model="model.borrowCode"/>
+				<input type="text" class="form-control" ng-model="model.borrowCode" />
 			</div>
 			<div class="col-xs-3">
 				<label>BorrowDesc</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="text" class="form-control" ng-model="model.borrowDesc"/>
+				<input type="text" class="form-control" ng-model="model.borrowDesc" />
 			</div>
 		</div>
 		<div class="row">
@@ -26,7 +26,17 @@
 				<label>BorrowBy</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="text" class="form-control" />
+
+				<div class="input-group">
+					<input type="text" class="form-control" ng-model="model.borrowBy.username"/>
+					<div class="input-group-btn">
+						<button class="btn btn-primary" ng-click="findBorrowBy()">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
+
+					</div>
+					<label>{{model.borrowBy.firstName}} {{model.borrowBy.lastName}}</label>
+				</div>
 			</div>
 		</div>
 		<div class="row">
@@ -48,102 +58,115 @@
 				<label>ApproveDate</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="date" class="form-control" disabled/>
+				<input type="date" class="form-control" disabled />
 			</div>
 			<div class="col-xs-3">
 				<label>ApproveBy</label>
 			</div>
 			<div class="col-xs-3">
-				<input type="text" class="form-control" disabled/>
+				<input type="text" class="form-control" disabled />
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-xs-3">
-					<label>Objective</label>
+				<label>Objective</label>
 			</div>
 			<div class="col-xs-3">
-					<select class="form-control" ng-model="model.objective.id">
-							<option value="0"></option>
-							<option ng-repeat="item in objectives" ng-selected="item.id==model.objective.id" value="{{item.id}}">
-									{{item.description}}
-							</option>
-					</select>
+				<select class="form-control" ng-model="model.objective.id" ng-options="item.id as item.description for item in objectives">
+					<option value="0"></option>
+			
+				</select>
 			</div>
 			<div class="col-xs-3">
-					<label>Branch</label>
+				<label>Branch</label>
 			</div>
 			<div class="col-xs-3">
-					<select class="form-control" ng-model="model.branch.id" >
-							<option value="0"></option>
-							<option ng-repeat="branch in branches" ng-selected="branch.id==model.branch.id"  value="{{branch.id}}">{{branch.description}}</option>
-							
-					</select>
+				<select class="form-control" ng-model="model.branch.id" ng-options="branch.id as branch.description for branch in branches">
+					<option value="0"></option>
+				
+
+				</select>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-3">
-					<label>Department</label>
+				<label>Department</label>
 			</div>
 			<div class="col-xs-3">
-					<select class="form-control" ng-model="model.department.id">
-							<option value="0"></option>
-							<option ng-repeat="department in departments" ng-selected="department.id==model.department.id" value="{{department.id}}">
-									{{department.description}}
-							
-							</option>
-					</select>
+				<select class="form-control" ng-model="model.department.id" ng-options="department.id as department.description for department in departments">
+					<option value="0"></option>
+				
+				</select>
 			</div>
 			<div class="col-xs-3">
-					<label>Position</label>
+				<label>Position</label>
 			</div>
 			<div class="col-xs-3">
-					<select class="form-control" ng-model="model.position.id">
-							<option value="0"></option>
-							<option ng-repeat="position in positions" ng-selected="position.id==model.position.id" value="{{position.id}}" >{{position.description}}</option>
-					</select>
+				<select class="form-control" ng-model="model.position.id" ng-options="position.id as position.description for position in positions">
+					<option value="0"></option>
+			
+				</select>
 			</div>
 		</div>
 		<div class="row">
-				<div class="col-xs-3">
-						<label>Remark</label>
-				</div>
-				<div class="col-xs-9">
-						<textarea class="form-control" ng-model="model.remark">
+			<div class="col-xs-3">
+				<label>Remark</label>
+			</div>
+			<div class="col-xs-9">
+				<textarea class="form-control" ng-model="model.remark">
 								
 						</textarea>
-				</div>
+			</div>
 		</div>
 		<div class="row">
-				<div class="col-xs-12">
-						<table class="table table-bordered table-striped table-hover table-condensed">
-							<thead>
-									<tr>
-											<th><input type="checkbox"/></th>
-											<th>Document</th>
-											<th>Remark</th>
-											<th>Status</th>
-									</tr>
-							</thead>
-							<tbody>
-							</tbody>
-							<tfoot>
-									<tr>
-											<td colspan="4">
-													<button class="btn btn-primary">Add</button>
-													<button class="btn btn-primary">Delete</button>
-											</td>
-									</tr>
-							</tfoot>
-						</table>
-				</div>
+			<div class="col-xs-12">
+				<table
+					class="table table-bordered table-striped table-hover table-condensed">
+					<thead>
+						<tr>
+							<th><input type="checkbox" /></th>
+							<th>Document</th>
+							<th>Remark</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="item in model.items">
+							<td><input type="checkbox" ng-model="item.selected" /></td>
+							<td>
+								<div class="input-group">
+									<input type="text" class="form-control" ng-model="item.document.documentCode" />
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="findDocument(item)">
+											<i class="glyphicon glyphicon-search"></i>
+										</button>
+
+									</div>
+									<label>{{item.document.documentDesc}}</label>
+								</div>
+							</td>
+							<td>
+									<textarea class="form-control" ng-model="item.remark"></textarea>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="3">
+								<button class="btn btn-primary" ng-click="addItem()">Add</button>
+								<button class="btn btn-primary" ng-click="delItem()">Delete</button>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
 		</div>
 		<div class="row">
-				<div class="col-xs-12">
-						<button class="btn btn-primary" ng-click="save()">Save</button>
-						<button class="btn btn-primary">Release</button>
-						<button class="btn btn-primary">Clear</button>
-				</div>
+			<div class="col-xs-12">
+				<button class="btn btn-primary" ng-click="save()">Save</button>
+				<button class="btn btn-primary">Release</button>
+				<button class="btn btn-primary">Clear</button>
+			</div>
 		</div>
 	</form>
 </div>

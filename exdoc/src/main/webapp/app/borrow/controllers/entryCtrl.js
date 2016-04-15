@@ -1,13 +1,13 @@
 /**
  * 
  */
-app.controller('borrowEntryCtrl',function($scope,$http,$q,commonService,borrowService,$routeParams)
+app.controller('borrowEntryCtrl',function($scope,$http,$q,commonService,borrowService,$routeParams,$uibModal,$location)
 		{
 			$scope.departments=[];
 			$scope.branches=[];
 			$scope.positions=[];
 			$scope.objectives=[];
-			$scope.model={};
+			$scope.model={id:0,items:[]};
 			$scope.id = $routeParams.id;
 			
 			$scope.init=function()
@@ -43,6 +43,10 @@ app.controller('borrowEntryCtrl',function($scope,$http,$q,commonService,borrowSe
 				    				$scope.objectives=data[3].data.list;
 
 				    				$scope.model =data[4].data;
+				    				if(!$scope.model)
+				    				{
+				    					$scope.model={id:0,items:[]};
+				    				}
 				    				$scope.model.id=$scope.id;
 				    				if($scope.model.id>0)
 				    				{
@@ -62,11 +66,100 @@ app.controller('borrowEntryCtrl',function($scope,$http,$q,commonService,borrowSe
 				    		});
 				  return promise;
 			};
+			$scope.findBorrowBy=function()
+			{
+				var modalInstance = $uibModal.open({
+					templateUrl : url+"app/center/views/user.html",
+					controller : 'userPopupCtrl',
+					size : 'lg',
+					backdrop : false,
+					animation : true,
+					resolve : {
+				/*		parameter : function() {
+							return model = {
+								subject : subject,
+								page : 1
+							};
+						}*/
+					}
+				});
+
+				modalInstance.result.then(function(selectedItem) {
+					$scope.model.borrowBy= selectedItem;
+				
+				}, function() {
+					// $log.info('Modal
+					// dismissed at: ' + new
+					// Date());
+				});
+			};
+			$scope.findReviewBy=function()
+			{
+				
+			};
+			$scope.findApproveBy=function()
+			{
+				
+			};
+			$scope.findDocument=function(item)
+			{
+				var modalInstance = $uibModal.open({
+					templateUrl : url+"app/center/views/document.html",
+					controller : 'documentPopupCtrl',
+					size : 'lg',
+					backdrop : false,
+					animation : true,
+					resolve : {
+				/*		parameter : function() {
+							return model = {
+								subject : subject,
+								page : 1
+							};
+						}*/
+					}
+				});
+
+				modalInstance.result.then(function(selectedItem) {
+					item.document = selectedItem;
+				
+				}, function() {
+					// $log.info('Modal
+					// dismissed at: ' + new
+					// Date());
+				});
+			};
+			$scope.addItem = function() {
+				
+				var item = {};
+				if ($scope.id == 0) {
+					item.borrowId = undefined;
+				} else {
+					item.borrowId = $scope.id;
+				}
+				item.selected = false;
+				
+				$scope.model.items.push(item);
+			};
+			$scope.delItem = function() {
+				for (var index = 0; index < $scope.model.items.length; index++) {
+					var item = $scope.model.items[index];
+					if (item.selected) {
+						$scope.model.items.splice(index, 1);
+						index--;
+					}
+				}
+			};
 			$scope.save=function()
 			{
-				borrowService.save($scope.model).success(function(res)
+				borrowService.save($scope.model).success(function(data)
 						{
-							alert("success");
+							if($scope.id==0)
+							{
+								$location.path("/borrowEntry").search("id",data.id);
+							}else
+								{
+									window.location.reload();
+								}
 						});
 			};
 		});
