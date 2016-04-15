@@ -15,7 +15,7 @@ public class DepositQuery extends AbstractQuery {
 	private String depositDesc;
 	private Date depositDateStart;
 	private Date depositDateEnd;
-	private Integer depositBy;
+	private String depositBy;
 	
 	private Date reviewDateStart;
 	private Date reviewDateEnd;
@@ -24,14 +24,8 @@ public class DepositQuery extends AbstractQuery {
 	private Integer branch;
 	private Integer department;
 	private Integer position;
-	private String username;
 
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
+
 	public String getDepositCode() {
 		return depositCode;
 	}
@@ -56,10 +50,10 @@ public class DepositQuery extends AbstractQuery {
 	public void setDepositDateEnd(Date depositDateEnd) {
 		this.depositDateEnd = depositDateEnd;
 	}
-	public Integer getDepositBy() {
+	public String getDepositBy() {
 		return depositBy;
 	}
-	public void setDepositBy(Integer depositBy) {
+	public void setDepositBy(String depositBy) {
 		this.depositBy = depositBy;
 	}
 	public Date getReviewDateStart() {

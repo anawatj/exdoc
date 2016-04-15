@@ -105,10 +105,10 @@ public class DocumentRepository implements IDocumentRepository{
 				criteria.createAlias("documentType", "dt",JoinType.LEFT_OUTER_JOIN);
 				criteria.add(Restrictions.eq("dt.id", query.getDocumentType()));
 			}
-			if(query.getContainerId()!=null && query.getContainerId()!=0)
+			if(query.getContainer()!=null && !query.getContainer().equals(""))
 			{
 				criteria.createAlias("container", "ct",JoinType.LEFT_OUTER_JOIN);
-				criteria.add(Restrictions.eq("ct.id",query.getContainerId()));
+				criteria.add(Restrictions.eq("ct.containerCode",query.getContainer()));
 			}
 			return new Result<Document>(factory,criteria,Document.class,"id","documentCode","documentDesc","container","documentGroup","documentMode","documentType");
 			

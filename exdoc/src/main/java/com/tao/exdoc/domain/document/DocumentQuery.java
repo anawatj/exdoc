@@ -15,9 +15,13 @@ public class DocumentQuery extends AbstractQuery {
 	private Integer documentGroup;
 	private Integer documentMode;
 	private Integer documentType;
-	private String containerCode;
-	private Integer containerId;
-	private String containerDesc;
+	private String container;
+	public String getContainer() {
+		return container;
+	}
+	public void setContainer(String container) {
+		this.container = container;
+	}
 	public String getDocumentCode() {
 		return documentCode;
 	}
@@ -48,23 +52,6 @@ public class DocumentQuery extends AbstractQuery {
 	public void setDocumentType(Integer documentType) {
 		this.documentType = documentType;
 	}
-	public String getContainerCode() {
-		return containerCode;
-	}
-	public void setContainerCode(String containerCode) {
-		this.containerCode = containerCode;
-	}
-	public Integer getContainerId() {
-		return containerId;
-	}
-	public void setContainerId(Integer containerId) {
-		this.containerId = containerId;
-	}
-	public String getContainerDesc() {
-		return containerDesc;
-	}
-	public void setContainerDesc(String containerDesc) {
-		this.containerDesc = containerDesc;
-	}
+
 
 }

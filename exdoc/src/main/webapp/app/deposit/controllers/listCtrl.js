@@ -74,8 +74,8 @@ app.controller('depositListCtrl',function($scope,$q,$routeParams,$location,commo
 					});
 
 					modalInstance.result.then(function(selectedItem) {
-						$scope.model.depositBy= selectedItem.id;
-						$scope.model.username = selectedItem.username;
+						$scope.model.depositBy= selectedItem.username;
+						//$scope.model.username = selectedItem.username;
 					
 					}, function() {
 						// $log.info('Modal

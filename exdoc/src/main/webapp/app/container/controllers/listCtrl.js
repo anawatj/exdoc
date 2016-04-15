@@ -71,9 +71,7 @@ app.controller('containerListCtrl',function($scope,$q,$routeParams,$location,con
 					});
 
 					modalInstance.result.then(function(selectedItem) {
-						$scope.model.containerById= selectedItem.id;
-						$scope.model.containerByCode = selectedItem.username;
-						$scope.model.containerByDesc = selectedItem.firstName+" "+selectedItem.lastName;
+						$scope.model.containerBy = selectedItem.username;
 					
 					}, function() {
 						// $log.info('Modal

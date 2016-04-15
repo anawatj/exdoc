@@ -61,9 +61,7 @@ app.controller('documentPopupCtrl', function($scope, $http, $q,
 		});
 
 		modalInstance.result.then(function(selectedItem) {
-			$scope.model.containerId= selectedItem.id;
-			$scope.model.containerCode= selectedItem.containerCode;
-			$scope.model.containerDesc = selectedItem.containerDesc;
+		$scope.model.container = selectedItem.containerCode;
 		
 		}, function() {
 			// $log.info('Modal

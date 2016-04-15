@@ -80,6 +80,7 @@ public class DepositRepository implements IDepositRepository{
 		criteria.setFetchMode("department", FetchMode.JOIN);
 		criteria.setFetchMode("branch", FetchMode.JOIN);
 		
+		
 		return new Result<Deposit>(factory,criteria,Deposit.class,
 				"id",
 				"depositCode",
