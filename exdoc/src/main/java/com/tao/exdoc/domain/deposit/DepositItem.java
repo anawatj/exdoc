@@ -22,6 +22,21 @@ public class DepositItem extends AbstractDomain<Integer>{
 	private String documentDesc;
 	private Date documentDate;
 	
+	private Container container;
+	
+	public Container getContainer() {
+		if(container!=null)
+		{
+			if(container.getId()==null && container.getId()==0)
+			{
+				return null;
+			}
+		}
+		return container;
+	}
+	public void setContainer(Container container) {
+		this.container = container;
+	}
 	public Date getDocumentDate() {
 		return documentDate;
 	}

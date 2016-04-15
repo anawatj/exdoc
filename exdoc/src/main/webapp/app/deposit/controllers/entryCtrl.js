@@ -199,4 +199,25 @@ app
 									
 								});
 					};
+					$scope.approve=function()
+					{
+						$scope.model.status="AP";
+						depositService.save($scope.model).success(
+								function(data) {
+									/*$scope.model = {
+											id : 0,
+											version:0,
+											items:[]
+										};*/
+									if($scope.id==0)
+									{
+										$location.path("/depositEntry").search('id',data.id);
+									}else
+										{
+											window.location.reload();
+										}
+									
+								});
+					};
+					};
 				});

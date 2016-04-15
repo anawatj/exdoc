@@ -12,6 +12,9 @@
 		<many-to-one name="documentType" column="DOCUMENT_TYPE_ID"
 			class="com.tao.exdoc.domain.master.DocumentType" lazy="proxy"
 			not-found="ignore" foreign-key="FK_DEPOSIT_ITEM_DOCUMENT_TYPE"></many-to-one>
+			
+		<many-to-one name="container" column="CONTAINER_ID" class="com.tao.exdoc.domain.container.Container" lazy="proxy" not-found="ignore" foreign-key="FK_DEPOSIT_ITEM_CONTAINER">
+		</many-to-one>
 		<property name="documentCode" column="DOCUMENT_CODE" length="20"></property>
 		<property name="documentDesc" column="DOCUMENT_DESC" length="200"></property>
 		<property name="documentDate" column="DOCUMENT_DATE"></property>

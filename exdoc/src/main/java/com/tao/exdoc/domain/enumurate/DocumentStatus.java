@@ -4,5 +4,6 @@ public enum DocumentStatus {
 		B,
 		W,
 		CN,
-		D
+		D,
+		DF
 }

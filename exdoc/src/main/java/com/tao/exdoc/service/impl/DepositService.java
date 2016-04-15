@@ -4,7 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tao.exdoc.domain.deposit.Deposit;
+import com.tao.exdoc.domain.deposit.DepositItem;
+import com.tao.exdoc.domain.document.Document;
+import com.tao.exdoc.domain.enumurate.DocumentStatus;
+import com.tao.exdoc.domain.enumurate.Status;
 import com.tao.exdoc.repository.IDepositRepository;
+import com.tao.exdoc.repository.IDocumentRepository;
 import com.tao.exdoc.service.IDepositService;
 @Service
 public class DepositService implements IDepositService{
@@ -12,6 +17,10 @@ public class DepositService implements IDepositService{
 	
 	@Autowired
 	private IDepositRepository depositRepository;
+	
+	
+	@Autowired
+	private IDocumentRepository documentRepository;
 
 	public Deposit approve(Deposit entity) throws Exception {
 		// TODO Auto-generated method stub
@@ -20,6 +29,27 @@ public class DepositService implements IDepositService{
 
 	public Deposit save(Deposit entity) throws Exception {
 		Deposit result = depositRepository.save(entity);
+		if(result.getStatus()== Status.AP)
+		{
+			for(DepositItem item : result.getItems())
+			{
+				Document document = new Document();
+				document.setId(0);
+				document.setDocumentBy(result.getDepositBy());
+				document.setDocumentCode(item.getDocumentCode());
+				document.setDocumentDesc(item.getDocumentDesc());
+				document.setDocumentMode(result.getDocumentMode());
+				document.setDocumentGroup(result.getDocumentGroup());
+				document.setDocumentType(item.getDocumentType());
+				document.setDocumentStatus(DocumentStatus.D);
+				document.setBranch(result.getBranch());
+				document.setDepartment(result.getDepartment());
+				
+				documentRepository.save(document);
+				
+				
+			}
+		}
 		return result;
 	}
 
