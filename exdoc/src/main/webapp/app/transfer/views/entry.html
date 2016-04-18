@@ -1,10 +1,136 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<div class="panel panel-default">
+	<form>
+		<fieldset>
+			<div class="row">
+				<div class="col-xs-3">
+					<label>TransferCode</label>
+				</div>
+				<div class="col-xs-3">
+					<input type="text" class="form-control" disabled
+						ng-model="model.transferCode" />
+				</div>
+				<div class="col-xs-3">
+					<label>TransferDesc</label>
+				</div>
+				<div class="col-xs-3">
+					<input type="text" class="form-control"
+						ng-model="model.transferDesc" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3">
+					<label>BorrowDate</label>
+				</div>
+				<div class="col-xs-3">
+					<input type="date" class="form-control" ng-model="model.borrowDate" />
+				</div>
+				<div class="col-xs-3">
+					<label>BorrowBy</label>
+				</div>
+				<div class="col-xs-3">
 
-</body>
-</html>
+					<div class="input-group">
+						<input type="text" class="form-control"
+							ng-model="model.borrowBy.username" />
+						<div class="input-group-btn">
+							<button class="btn btn-primary" ng-click="findBorrowBy()">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+
+						</div>
+						<label>{{model.borrowBy.firstName}}
+							{{model.borrowBy.lastName}}</label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3">
+					<label>ReviewDate</label>
+				</div>
+				<div class="col-xs-3">
+					<input type="date" class="form-control" disabled />
+				</div>
+				<div class="col-xs-3">
+					<label>ReviewBy</label>
+				</div>
+				<div class="col-xs-3">
+					<input type="text" class="form-control" disabled />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3">
+					<label>ApproveDate</label>
+				</div>
+				<div class="col-xs-3">
+					<input type="date" class="form-control" disabled />
+				</div>
+				<div class="col-xs-3">
+					<label>ApproveBy</label>
+				</div>
+				<div class="col-xs-3">
+					<input type="text" class="form-control" disabled />
+				</div>
+			</div>
+				<div class="row">
+				<div class="col-xs-3">
+					<label>Objective</label>
+				</div>
+				<div class="col-xs-3">
+					<select class="form-control" ng-model="model.objective.id"
+						ng-options="item.id as item.description for item in objectives">
+						<option value="0"></option>
+
+					</select>
+				</div>
+				<div class="col-xs-3">
+					<label>Branch</label>
+				</div>
+				<div class="col-xs-3">
+					<select class="form-control" ng-model="model.branch.id"
+						ng-options="branch.id as branch.description for branch in branches">
+						<option value="0"></option>
+
+
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3">
+					<label>Department</label>
+				</div>
+				<div class="col-xs-3">
+					<select class="form-control" ng-model="model.department.id"
+						ng-options="department.id as department.description for department in departments">
+						<option value="0"></option>
+
+					</select>
+				</div>
+				<div class="col-xs-3">
+					<label>Position</label>
+				</div>
+				<div class="col-xs-3">
+					<select class="form-control" ng-model="model.position.id"
+						ng-options="position.id as position.description for position in positions">
+						<option value="0"></option>
+
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3">
+					<label>Remark</label>
+				</div>
+				<div class="col-xs-9">
+					<textarea class="form-control" ng-model="model.remark">
+								
+						</textarea>
+				</div>
+			</div>
+			<div class="row">
+					<div class="col-xs-12">
+					
+					</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
