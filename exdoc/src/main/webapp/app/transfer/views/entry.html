@@ -1,6 +1,6 @@
-<div class="panel panel-default">
+<div class="panel panel-default" ng-init="init()">
 	<form>
-		<fieldset>
+		<fieldset ng-disabled="model.status=='SP' || model.status=='AP'">
 			<div class="row">
 				<div class="col-xs-3">
 					<label>TransferCode</label>
@@ -19,27 +19,27 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-3">
-					<label>BorrowDate</label>
+					<label>TransferDate</label>
 				</div>
 				<div class="col-xs-3">
-					<input type="date" class="form-control" ng-model="model.borrowDate" />
+					<input type="date" class="form-control" ng-model="model.transferDate" />
 				</div>
 				<div class="col-xs-3">
-					<label>BorrowBy</label>
+					<label>TransferBy</label>
 				</div>
 				<div class="col-xs-3">
 
 					<div class="input-group">
 						<input type="text" class="form-control"
-							ng-model="model.borrowBy.username" />
+							ng-model="model.transferBy.username" />
 						<div class="input-group-btn">
 							<button class="btn btn-primary" ng-click="findBorrowBy()">
 								<i class="glyphicon glyphicon-search"></i>
 							</button>
 
 						</div>
-						<label>{{model.borrowBy.firstName}}
-							{{model.borrowBy.lastName}}</label>
+						<label>{{model.transferBy.firstName}}
+							{{model.transferBy.lastName}}</label>
 					</div>
 				</div>
 			</div>
@@ -128,9 +128,71 @@
 			</div>
 			<div class="row">
 					<div class="col-xs-12">
-					
+									<table
+						class="table table-bordered table-striped table-hover table-condensed">
+						<thead>
+							<tr>
+								<th><input type="checkbox" /></th>
+								<th>Document</th>
+								<th>ContainerTo</th>
+								<th>Remark</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in model.items">
+								<td><input type="checkbox" ng-model="item.selected" /></td>
+								<td>
+									<div class="input-group">
+										<input type="text" class="form-control"
+											ng-model="item.document.documentCode" />
+										<div class="input-group-btn">
+											<button class="btn btn-primary" ng-click="findDocument(item)">
+												<i class="glyphicon glyphicon-search"></i>
+											</button>
+
+										</div>
+										<label>{{item.document.documentDesc}}</label>
+									</div>
+								</td>
+									<td>
+									<div class="input-group">
+										<input type="text" class="form-control"
+											ng-model="item.containerTo.containerCode" />
+										<div class="input-group-btn">
+											<button class="btn btn-primary" ng-click="findContainer(item)">
+												<i class="glyphicon glyphicon-search"></i>
+											</button>
+
+										</div>
+										<label>{{item.containerTo.containerDesc}}</label>
+									</div>
+								</td>
+								<td><textarea class="form-control" ng-model="item.remark"></textarea>
+								</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="3">
+									<button class="btn btn-primary" ng-click="addItem()">Add</button>
+									<button class="btn btn-primary" ng-click="delItem()">Delete</button>
+
+								</td>
+							</tr>
+						</tfoot>
+					</table>
 					</div>
 			</div>
 		</fieldset>
+				<div class="row">
+				<div class="col-xs-12">
+					<button class="btn btn-primary" ng-click="save()" ng-show="model.id==0 || model.status=='S'">Save</button>
+					<button class="btn btn-primary" ng-click="release()"
+						ng-show="model.id!=0 && model.status=='S'">Release</button>
+					<button class="btn btn-primary" ng-click="approve()"
+						ng-show="model.id!=0 && model.status=='SP'" ng-disabled="model.id==0 || model.status!='SP'">Approve</button>
+					<button class="btn btn-primary" ng-show="model.id==0 || model.status=='S'">Clear</button>
+				</div>
+			</div>
 	</form>
 </div>
